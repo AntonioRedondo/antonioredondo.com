@@ -3,4 +3,6 @@ node_modules
 npm-debug.log
 build
 other
+src/style.css
+src/app.js
 .idea
