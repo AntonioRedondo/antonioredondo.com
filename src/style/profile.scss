@@ -1,0 +1,495 @@
+@import "variables";
+
+.profile, .profile-m {
+	/* http://stackoverflow.com/questions/6542212/use-css3-transitions-with-gradient-backgrounds/15499364#15499364 */
+	background-image: inline('img/bg.svg'), linear-gradient(black 50%, black 50%);
+}
+
+.profile {
+	width: 15%;
+	height: 120%;
+	z-index: 3;
+	overflow: hidden;
+	display: block;
+	
+	position: absolute;
+	
+	border: 2px solid $whiteD;
+	
+	opacity: 0;
+
+	transition:
+		transform $time6 ease-out,
+		box-shadow $time2 ease-out,
+		width $time2 ease-out,
+		background-position $time2 ease-out,
+		opacity $time3 ease-out;
+
+	transform-origin: left 10%;
+	transform: translate3d(0, -10%, 0) rotate(6deg);
+	
+	@media (max-width: $breakpointMobile) {
+		display: none;
+	}
+
+	&:hover {
+		z-index: 10;
+		
+		background-position: 0 0;
+		box-shadow: 0 0 40px $black040;
+		
+		cursor: pointer;
+		
+		& .profile__bg {
+			transform: translate3d(0, 50%, 0);
+		}
+
+		& .profile__image {
+			transform: rotate(-6deg) translate3d(-10%, 0, 0) scale(1.1);
+			filter: grayscale(0);
+		}
+		
+		& .profile__title-bg {
+			opacity: 1;
+		}
+		
+		& .profile__title-text {
+			transform: translate3d(-100%, 0, 0) rotate(-90deg);
+			filter: blur(0);
+			opacity: 1;
+		}
+		
+		& .profile__back-button--in {
+			transform: rotate(-6deg) scale(1.15);
+			opacity: 1;
+			
+			@media (max-width: $breakpointMedium) {
+				transform: rotate(-6deg) scale(0.9);
+			}
+		}
+	}
+	
+	&--1 {
+		left: 45%;
+		transform: translate3d(0, -5%, 0) rotate(6deg);
+
+		& .profile__image {
+			background-position: center top;
+		}
+
+		& .profile__bg {
+			background-image: linear-gradient(30deg, transparent 20%, $profile1 50%);
+		}
+	}
+	
+	&--2 {
+		left: 60%;
+		transform: translate3d(0, -5%, 0) rotate(6deg);
+
+		& .profile__image {
+			background-position: center;
+		}
+
+		& .profile__bg {
+			background-image: linear-gradient(30deg, transparent 20%, $profile2 50%);
+		}
+	}
+	
+	&--3 {
+		left: 75%;
+		transform: translate3d(0, -5%, 0) rotate(6deg);
+
+		& .profile__image {
+			background-position: center bottom;
+		}
+
+		& .profile__bg {
+			background-image: linear-gradient(30deg, transparent 20%, $profile3 50%);
+		}
+	}
+	
+	&--1in {
+		transform: translate3d(0, -10%, 0) rotate(6deg);
+		transition-delay: 2.6s;
+		opacity: 1;
+	}
+	
+	&--2in {
+		transform: translate3d(0, -10%, 0) rotate(6deg);
+		transition-delay: 2.3s;
+		opacity: 1;
+	}
+	
+	&--3in {
+		transform: translate3d(0, -10%, 0) rotate(6deg);
+		transition-delay: $time5;
+		opacity: 1;
+	}
+	
+	&--no-delay {
+		transition: all $time2 ease-out 0s;
+	}
+	
+	&--selected {
+		width: 20%;
+		
+		transition: all 0.3s ease-out;
+		box-shadow: 0 0 40px $black040;
+		filter: grayscale(0);
+		
+		&:hover .profile__title-bg {
+			opacity: 0;
+		}
+		
+		&:hover .profile__title-text {
+			transform: translate3d(-100%, 0, 0) rotate(-90deg) translate3d(-100%, 0, 0);
+			opacity: 0;
+		}
+		
+		& .profile__bg {
+			transform: translate3d(0, 50%, 0);
+		}
+
+		& .profile__image {
+			transform: rotate(-6deg) translate3d(-10%, 0, 0) scale(1.1);
+			filter: grayscale(0);
+		}
+		
+		& .profile__title-bg {
+			opacity: 0;
+		}
+	}
+	
+	&--selected-left {
+		transform: translate3d(20vw, 0, 0) translate3d(0, -10%, 0) rotate(6deg);
+	}
+	
+	&--selected-center {
+		transform: translate3d(5vw, 0, 0) translate3d(0, -10%, 0) rotate(6deg);
+	}
+	
+	&--selected-right {
+		transform: translate3d(-10vw, 0, 0) translate3d(0, -10%, 0) rotate(6deg);
+	}
+	
+	&--not-selected {
+		transition: transform 0.3s ease-in, filter 0.3s ease-out;
+		filter: brightness(0);
+	}
+	
+	&--z-index {
+		z-index: 8;
+	}
+	
+	&__bg {
+		width: 100%;
+		height: 200%;
+		
+		position: absolute;
+		bottom: 0;
+		
+		transition: all 0.2s ease-out;
+	}
+	
+	&__image {
+		width: 160%;
+		height: 84%;
+		
+		position: absolute;
+		bottom: 4%;
+		left: -10%;
+		
+		background: url('img/profiles.png') no-repeat scroll center / 84vh;
+	
+		transition: all 0.2s;
+	
+		transform: rotate(-6deg) translate3d(-6%, 0, 0);
+		filter: grayscale(1);
+	}
+	
+	&__title-bg {
+		width: 100%;
+		height: 50%;
+		
+		position: absolute;
+		top: 50%;
+		
+		background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 100));
+	
+		transition: all 0.2s;
+		opacity: 0;
+	}
+	
+	&__title {
+		width: 100%;
+		padding: 0 11%;
+		
+		position: absolute;
+		bottom: 11%;
+	}
+	
+	&__title-text {
+		margin: 0;
+		
+		font-weight: 900;
+		font-size: 8vw;
+		text-transform: uppercase;
+		line-height: 0.7em;
+		letter-spacing: -0.05em;
+		color: $whiteE;
+		text-shadow: 0.5vw 0.5vw $gray2;
+	
+		transition: all 0.2s ease-out;
+	
+		/* http://stackoverflow.com/questions/18531698/css-rotate-image-and-align-top-left */
+		transform-origin: top right;
+		transform: translate3d(-100%, 0, 0) rotate(-90deg) translate3d(-100%, 0, 0);
+		filter: blur(15px);
+		opacity: 0;
+		
+		& span {
+			display: inline-block;
+			background: #222;
+		}
+	}
+	
+	&__back-button {
+		width: 120px;
+		height: @width;
+		display: block;
+		
+		position: absolute;
+		left: calc(50% - @width/2);
+		bottom: calc(30% - @width/2);
+		
+		opacity: 0;
+		border-radius: 100%;
+		box-shadow: 1px 4px 4px $black040;
+		
+		transform: rotate(-6deg);
+	
+		transition: all 0.2s ease-out;
+		
+		@media (max-width: $breakpointMedium) {
+			transform: rotate(-6deg) scale(0.7);
+		}
+		
+		&::after {
+			content: "";
+			
+			width: 100%;
+			height: @width;
+			
+			position: absolute;
+			top: 0;
+			left: 0;
+			
+			border-radius: 100%;
+			/* background: url('img/arrow.png') no-repeat center / cover; */
+			background: url('img/logos.png') no-repeat $gray1 0 -128px / 950px auto;
+			transform: rotate(90deg);
+		}
+		
+		&--in {
+			opacity: 0.7;
+		}
+	}
+}
+
+
+
+
+
+.profile-m {
+	width: 100%;
+	height: 26vh;
+	height: 53vw;
+	min-height: 170px;
+	display: block;
+	overflow: hidden;
+	
+	position: relative;
+	
+	border-bottom: white solid 2px;
+	
+	@media (min-width: $breakpointMobile) {
+		display: none;
+	}
+	
+	&--1 {
+		& .profile-m__image {
+			background-position: center top;
+		}
+
+		& .profile-m__bg {
+			background-image: linear-gradient(30deg, transparent 20%, $profile1 90%);
+		}
+	}
+	
+	&--2 {
+		& .profile-m__image {
+			background-position: center -62vw;
+		}
+
+		& .profile-m__bg {
+			background-image: linear-gradient(30deg, transparent 20%, $profile2 90%);
+		}
+	}
+	
+	&--3 {
+		& .profile-m__image {
+			background-position: center -122vw;
+		}
+
+		& .profile-m__bg {
+			background-image: linear-gradient(30deg, transparent 20%, $profile3 90%);
+		}
+	}
+	
+	&--first {
+		border-top: white solid 2px;
+	}
+	
+	&__bg {
+		width: 100%;
+		height: 70vw;
+		
+		position: absolute;
+		top: 0;
+		
+		transition: all 0.2s ease-out;
+	}
+	
+	&__image {
+		width: 50%;
+		height: 100%;
+		
+		position: absolute;
+		top: 15px;
+		right: 0;
+		
+		background: url('img/profiles.png') no-repeat scroll center / 50vw;
+	}
+	
+	&__title-text {
+		margin: 0;
+	
+		position: absolute;
+		top: 35px;
+		bottom: 0;
+		left: 20px;
+		
+		font-weight: 900;
+		font-size: 23vw;
+		text-transform: uppercase;
+		line-height: 0.7em;
+		letter-spacing: -0.05em;
+		color: $whiteE;
+		text-shadow: 0.5vw 0.5vw $gray2;
+		
+		transform: rotate(-6deg);
+		
+		& span {
+			display: inline-block;
+			background: #222;
+		}
+	}
+}
+
+
+
+
+
+.profile-selected-bg {
+	width: 100%;
+	height: 300%;
+	z-index: 2;
+	
+	position: absolute;
+	left: 75%;
+	
+	background: url('img/bgs.jpg') no-repeat scroll 0% center / cover;
+
+	transition: opacity 0.3s ease-in, transform 100s ease-in;
+	opacity: 0;
+		
+	@media (max-width: $breakpointMobile) {
+		display: none;
+	}
+	
+	&--1 {
+		background-position: 0% top;
+	}
+	
+	&--2 {
+		background-position: 0% center;
+		top: -100%;
+	}
+	
+	&--3 {
+		background-position: 0% bottom;
+		top: -200%;
+	}
+	
+	&--in {
+		transition: opacity 1s ease-out, transform 100s ease-out;
+		transform: translate3d(-75%, 0, 0);
+		opacity: 0.7;
+	}
+}
+
+
+
+
+
+.profile-selected-place {
+	width: 10%;
+	height: 100%;
+	z-index: 3;
+	
+	position: absolute;
+	top: 0;
+	left: 86%;
+	
+	transform-origin: left top;
+	transform: rotate(6deg);
+		
+	@media (max-width: $breakpointMobile) {
+		display: none;
+	}
+	
+	&__title {
+		margin: 0;
+		z-index: 1;
+		
+		position: absolute;
+		bottom: -2%;
+		
+		text-align: right;
+		font-weight: 900;
+		font-size: 3.5vw;
+		text-transform: uppercase;
+		line-height: 0.7em;
+		letter-spacing: -0.05em;
+		color: $whiteE;
+		text-shadow: 0.3vw 0.3vw $gray2;
+		white-space: nowrap;
+		
+		transition: all 0.2s ease-out;
+		transform-origin: left top;
+		transform: translate3d(0, 100px, 0) rotate(-90deg);
+		opacity: 0;
+		filter: blur(15px);
+	
+		&--in {
+			transform: translate3d(0, 0, 0) rotate(-90deg);
+			opacity: 1;
+			filter: blur(0);
+		}
+		
+		& span {
+			display: inline-block;
+			background: $gray2;
+		}
+	}
+}

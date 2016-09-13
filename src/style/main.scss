@@ -1,0 +1,496 @@
+@import "variables";
+
+html {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	/* http://stackoverflow.com/questions/14270084/overflow-xhidden-doesnt-prevent-content-from-overflowing-in-mobile-browsers */
+	position: fixed;
+	box-sizing: border-box;
+	
+	background: $gray2;
+	
+	color: white;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
+}
+
+body {
+	height: 100%;
+	margin: 0;
+}
+
+a {
+	text-decoration: none;
+	color: white;
+	transition: all $time1;
+}
+
+button {
+	padding: 0;
+	border: inherit;
+	cursor: pointer;
+	font-family: inherit;
+	text-align: center; /* For Safari */
+}
+
+button:focus { /* Chrome adds its own blue outline on buttons when focus */
+	outline: none;
+}
+
+* {
+	box-sizing: inherit;
+}
+
+
+
+
+
+.main {
+	display: none;
+	overflow: hidden;
+	
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	
+	background: black;
+}
+
+
+
+
+
+.main-bg {
+	width: 100%;
+	height: 100%;
+	
+	position: absolute;
+	
+	opacity: 0;
+	
+	transition: all $time3 3s;
+	
+	&--in {
+		opacity: 0.8;
+	}
+}
+
+.corner-darkener {
+	width: 100%;
+	height: 100%;
+	
+	position: absolute;
+	
+	background:
+		radial-gradient(ellipse at center, transparent 0%, transparent 60%, rgba(0, 0, 0, 0.8) 120%),
+		inline('img/bg.svg');
+}
+
+.darkener {
+	width: 70%;
+	height: 100%;
+	z-index: 1;
+	pointer-events: none;
+	
+	position: absolute;
+	
+	background: black;
+	opacity: 0;
+	
+	transition: opacity $time2 ease-in;
+	
+	@media (max-width: $breakpointMobile) {
+		width: 100%;
+		transition-duration: $time1;
+	}
+	
+	&--in {
+		opacity: 1;
+	}
+	
+	&--in2 {
+		pointer-events: auto;
+		z-index: 4;
+		width: 100%;
+		opacity: 0.7;
+	}
+}
+
+
+
+
+
+.ar {
+	width: 41%;
+	height: 100%;
+	display: flex;
+	
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	
+	position: absolute;
+	
+	background: transparent;
+	
+	@media (max-width: $breakpointMobile) {
+		width: 100%;
+		display: block;
+		padding: 10vw 0;
+		overflow-y: auto;
+		overflow-x: hidden;
+	}
+	
+	&__logo {
+		width: 410px;
+		height: 430px;
+		display: block;
+	
+		position: relative;
+		
+		transform: scale(1.1);
+		
+		transition:
+			width $time2,
+			height $time2,
+			transform $time3 ease-out $time4,
+			opacity $time3 ease-out $time4;
+		
+		@media (max-width: $breakpointBig) {
+			width: 350px;
+			height: @width;
+		}
+		
+		@media (max-width: $breakpointMedium) {
+			width: 270px;
+			height: @width;
+		}
+		
+		@media (max-width: $breakpointSmall) {
+			width: 210px;
+			height: @width;
+		}
+		
+		@media (max-width: $breakpointMobile) {
+			width: 70%;
+			max-width: 400px;
+			height: 70%;
+			max-width: 400px;
+			margin: 30px auto 60px;
+		}
+	}
+	
+	/* http://stackoverflow.com/questions/24026458/css-before-on-inline-svg */
+	&__logo-container {
+		position: relative;
+		
+		opacity: 0;
+		
+		transform: scale(1.1);
+		
+		transition:
+			transform $time3 ease-out $time4,
+			opacity $time3 ease-out $time4;
+		
+		&::before {
+			content: "";
+			
+			width: 65vw;
+			height: @width;
+			
+			position: absolute;
+			top: calc(50% - @width/2);
+			left: calc(50% - @width/2);
+			
+			background: radial-gradient(circle closest-side, color(white a(25%)) 0%, color(white a(0%)) 100%);
+			
+			@media (max-width: $breakpointMobile) {
+				width: 200vw;
+				height: 200vw;
+				
+				top: calc(50% - 200vw / 2);
+				left: calc(50% - 200vw / 2);
+			}
+		}
+		
+		&--in {
+			opacity: 1;
+			transform: scale(1);
+		}
+	}
+	
+	&__text {
+		width: 400px;
+		margin: 4.5vh 0 4vh;
+		z-index: 3;
+		
+		opacity: 0;
+		
+		font-size: 1.2em;
+		font-family: "Open Sans", sans-serif;
+		font-style: italic;
+		font-variant-caps: small-caps;
+		text-shadow: 1px 1px black, 0 0 4px black;
+		
+		transition: width $time2, opacity $time3 ease-out $time5;
+		
+		@media (max-width: $breakpointBig) {
+			width: 340px;
+			font-size: 0.9em;
+		}
+		
+		@media (max-width: $breakpointMedium) {
+			width: 270px;
+			font-size: 0.65em;
+		}
+		
+		@media (max-width: $breakpointSmall) {
+			width: 200px;
+			font-size: 0.5em;
+		}
+		
+		@media (max-width: $breakpointMobile) {
+			width: 68%;
+			max-width: 400px;
+			margin: 60px auto 80px;
+			font-size: 3.2vw;
+		}
+		
+		&--in {
+			opacity: 1;
+		}
+	}
+	
+	&__paragraph {
+		margin: 0 0 1rem;
+	}
+}
+
+
+
+
+
+.choose-profile-text {
+	width: 950px;
+	width: 100vh;
+	margin: 0 0 25px 12px;
+	z-index: 3;
+	
+	position: absolute;
+	right: 55.2%;
+	top: -3.5%;
+	
+	opacity: 0;
+
+	font-size: 2.4vh;
+	font-family: 'Open Sans Condensed', sans-serif;
+	text-align: center;
+	text-transform: uppercase;
+	letter-spacing: 0.4em;
+	text-shadow: 1px 1px black, 0 0 4px black;
+
+	transition: opacity $time3 ease-out 2.6s;
+
+	transform-origin: right bottom;
+	transform: rotate(-84deg);
+		
+	@media (max-width: $breakpointMobile) {
+		display: none;
+	}
+	
+	&--in {
+		opacity: 1;
+	}
+}
+
+.choose-profile-text-m {
+	width: 100%;
+	margin: 0 auto 20px;
+
+	font-size: 3vh;
+	font-family: 'Open Sans Condensed', sans-serif;
+	text-align: center;
+	text-transform: uppercase;
+	letter-spacing: 0.4em;
+	text-shadow: 1px 1px black, 0 0 4px black;
+
+	transition: all 0.5s;
+		
+	@media (min-width: $breakpointMobile) {
+		display: none;
+	}
+}
+
+
+
+
+.footer {
+	width: 100%;
+	z-index: 3;
+	
+	position: absolute;
+	bottom: 10px;
+	left: 15px;
+	
+	opacity: 0;
+	
+	font-size: 0.6vw;
+	font-weight: bold;
+	
+	transform: translate3d(15px, 0, 0);
+	
+	transition: all $time3 ease-out $time5;
+	
+	@media (max-width: $breakpointBig) {
+		font-size: 0.7vw;
+	}
+	
+	@media (max-width: $breakpointMedium) {
+		font-size: 0.8vw;
+	}
+	
+	@media (max-width: $breakpointMobile) {
+		display: none;
+	}
+	
+	&--in {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+	}
+	
+	&--no-delay {
+		transition-duration: $time2;
+		transition-delay: 0s;
+	}
+	
+	&__more-info, &__show-intro-again {
+		margin-left: 0.5vw;
+		padding: 4px;
+		
+		background: $gray5;
+		border-radius: 4px;
+		box-shadow: 1px 3px 3px $black040;
+		
+		color: $whiteD;
+		font-size: 0.8em;
+		font-weight: bold;
+		text-transform: uppercase;
+		
+		transition: all $time1;
+		
+		&:hover {
+			box-shadow: 0 0 15px color($whiteE a(50%));
+		}
+		
+		&:active {
+			transform: translate3d(0, 2px, 0);
+		}
+	}
+	
+	&__more-info {
+		background-color: $profile2;
+	}
+}
+
+.footer-m {
+	width: 100%;
+	margin: 40px auto 10px;
+	
+	font-size: 3.5vw;
+	font-weight: bold;
+	text-align: center;
+		
+	@media (min-width: $breakpointMobile) {
+		display: none;
+	}
+	
+	&__more-info, &__show-intro-again {
+		margin-top: 5px;
+		padding: 4px;
+		
+		background: $gray5;
+		border-radius: 5px;
+		box-shadow: 1px 3px 3px $black040;
+		
+		color: $whiteD;
+		font-size: 0.8em;
+		font-weight: bold;
+		text-transform: uppercase;
+		
+		transition: all ease-out 0.2s;
+		
+		@media (max-width: $breakpointMobile) {
+			width: 45%;
+			padding: 6px;
+		}
+		
+		&:hover {
+			box-shadow: 1px 3px 3px $black040;
+		}
+		
+		&:active {
+			transform: translate3d(0, 2px, 0);
+		}
+	}
+	
+	&__more-info {
+		background-color: $profile2;
+	}
+}
+
+
+
+
+
+.cookies {
+	width: 200px;
+	height: @width;
+	padding: 75px 25px 0 0;
+	z-index: 12;
+	
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	
+	background: radial-gradient(ellipse at bottom right, $profile1 30%, $profile2 100%);
+	box-shadow: 0 0 50px black;
+	border-top-left-radius: 100%;
+	
+	font-size: 1.1em;
+	text-align: right;
+	
+	transition: transform ease-out $time2;
+	
+	transform: translate3d(@width, @width, 0);
+	
+	&--in {
+		transform: translate3d(0, 0, 0);
+	}
+	
+	&__close-button {
+		margin-top: 10px;
+		padding: 10px;
+		
+		background: $whiteD;
+		border-radius: 10px;
+		box-shadow: 1px 3px 3px $black040;
+		
+		color: $gray2;
+		font-size: 0.9em;
+		font-weight: bold;
+		
+		transition: all ease-out 0.2s;
+		
+		&:hover {
+			box-shadow: #edeec9 0 0 20px, 1px 3px 3px $black040;
+		}
+		
+		&:active {
+			box-shadow: #edeec9 0 0 20px;
+			transform: translate3d(0, 2px, 0);
+		}
+	}
+}

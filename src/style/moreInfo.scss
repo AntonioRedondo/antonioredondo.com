@@ -1,0 +1,253 @@
+@import "variables";
+
+.more-info-panel {
+	width: 55%;
+	height: 100%;
+	z-index: 4;
+	visibility: hidden;
+	
+	position: absolute;
+	left: 45%;
+
+	transition: all $time1 ease-in;
+	
+	opacity: 0;
+	transform: translate3d(15%, 0, 0);
+		
+	@media (max-width: $breakpointMobile) {
+		width: 100%;
+		top: 70px;
+		left: 0;
+		transform: translate3d(15%, 0, 0);
+	}
+	
+	&--in {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+		transition-timing-function: ease-out;
+	}
+	
+	&__bg {
+		width: 120%;
+		height: 180%;
+		
+		position: absolute;
+		
+		background: url('img/descBg.png') $gray1;
+		border-left: white solid 2px;
+		box-shadow: 0 0 40px $black040;
+		
+		transform-origin: left 10%;
+		transform: translate3d(0, -10%, 0) rotate(6deg);
+			
+		@media (max-width: $breakpointMobile) {
+			width: 100%;
+			height: 100%;
+			
+			box-shadow: none;
+			border: none;
+			transform: none;
+		}
+	}
+	
+	&__content {
+		width: 75%;
+		height: 98%;
+		
+		
+		position: absolute;
+		left: 10%;
+		
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+			
+		@media (max-width: $breakpointMobile) {
+			width: 100%;
+			height: calc(100% - 70px);
+			margin: 0 auto;
+			overflow: auto;
+			
+			position: relative;
+			left: initial;
+			
+			border-top: white solid 2px;
+		}
+	}
+	
+	&__scroll {
+		padding: 30px 10%;
+		overflow-y: auto;
+	}
+	
+	&__text {
+		margin: 0.7vw 0;
+	
+		font-size: 1vw;
+		font-family: 'Trirong', sans-serif;
+		line-height: 1.5vw;
+			
+		@media (max-width: $breakpointMedium) {
+			margin: 1.2vw 0;
+			font-size: 1.3vw;
+			line-height: 2vw;
+		}
+			
+		@media (max-width: $breakpointMobile) {
+			margin: 4vw 0;
+			font-size: 3.8vw;
+			line-height: 6vw;
+		}
+		
+		& .b {
+			color: $profile2;
+		}
+		
+		& a {
+			color: $profile1;
+			font-weight: bold;
+		}
+	}
+	
+	&__text-hola {
+		margin-bottom: 2vw;
+		
+		font-size: 5vw;
+		font-family: 'Open Sans', sans-serif;
+		font-weight: 800;
+		text-transform: uppercase;
+		line-height: 0.7em;
+		letter-spacing: -0.05em;
+		text-shadow: 0.5vw 0.5vw $gray2;
+		
+		& span {
+			display: inline-block;
+			background: #222;
+		}
+			
+		@media (max-width: $breakpointMobile) {
+			margin-bottom: 6vw;
+			font-size: 12vw;
+		}
+	}
+
+	&__contact-icon {
+		width: 3.5vw;
+		height: 100%;
+		margin: 0 0.1vw;
+		transition: filter $time1;
+		
+		&:hover {
+			filter: drop-shadow(0 0 0.8vw $profile1);
+		}
+		
+		@media (max-width: $breakpointMobile) {
+			width: 16vw;
+			margin: 1vw 0.1vw;
+		}
+		
+		&--first {
+			margin-left: -0.2vw;
+			
+			@media (max-width: $breakpointMobile) {
+				margin-left: -1vw;
+			}
+		}
+	}
+}
+
+
+
+
+
+.more-info-image {
+	width: 100%;
+	height: 100%;
+	visibility: hidden;
+	
+	position: absolute;
+	z-index: 4;
+	
+	background: url('img/moreInfo.jpg') $gray1 14% center / cover;
+
+	transition: all ease-in $time1;
+	
+	opacity: 0;
+		
+	@media (max-width: $breakpointMobile) {
+		height: 70px;
+		background: linear-gradient(135deg, $profile1 -20%, $profile2 90%);
+		transform: translate3d(15%, 0, 0);
+	}
+	
+	&:hover {
+		cursor: pointer;
+		
+		& .more-info-image__back-button {
+			opacity: 1;
+			transform: scale(1.2);
+		
+			@media (max-width: $breakpointSmall) {
+				transform: scale(1);
+			}
+		}
+	}
+	
+	&--in {
+		transition-timing-function: ease-out;
+		transform: translate3d(0, 0, 0);
+		opacity: 1;
+	}
+	
+	&__back-button {
+		width: 120px;
+		height: @width;
+		display: block;
+		
+		position: absolute;
+		left: calc(20% - @width/2);
+		bottom: calc(18% - @width/2);
+		
+		background-color: $gray3;
+		opacity: 0.8;
+		border-radius: 100%;
+		box-shadow: 1px 4px 4px $black040;
+	
+		transition: all $time1 ease-out;
+		
+		@media (max-width: $breakpointSmall) {
+			transform: scale(0.8);
+		}
+		
+		@media (max-width: $breakpointMobile) {
+			display: none;
+		}
+		
+		&::after {
+			content: "";
+			
+			width: 100%;
+			height: @width;
+			
+			position: absolute;
+			top: 0;
+			left: 0;
+			
+			border-radius: 100%;
+			background: url('img/logos.png') no-repeat 0 -128px / 950px auto;
+			transform: rotate(90deg);
+		}
+	}
+	
+	&__back-button-m {
+		display: none;
+	
+		@media (max-width: $breakpointMobile) {
+			width: 70px;
+			height: 30px;
+			margin: 20px auto 0;
+			display: block;
+			background: url('img/logos.png') -70px 63px / 530px;
+		}
+	}
+}

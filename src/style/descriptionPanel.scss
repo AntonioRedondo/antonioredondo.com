@@ -1,0 +1,582 @@
+@import "variables";
+
+.description-panel {
+	width: 65%;
+	height: 100%;
+	z-index: 4;
+	
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	transition: all $time2 ease-in;
+
+	transform: translate3d(-104%, 0, 0);
+	
+	@media (max-width: $breakpointMobile) {
+		width: 100%;
+		transition-duration: $time1;
+	}
+	
+	&--in {
+		transition-timing-function: ease-out;
+		transform: translate3d(0, 0, 0);
+	}
+	
+	&__bg {
+		width: 100%;
+		height: 180%;
+		
+		position: absolute;
+		top: 0;
+		left: 0;
+		
+		background: url('img/descBg.png') $gray1;
+		box-shadow: 0 0 40px $black040;
+	
+		transform-origin: top right;
+		transform: rotate(6deg);
+		
+		@media (max-width: $breakpointMobile) {
+			transform: none;
+		}
+		
+		&::before {
+			content: "";
+			
+			width: 3vw;
+			height: 105%;
+			
+			position: absolute;
+			top: -1vw;
+			right: -3vw;
+			
+			background: linear-gradient(90deg, color(white a(20%)) 0%, color(white a(0%)) 100%);
+		}
+	}
+	
+	&__content {
+		width: 92%;
+		height: 100%;
+		overflow: hidden;
+		
+		position: absolute;
+		top: 0;
+		left: 0;
+	
+		font-family: 'Open Sans', sans-serif;
+		font-family: 'Trirong', serif;
+		font-size: 0.8vw;
+		
+		@media (max-width: $breakpointMobile) {
+			width: 100%;
+			font-size: 3.5vw;
+		}
+	}
+	
+	/* http://stackoverflow.com/questions/3296644/hiding-the-scrollbar-on-an-html-page/23771140#23771140 */
+	&__overflow-hide {
+		height: 100%;
+		margin-right: -100px;
+		padding-right: 100px;
+		overflow-y: auto;
+		
+		@media (max-width: $breakpointMobile) {
+			padding-top: 6vw;
+		}
+	}
+	
+	&__scroll {
+		width: 60px;
+		height: @width;
+		z-index: 12;
+		
+		position: absolute;
+		left: calc(46% - @width/2);
+		
+		background: transparent;
+		border-radius: 100%;
+		box-shadow: 0 4px 5px $black040;
+		opacity: 0.8;
+	
+		transition: all $time1 ease-out;
+		
+		@media (max-width: $breakpointBig) {
+			transform: scale(0.7);
+		}
+		
+		@media (max-width: $breakpointMobile) {
+			display: none;
+		}
+		
+		&:hover {
+			opacity: 1;
+			transform: scale(1.1);
+		
+			@media (max-width: $breakpointBig) {
+				transform: scale(0.9);
+			}
+		}
+		
+		&--up {
+			top: 3%;
+			
+			/* http://stackoverflow.com/questions/5087420/how-to-rotate-the-background-image-in-the-container */
+			&::after {
+				content: "";
+				
+				width: 100%;
+				height: @width;
+				
+				position: absolute;
+				top: 0;
+				left: 0;
+				
+				/* background: url('img/arrow.png') no-repeat center / cover; */
+				background: url('img/logos.png') no-repeat $gray1 0 -64px / 478px;
+				border-radius: 100%;
+				transform: rotate(180deg);
+			}
+		}
+		
+		&--up-hidden {
+			top: -60px;
+			transition-timing-function: ease-in;
+		}
+		
+		&--down {
+			bottom: 3%;
+			
+			&::after {
+				content: "";
+				
+				width: 100%;
+				height: @width;
+				
+				position: absolute;
+				top: 0;
+				left: 0;
+				
+				background: url('img/logos.png') $gray1 no-repeat 0 -64px / 478px;
+				border-radius: 100%;
+			}
+		}
+		
+		&--down-hidden {
+			bottom: -60px;
+			transition-timing-function: ease-in;
+		}
+	}
+}
+
+
+
+
+
+*[class*='desc-profile--'] {
+	display: none;
+}
+
+
+
+
+
+.back-button-m {
+	width: 100%;
+	height: 70px;
+	z-index: 4;
+	
+	position: absolute;
+	top: 0;
+	
+	box-shadow: 0 0 20px black;
+	
+	@media (min-width: $breakpointMobile) {
+		display: none;
+	}
+	
+	&__arrow {
+		width: 70px;
+		height: 30px;
+		margin: 0 auto;
+		display: block;
+		background: url('img/logos.png') -70px 63px / 530px;
+	}
+}
+
+
+
+
+
+.desc-table {
+	width: 76%;
+	margin: 6vw 0 0 12%;
+	
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	
+	flex-wrap: wrap;
+	
+	@media (max-width: $breakpointMobile) {
+		width: 80%;
+		margin: 15vw auto;
+	}
+
+	&--wrap-reverse {
+		@media (max-width: $breakpointMobile) {
+			flex-wrap: wrap-reverse;
+		}
+	}
+	
+	&--first {
+		margin-top: 3vw;
+	}
+	
+	&__cell {
+		width: 50%;
+		flex: 1;
+	
+		@media (max-width: $breakpointMobile) {
+			width: 100%;
+			margin: 10vw auto 4vw;
+			flex: 0 0 100%;
+		}
+	
+		&--logos {
+			@media (min-width: calc($breakpointBig+10px)) {
+				transform: scale(0.9);
+			}
+		}
+	}
+	
+	&__big-text {
+		width: 70%;
+		height: @width;
+		margin: 0 auto;
+		display: block;
+		
+		@media (max-width: $breakpointMobile) {
+			width: 100%;
+			height: @width;
+		}
+	}
+	
+	&__desc-text {
+		margin: 0.5em 0;
+		
+		text-align: left;
+		color: $whiteD;
+		
+		@media (max-width: $breakpointBig) {
+			font-size: 1.05em;
+		}
+		
+		@media (max-width: $breakpointMedium) {
+			font-size: 1.25em;
+		}
+	}
+}
+
+
+
+
+
+.logo-title {
+	margin: 2vw 0 1vw 0.7vw;
+	
+	font-size: 0.8em;
+	font-weight: 800;
+	font-family: 'Open Sans', sans-serif;
+	text-align: center;
+	text-transform: uppercase;
+	letter-spacing: 1em;
+		
+	@media (max-width: $breakpointMobile) {
+		margin: 7vw 0 4vw 0.7vw;
+	}
+	
+	&--first {
+		margin-top: 0;
+	}
+}
+
+.logo-fe, .logo-be, .logo-db {
+	width: 20vw;
+	height: 4.6vw;
+	margin: 0 auto;
+	
+	background: url('img/logos.png') no-repeat 0 top / 55vw auto;
+		
+	@media (max-width: $breakpointMobile) {
+		width: 100%;
+		height: 18.2vw;
+		background-size: 220vw auto;
+	}
+}
+
+.logo-be {
+	background-position: -21vw top;
+		
+	@media (max-width: $breakpointMobile) {
+		background-position: -84.2vw top;
+	}
+}
+
+.logo-db {
+	width: 13vw;
+	height: 3vw;
+	background-position: -41.8vw -0.8vw;
+		
+	@media (max-width: $breakpointMobile) {
+		width: 53vw;
+		height: 12.5vw;
+		background-position: -166.8vw -3vw;
+	}
+}
+
+
+
+
+
+.block {
+	max-width: 60%;
+	margin: 6vw auto 0;
+	
+	text-align: center;
+	
+	@media (max-width: $breakpointMobile) {
+		max-width: 85%;
+		margin: 22vw auto 0;
+	}
+	
+	&--first {
+		margin-top: 2vw;
+	
+		@media (max-width: $breakpointMobile) {
+			margin: calc(6vw + 60px) auto 8vw;
+		}
+	}
+	
+	&--last {
+		margin-bottom: 5vw;
+	
+		@media (max-width: $breakpointMobile) {
+			margin-bottom: 10vw;
+		}
+	}
+	
+	&--testimonial {
+		width: 80%;
+		margin: 1vw auto 0;
+		
+		position: relative;
+		
+		quotes: "«" "»";
+		font-size: 1.3em;
+		font-style: italic;
+		line-height: 1.4em;
+	
+		@media (max-width: $breakpointMobile) {
+			quotes: initial;
+		}
+		
+		&::before, &::after {
+			width: 15%;
+			height: 100%;
+			
+			position: absolute;
+			left: -15%;
+			
+			content: open-quote;
+			font-size: 7em;
+			line-height: 0.5em;
+	
+			@media (max-width: $breakpointMobile) {
+				top: 10%;
+				left: -18%;
+				display: flex;
+				justify-content: flex-end;
+			}
+		}
+		
+		&::after {
+			bottom: 0;
+			left: unset;
+			right: -15%;
+			content: close-quote;
+	
+			@media (max-width: $breakpointMobile) {
+				top: unset;
+				bottom: -30%;
+				right: -5%;
+				display: flex;
+				align-items: flex-end;
+			}
+		}
+	}
+	
+	&--summary {
+		font-size: 1.6em;
+		line-height: 1.4em;
+	}
+	
+	&__icon {
+		width: 6vw;
+		height: @width;
+		
+		@media (max-width: $breakpointMobile) {
+			width: 23vw !important;
+			height: @width !important;
+		}
+		
+		&--bigger {
+			width: 7vw;
+			height: @width;
+		}
+		
+		&--smaller {
+			width: 5vw;
+			height: @width;
+		}
+		
+		&--testimonial {
+			border-radius: 100%;
+			background: url("img/testimonials.jpg") center / cover;
+		}
+		
+		&--testimonial-1 {
+			background-position: left top;
+		}
+		
+		&--testimonial-2 {
+			background-position: center;
+		}
+		
+		&--testimonial-3 {
+			background-position: right top;
+		}
+	}
+	
+	&__company-logo {
+		height: 2.4vw;
+		margin: 0 1.1vw;
+		display: inline-block;
+		
+		background-image: url('img/logos.png');
+		background-size: 51vw auto;
+		
+		transition: filter $time1;
+		
+		@media (max-width: $breakpointMobile) {
+			height: 9vw;
+			margin: 0 3vw 2vw;
+			background-size: 200vw auto;
+		}
+	
+		&--line-break {
+			display: none;
+			
+			@media (max-width: $breakpointMobile) {
+				display: inline-block;
+			}
+		}
+	
+		&--1 {
+			width: 6.8vw;
+			margin-left: 0;
+			background-position: 0 -17.7vw;
+			
+			@media (max-width: $breakpointMobile) {
+				width: 27vw;
+				background-position: 0 35vw;
+			}
+		}
+		
+		&--2 {
+			width: 5.2vw;
+			background-position: -9.7vw -17.75vw;
+			
+			@media (max-width: $breakpointMobile) {
+				width: 20vw;
+				background-position: -238.4vw 35vw;
+			}
+		}
+		
+		&--3 {
+			width: 7.2vw;
+			background-position: -68.9vw -17.65vw;
+			
+			@media (max-width: $breakpointMobile) {
+				width: 28vw;
+				background-position: 130vw -17.65vw;
+			}
+		}
+		
+		&--4 {
+			width: 8.3vw;
+			margin-right: 0;
+			background-position: -27.6vw -17.75vw;
+			
+			@media (max-width: $breakpointMobile) {
+				width: 33vw;
+				background-position: -108vw -17.4vw;
+			}
+		}
+	}
+
+	&__ornament {
+		width: 8vw;
+		height: 5vw;
+		margin: 0 1vw;
+		display: inline-block;
+		
+		&--1 {
+			background: inline('img/ornament.svg') no-repeat center / contain;
+		}
+		
+		&--2 {
+			background: inline('img/ornament2.svg') no-repeat center / contain;
+		}
+		
+		&--flipped {
+			transform: rotateY(180deg);
+		}
+		
+		@media (max-width: $breakpointMobile) {
+			width: 22vw;
+			height: 12vw;
+			margin: 0 3vw;
+		}
+	}
+
+	&__interested {
+		width: 18vw;
+		height: 100%;
+		
+		@media (max-width: $breakpointMobile) {
+			width: 70vw;
+		}
+	}
+
+	&__contact {
+		font-size: 3.8em;
+		font-family: "Open Sans", serif;
+		font-weight: 800;
+		text-transform: uppercase;
+		text-shadow: 6px 6px $gray2;
+		line-height: 1;
+		letter-spacing: -0.05em;
+	}
+
+	&__contact-icon {
+		width: 5vw;
+		height: 100%;
+		margin: 0.4vw;
+		transition: filter $time1;
+		
+		@media (max-width: $breakpointMobile) {
+			width: 16vw;
+		}
+	}
+}

@@ -1,0 +1,612 @@
+@import "variables";
+
+.intro {
+	width: calc(100% + 22vh);
+	z-index: 10;
+	
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: -11vh;
+	
+	/* background: radial-gradient(ellipse at center, $profile1 30%, color($profile2 a(0)) 100%), url('img/bg.png'); */
+	background:
+		radial-gradient(ellipse at center, $profile1 30%, color($profile2 a(0)) 100%),
+		inline('img/bg.png'),
+		linear-gradient($profile2, $profile2);
+	
+	transition: all ease-in 1s;
+	
+	@media (max-width: $breakpointMobile) {
+		transition-duration: 0.5s;
+	}
+	
+	&::before {
+		content: "";
+		
+		width: 11vh;
+		height: 105%;
+		
+		position: absolute;
+		right: calc(-@width - 1%);
+		
+		background: $gray2;
+		border-right: white solid 2px;
+		border-left: white solid 2px;
+		
+		transform-origin: right top;
+		transform: rotate(6deg);
+	}
+	
+	&--out {
+		transform: translate3d(-102%, 0, 0);
+	}
+	
+	&--out2 {
+		transition-duration: 0.3s;
+		opacity: 0.2;
+	}
+}
+
+
+
+
+
+.scroll-down {
+	width: 50px;
+	height: 60px;
+	margin: auto;
+	
+	position: absolute;
+	bottom: calc(50% - @height/2);
+	left: 0;
+	right: 0;
+	
+	transition: all ease-out 0.3s;
+	
+	background: inline('img/scrollDown.gif') no-repeat center / 100%;
+	
+	/* http://stackoverflow.com/questions/21142923/ie-10-11-css-transitions-with-calc-do-not-work */
+	&--bottom {
+		transform: scale(1);
+		animation: 1.5s forwards k--bottom;
+		
+		@media (max-width: $breakpointMedium) {
+			animation: 1.5s forwards k--bottom2;
+		}
+		
+		/* https://github.com/postcss/postcss-nested/issues/43 */
+		@at-root { @keyframes k--bottom {
+				0% { transform: scale(1); }
+				60% { transform: scale(1.6); }
+				100% { transform: scale(1) translate3d(0, 44vh, 0); }
+			}
+		}
+	
+		@at-root { @keyframes k--bottom2 {
+				0% { transform: scale(1); }
+				60% { transform: scale(1.6); }
+				100% { transform: scale(1) translate3d(0, 40vh, 0); }
+			}
+		}
+	}
+	
+	&--out {
+		transition-timing-function: ease-in;
+		bottom: -60px;
+	}
+	
+	&__inner {
+		width: 50px;
+		height: 60px;
+		
+		transition: all 0.3s;
+		
+		&--out {
+			transform: scale(0);
+		}
+	}
+	
+	&__inner-bg {
+		width: 20px;
+		height: 40px;
+		margin: auto;
+		
+		position: absolute;
+		top: 8px;
+		left: 15px;
+		
+		background: $profile1;
+		border-radius: 10px;
+	}
+	
+	&__inner-spinner {
+		width: 20px;
+		height: 20px;
+		margin: auto;
+		
+		position: absolute;
+		top: 20px;
+		left: 14px;
+		
+		background: $profile1;
+		
+		animation: 0.5s linear infinite k__inner-spinner;
+		@at-root { @keyframes k__inner-spinner {
+				0% { transform: rotate(0deg) translate3d(20px, 0, 0); }
+				100% { transform: rotate(360deg) translate3d(20px, 0, 0); }
+			}
+		}
+	}
+}
+
+
+
+
+
+.scroll-down-hint {
+	display: none;
+	
+	position: absolute;
+	bottom: 9vh;
+	left: 0;
+	right: 0;
+	
+	color: $whiteE;
+	text-align: center;
+	
+	animation: 0.8s k--introHint;
+	
+	transition: all $time2;
+	
+	@media (max-width: $breakpointMedium) {
+		bottom: 14vh;
+	}
+	
+	@at-root { @keyframes k--introHint {
+			from, 20%, 40%, 60%, 80%, to {
+				animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+			}
+
+			0% {
+				opacity: 0;
+				transform: scale3d(.3, .3, .3);
+			}
+
+			20% {
+				transform: scale3d(1.1, 1.1, 1.1);
+			}
+
+			40% {
+				transform: scale3d(.9, .9, .9);
+			}
+
+			60% {
+				opacity: 1;
+				transform: scale3d(1.03, 1.03, 1.03);
+			}
+
+			80% {
+				transform: scale3d(.97, .97, .97);
+			}
+
+			to {
+				opacity: 1;
+				transform: scale3d(1, 1, 1);
+			}
+		}
+	}
+	
+	&--in {
+		display: block;
+	}
+	
+	&--out {
+		opacity: 0 !important;
+	}
+}
+
+.swipe-up-hint {
+	display: none;
+	
+	position: absolute;
+	bottom: 14vh;
+	left: 0;
+	right: 0;
+	
+	color: $whiteE;
+	text-align: center;
+	
+	animation: 0.8s k--introHint;
+	
+	transition: all $time2;
+	
+	&--in {
+		display: block;
+	}
+	
+	&--out {
+		opacity: 0 !important;
+	}
+}
+
+
+
+
+
+.enter-button {
+	width: 200px;
+	height: 60px;
+	margin: 0 auto;
+
+	position: absolute;
+	bottom: 42%;
+	left: 0;
+	right: 0;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	background: $profile1;
+	border: 2px solid white;
+	border-radius: 30px;
+	
+	color: inherit;
+	font-size: 1.5em;
+	font-family: inherit;
+	
+	pointer-events: none;
+	user-select: none;
+
+	transition: all 0.2s ease-in;
+
+	box-shadow: white 5px 5px;
+	opacity: 0;
+	transform: translate3d(0, 50px, 0);
+	
+	@media (max-width: $breakpointMedium) {
+		bottom: 38%;
+		transform: translate3d(0, 40px, 0) scale(0.8);
+	}
+	
+	@media (max-width: $breakpointSmall) {
+		bottom: 32%;
+		transform: translate3d(0, 30px, 0) scale(0.7);
+	}
+		
+	&:hover {
+		background-color: $orange1;
+		box-shadow: white 5px 5px, #edeec9 0 0 70px;
+		transition-timing-function: ease-in;
+		transform: scale(1.1) translate3d(0, 0, 0);
+		
+		@media (max-width: $breakpointMedium) {
+			transform: scale(1);
+		}
+		
+		@media (max-width: $breakpointSmall) {
+			transform: scale(0.8);
+		}
+		
+		@media (max-width: $breakpointMobile) {
+			transform: scale(0.7);
+		}
+	}
+	
+	&:active {
+		/* https://github.com/postcss/postcss-color-function */
+		background-color: color($orange1 shade(3%));
+		transition-duration: 0.05s;
+		box-shadow: white 0 0, #edeec9 0 0 70px, inset 3px 3px 5px color($profile1 shade(20%));
+		transform: translate3d(5px, 5px, 0) scale(1.1);
+		
+		@media (max-width: $breakpointMedium) {
+			transform: translate3d(5px, 5px, 0) scale(1);
+		}
+		
+		@media (max-width: $breakpointSmall) {
+			transform: translate3d(5px, 5px, 0) scale(0.8);
+		}
+		
+		@media (max-width: $breakpointMobile) {
+			transform: translate3d(5px, 5px, 0) scale(0.7);
+		}
+	}
+	
+	&--in {
+		transform: translate3d(0, 0, 0);
+		pointer-events: auto;
+		transition-timing-function: ease-out;
+		opacity: 1;
+		
+		@media (max-width: $breakpointMedium) {
+			transform: scale(0.9) translate3d(0, 0, 0);
+		}
+		
+		@media (max-width: $breakpointSmall) {
+			transform: scale(0.7) translate3d(0, 0, 0);
+		}
+	}
+}
+
+
+
+
+
+.phrases {
+	width: 100%;
+	height: 100%;
+	
+	position: absolute;
+	
+	font-size: 2vw;
+	font-family: 'Open Sans Condensed', sans-serif;
+		
+	cursor: default;
+
+	perspective: 200px;
+	transform-style: preserve-3d;
+	
+	@media (max-width: $breakpointMedium) {
+		font-size: 3vw;
+	}
+	
+	@media (max-width: $breakpointMobile) {
+		font-size: 7vw;
+	}
+	
+	&__phrase {
+		width: 80%;
+		max-width: 1200px;
+		height: 90%;
+		margin: 0 auto;
+		
+		position: absolute;
+		left: 0;
+		right: 0;
+	
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		
+		user-select: none;
+		
+		transition: all ease-in-out 1s;
+	
+		opacity: 0;
+		filter: blur(5px);
+		backface-visibility: hidden;
+		transform-style: preserve-3d;
+		transform: translate3d(0, 50px, 180px);
+		
+		@media (max-width: $breakpointBig) {
+			width: 60%;
+			max-width: 1000px;
+		}
+		
+		@media (max-width: $breakpointMobile) {
+			width: 50%;
+		}
+		
+		@media (max-width: $breakpointMobile) {
+			width: 50%;
+		}
+		
+		&--last {
+			font-family: "Open Sans", sans-serif;
+			font-weight: 800;
+			backface-visibility: hidden;
+		}
+		
+		&--pos1 {
+			opacity: 1;
+			filter: blur(0);
+			transform: translate3d(0, 0, 0);
+			backface-visibility: hidden;
+		}
+		
+		&--pos2 {
+			opacity: 0.9;
+			filter: blur(3px);
+			transform: translate3d(50px, -100px, -200px);
+			backface-visibility: hidden;
+		}
+		
+		&--pos3 {
+			opacity: 0.8;
+			filter: blur(6px);
+			transform: translate3d(100px, -200px, -400px);
+			backface-visibility: hidden;
+		}
+		
+		&--pos4 {
+			opacity: 0.5;
+			filter: blur(10px);
+			transform: translate3d(150px, -300px, -600px);
+			backface-visibility: hidden;
+		}
+		
+		&--pos5 {
+			transform: translate3d(200px, -400px, -800px);
+			backface-visibility: hidden;
+		}
+	}
+}
+
+
+
+
+
+.bubbles {
+	width: 100%;
+	height: 100%;
+	
+	position: absolute;
+	
+	perspective: 200px;
+	transform-style: preserve-3d;
+	
+	&__layer {
+		width: 100%;
+		height: 100%;
+		
+		position: absolute;
+		top: 0;
+		left: 0;
+	
+		transition: all ease-in-out 1s;
+	
+		opacity: 0;
+		filter: blur(3px);
+		transform: translate3d(0, 0, 210px);
+		
+		&--pos1 {
+			opacity: 1;
+			filter: blur(0);
+			transform: translate3d(0, 0, 20px);
+		}
+		
+		&--pos2 {
+			opacity: 0.9;
+			filter: blur(3px);
+			transform: translate3d(50px, -100px, -205px);
+		}
+		
+		&--pos3 {
+			opacity: 0.8;
+			filter: blur(6px);
+			transform: translate3d(100px, -200px, -405px);
+		}
+		
+		&--pos4 {
+			opacity: 0.5;
+			filter: blur(10px);
+			transform: translate3d(150px, -300px, -605px);
+		}
+		
+		&--pos5 {
+			transform: translate3d(200px, -400px, -805px);
+		}
+	}
+	
+	&__layer-bg {
+		width: 100%;
+		height: 100%;
+		
+		position: absolute;
+		
+		background: no-repeat center / 100%;
+	
+		transition: all ease-in-out 3s;
+		
+		&--1, &--5 {
+			background-image: inline('img/b1.svg');
+			
+			@media (max-width: $breakpointMobile) {
+				background-image: inline('img/b1m.svg');
+			}
+		}
+		
+		&--2 {
+			background-image: inline('img/b2.svg');
+			
+			@media (max-width: $breakpointMobile) {
+				background-image: inline('img/b2m.svg');
+			}
+		}
+		
+		&--3 {
+			background-image: inline('img/b3.svg');
+			
+			@media (max-width: $breakpointMobile) {
+				background-image: inline('img/b3m.svg');
+			}
+		}
+		
+		&--4 {
+			background-image: inline('img/b4.svg');
+			
+			@media (max-width: $breakpointMobile) {
+				background-image: inline('img/b4m.svg');
+			}
+		}
+	}
+}
+
+
+
+
+
+.skip-intro {
+	position: absolute;
+	bottom: 2.5vh;
+	right: calc(1.5vw + 22vh / 2);
+
+	padding: 6px 12px;
+	
+	background: $gray5;
+	border-radius: 5px;
+	box-shadow: 1px 3px 3px $black020;
+	opacity: 0;
+	
+	color: $whiteD;
+	font-size: 0.6vw;
+	font-weight: bold;
+	text-transform: uppercase;
+	
+	transition: all ease-out 0.2s;
+	
+	&:hover {
+		box-shadow: 1px 3px 3px $black020;
+	}
+	
+	&:active {
+		transform: translate3d(0, 2px, 0);
+	}
+	
+	@media (max-width: $breakpointBig) {
+		font-size: 0.7vw;
+	}
+	
+	@media (max-width: $breakpointMedium) {
+		font-size: 0.8vw;
+	}
+	
+	@media (max-width: $breakpointMobile) {
+		right: calc(4vw + 22vh / 2);
+		font-size: 4vw;
+		bottom: auto;
+		top: 2.5vh;
+	}
+	
+	&--in {
+		opacity: 1;
+	}
+}
+
+
+
+
+
+.intro-darkener {
+	width: 100%;
+	height: 100%;
+	z-index: 5;
+	
+	position: absolute;
+	top: 0;
+	
+	transition: opacity ease-in 1s;
+	
+	background: black;
+	
+	&--out {
+		opacity: 0;
+	}
+	
+	&--out2 {
+		transition-duration: 0.3s;
+		opacity: 0;
+	}
+}
