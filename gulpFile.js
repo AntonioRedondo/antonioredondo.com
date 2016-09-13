@@ -109,7 +109,7 @@ gulp.task("buildJs", () => {
 		.pipe(sourcemaps.init())
 		.pipe(concat("app.js"))
 		.pipe(sourcemaps.write())
-		.pipe(gulp.dest(`${src}`)) // Because 'base' doesn't work for 'inline' module
+		.pipe(gulp.dest(`${src}`)) // Because 'base' doesn't work for 'inline' module. This file is ignored in .gitignore
 		.pipe(gulp.dest(`${dest}`));
 });
 
@@ -135,12 +135,21 @@ gulp.task("buildCss", function () {
 		]))
 		.pipe(concat("style.css"))
 		.pipe(sourcemaps.write())
-		.pipe(gulp.dest(`${src}`)) // Because 'base' doesn't work for 'inline' module
+		.pipe(gulp.dest(`${src}`)) // Because 'base' doesn't work for 'inline' module. This file is ignored in .gitignore
 		.pipe(gulp.dest(`${dest}`));
 });
 
 gulp.task("copyAssets", () => {
-	return gulp.src([`${src}/favicon.ico`, `${src}/img/*.jpg`, `${src}/img/*.png`])
+	gulp.src([`${src}/favicon.ico`])
+		.pipe(gulp.dest(`${dest}`));
+	return gulp.src([
+			`${src}/img/bgs.jpg`,
+			`${src}/img/moreInfo.jpg`,
+			`${src}/img/preview.jpg`,
+			`${src}/img/testimonials.jpg`,
+			`${src}/img/descBg.png`,
+			`${src}/img/logos.png`,
+			`${src}/img/profiles.png`])
 		.pipe(gulp.dest(`${dest}/img`));
 });
 
@@ -178,7 +187,7 @@ gulp.task("min", () => {
 
 
 
-// Tasks to minimise when JavaScript and CSS isn't inlined. Currently not in use.
+// Minimising tasks when JavaScript and CSS isn't inlined. Currently not in use.
 
 // gulp.task("jsMin", () => {
 // 	return gulp.src([`${src}/js/*.js`, `!${src}/js/*.spec.js`])
