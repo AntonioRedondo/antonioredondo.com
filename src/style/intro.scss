@@ -43,8 +43,8 @@
 	}
 	
 	&--out2 {
-		transition-duration: 0.3s;
-		opacity: 0.2;
+		transition-duration: $time2;
+		opacity: 0;
 	}
 }
 

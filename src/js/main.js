@@ -82,30 +82,41 @@ function showCookieMessage() {
 
 function hideIntro(type) {
 	var modifier = "out",
-		time = 2000;
+		time = 4000;
 	switch (type) {
-		case 2: modifier = "out2"; time = 400; break;
+		case 2: modifier = "out2"; time = 1000;
 	}
-	gc("intro").classList.add("intro--" + modifier);
-	gc("intro-darkener").classList.add("intro-darkener--" + modifier);
 	
-	to(function() { gc("intro-darkener").style.display = "none"; }, time);
-	to(function() { gc("intro").style.display = "none"; }, time);
+	if (getCookie("cookieMessage") === null)
+		to(showCookieMessage, time);
+	
+	var intro = gc("intro"),
+		introDarkener = gc("intro-darkener");
+	intro.classList.add("intro--" + modifier);
+	intro.addEventListener("transitionend", function(e) {
+		if(e.target.classList.contains("intro"))
+			intro.style.display = "none";
+	});
+	introDarkener.classList.add("intro-darkener--" + modifier);
+	introDarkener.addEventListener("transitionend", function(e) {
+		if(e.target.classList.contains("intro-darkener"))
+			introDarkener.style.display = "none";
+	});
 	
 	gc("ar__logo-container").classList.add("ar__logo-container--in");
 	gc("ar__text").classList.add("ar__text--in");
 	gc("main-bg").classList.add("main-bg--in");
 	gc("choose-profile-text").classList.add("choose-profile-text--in");
 	
-	gc("footer").classList.add("footer--in");
-	to(function() { gc("footer").classList.add("footer--no-delay"); }, 2000);
-	
 	gc("profile--1").classList.add("profile--1in");
 	gc("profile--2").classList.add("profile--2in");
 	gc("profile--3").classList.add("profile--3in");
-		to(function() {
-			qsa(".profile").forEach(function(item) { item.classList.add("profile--no-delay"); } );
-		}, 200);
+	to(function() {
+		qsa(".profile").forEach(function(item) { item.classList.add("profile--no-delay"); } );
+	}, 200);
+	
+	gc("footer").classList.add("footer--in");
+	to(function() { gc("footer").classList.add("footer--no-delay"); }, 2000);
 	
 	if (document.documentElement.offsetWidth >= 810) {
 		pg.load();
@@ -135,7 +146,8 @@ function initIntro() {
 		touchStartListener,
 		touchEndListener,
 		keyDownListener,
-		toControlledRandomMovement;
+		toControlledRandomMovement,
+		toHints;
 		
 		
 		
@@ -154,8 +166,9 @@ function initIntro() {
 		});
 		
 		
-		
-	to(function() {
+	
+	// Shows a text hint if the intro doesn't start scrolling down in 3 seconds
+	toHints = to(function() {
 		if (wheelLevel === 0)
 			if (viewPortWidth >= 810)
 				gc("scroll-down-hint").classList.add("scroll-down-hint--in");
@@ -173,7 +186,6 @@ function initIntro() {
 		if (wheelLevel === 1) {
 			gc("scroll-down-hint").classList.add("scroll-down-hint--out");
 			gc("swipe-up-hint").classList.add("swipe-up-hint--out");
-			console.log("hey");
 		} 
 		
 		if (wheelLevel === 5) {
@@ -228,6 +240,18 @@ function initIntro() {
 	
 	
 	
+	// Moves randomly horizontally and vertically the bubble layers
+	(function controlledRandomMovement() {
+		for (var n=0; n<visibleBubbles.length; ++n) {
+			//var zTrans = /\.*translateZ\((.*)px\)/i.exec(document.getElementById("dv").getAttribute("style"))[1];
+			visibleBubbles[n].firstChild.style[transform] = "translate3d(" + getRandomInt() + "px, " + getRandomInt() + "px, 0)";
+			visibleBubbles[n].firstChild.style[transform] = "translate3d(" + getRandomInt() + "px, " + getRandomInt() + "px, 0)";
+		}
+		toControlledRandomMovement = to(controlledRandomMovement, 3000);
+	})();
+	
+	
+	
 	// Hides the Intro screen
 	function skipIntro(gaLabel) {
 		window.removeEventListener("mousemove", mouseMoveListener);
@@ -236,13 +260,11 @@ function initIntro() {
 		window.removeEventListener("touchend", touchEndListener);
 		window.removeEventListener("keydown", keyDownListener);
 		window.clearTimeout(toControlledRandomMovement);
+		window.clearTimeout(toHints);
 		
 		hideIntro();
 		
 		setCookie("firstTime", false, 365);
-		
-		if (getCookie("cookieMessage") === null)
-			to(showCookieMessage, 3000);
 			
 		ga("send", "event", "v3", "Skip Intro", gaLabel);
 	}
@@ -260,18 +282,6 @@ function initIntro() {
 		}
 	});
 	
-	
-	
-	// Moves randomly horizontally and vertically the bubble layers
-	(function controlledRandomMovement() {
-		for (var n=0; n<visibleBubbles.length; ++n) {
-			//var zTrans = /\.*translateZ\((.*)px\)/i.exec(document.getElementById("dv").getAttribute("style"))[1];
-			visibleBubbles[n].firstChild.style[transform] = "translate3d(" + getRandomInt() + "px, " + getRandomInt() + "px, 0)";
-			visibleBubbles[n].firstChild.style[transform] = "translate3d(" + getRandomInt() + "px, " + getRandomInt() + "px, 0)";
-		}
-		toControlledRandomMovement = to(controlledRandomMovement, 3000);
-	})();
-	
 }
 
 
@@ -281,9 +291,10 @@ function initIntro() {
 function initMain() {
 	
 	var toRemoveClasses,
+		previousState,
 		profileSelected = 0,
-		animDurationMoreInfo = 200,
 		animDuration = 400,
+		animDurationMoreInfo = 300,
 		descriptionPanel = gc("description-panel"),
 		moreInfoPanel = gc("more-info-panel"),
 		moreInfoImage = gc("more-info-image");
@@ -303,6 +314,162 @@ function initMain() {
 	
 	
 	
+	// Adds necessary logic to show the Description panel for some profile
+	function showOrhideDescriptionPanel(newProfile) {
+		if (!descriptionPanel.classList.contains("description-panel--in")) {
+			window.history.pushState({newProfile: newProfile}, "Profile " + newProfile, "#profile" + newProfile);
+			showDescriptionPanel(newProfile);
+		} else {
+			window.history.pushState(undefined, "Antonio Redondo", window.location.pathname);
+			hideDescriptionPanel();
+		}
+	}
+	
+	function showDescriptionPanel(newProfile) {
+		previousState = "descriptionPanel";
+		descriptionPanel.classList.add("description-panel--in", "s" + newProfile);
+		
+		var nProfile = gc("profile--" + newProfile);
+		nProfile.classList.add("profile--z-index");
+		nProfile.classList.add("profile--selected");
+		switch (newProfile) {
+			case 1: nProfile.classList.add("profile--selected-left"); break;
+			case 2: nProfile.classList.add("profile--selected-center"); break;
+			case 3: nProfile.classList.add("profile--selected-right");
+		}
+		nProfile.title = "Back";
+		nProfile.children[2].classList.remove("profile__title-bg--in");
+		nProfile.children[3].firstElementChild.classList.remove("profile__title-text--in");
+		
+		gc("darkener").classList.add("darkener--in");
+
+		for (var n=1; n<=3; ++n)
+			if (newProfile !== n) {
+				gc("profile--" + n).classList.add("profile--not-selected");
+				switch (n) {
+					case 1: gc("profile--" + n).classList.add("profile--selected-left"); break;
+					case 2: gc("profile--" + n).classList.add("profile--selected-center"); break;
+					case 3: gc("profile--" + n).classList.add("profile--selected-right");
+				}
+			}
+		
+		gca("desc-profile--" + newProfile).forEach(function(item) {
+			item.style.display = "inline-block";
+		});
+				
+		window.clearTimeout(toRemoveClasses);
+		to(function() {
+			nProfile.children[4].classList.add("profile__back-button--in");
+			gc("profile-selected-bg--" + newProfile).classList.add("profile-selected-bg--in");
+			qs(".profile-selected-place--" + newProfile + " .profile-selected-place__title").classList.add("profile-selected-place__title--in");
+		}, animDuration);
+		
+		gc("description-panel__overflow-hide").scrollTop = 0;
+		profileSelected = newProfile;
+		ga("send", "event", "v3", "Profile description panel open", "Profile " + newProfile);
+	}
+	
+	function hideDescriptionPanel() {
+		descriptionPanel.classList.remove("description-panel--in");
+		
+		var sProfile = gc("profile--" + profileSelected);
+		sProfile.classList.remove("profile--selected");
+		switch (profileSelected) {
+			case 1: sProfile.classList.remove("profile--selected-left"); break;
+			case 2: sProfile.classList.remove("profile--selected-center"); break;
+			case 3: sProfile.classList.remove("profile--selected-right");
+		}
+		sProfile.title = "";
+		sProfile.children[4].classList.remove("profile__back-button--in");
+		
+		gc("darkener").classList.remove("darkener--in");
+
+		for (var n2=1; n2<=3; ++n2)
+			if (profileSelected !== n2) {
+				gc("profile--" + n2).classList.remove("profile--not-selected");
+				switch (n2) {
+					case 1: gc("profile--" + n2).classList.remove("profile--selected-left"); break;
+					case 2: gc("profile--" + n2).classList.remove("profile--selected-center"); break;
+					case 3: gc("profile--" + n2).classList.remove("profile--selected-right");
+				}
+			}
+
+		gc("profile-selected-bg--" + profileSelected).classList.remove("profile-selected-bg--in");
+		qs(".profile-selected-place--" + profileSelected + " .profile-selected-place__title").classList.remove("profile-selected-place__title--in");
+		
+		ga("send", "event", "v3", "Profile description panel close", "Profile " + profileSelected);
+
+		var removeClasses = function() {
+			descriptionPanel.classList.remove("s" + profileSelected);
+			
+			gca("desc-profile--" + profileSelected).forEach(function(item) {
+				item.style.display = "none";
+			});
+				
+			sProfile.classList.remove("profile--z-index");
+
+			profileSelected = 0;
+		};
+		toRemoveClasses = to(removeClasses, animDuration);
+	}
+	
+	gc("profile--1").addEventListener("click", function() { showOrhideDescriptionPanel(1); });
+	gc("profile--2").addEventListener("click", function() { showOrhideDescriptionPanel(2); });
+	gc("profile--3").addEventListener("click", function() { showOrhideDescriptionPanel(3); });
+	gc("profile-m--1").addEventListener("click", function() { showOrhideDescriptionPanel(1); });
+	gc("profile-m--2").addEventListener("click", function() { showOrhideDescriptionPanel(2); });
+	gc("profile-m--3").addEventListener("click", function() { showOrhideDescriptionPanel(3); });
+	gc("back-button-m").addEventListener("click", function() { showOrhideDescriptionPanel(); });
+	
+	
+	
+	// Adds functionality to "More info" button
+	function moreInfoEventListener(gaLabel) {
+		previousState = "moreInfoPanel";
+		
+		moreInfoPanel.style.visibility = "visible";
+		/* jshint ignore:start */
+		moreInfoPanel.offsetHeight; // This causes reflow before adding next class
+		/* jshint ignore:end */
+		moreInfoPanel.classList.add("more-info-panel--in");
+		
+		moreInfoImage.style.visibility = "visible";
+		/* jshint ignore:start */
+		moreInfoImage.offsetHeight;
+		/* jshint ignore:end */
+		moreInfoImage.classList.add("more-info-image--in");
+		
+		gc("darkener").classList.add("darkener--in2");
+		ga("send", "event", "v3", "More info", gaLabel);
+	}
+	function moreInfoCloseEventListener(gaLabel) {
+		window.history.pushState(undefined, "Antonio Redondo", window.location.pathname);
+		moreInfoClose(gaLabel);
+	}
+	function moreInfoClose(gaLabel) {
+		moreInfoPanel.classList.remove("more-info-panel--in");
+		moreInfoImage.classList.remove("more-info-image--in");
+		to(function() {
+			moreInfoPanel.style.visibility = "hidden";
+			moreInfoImage.style.visibility = "hidden";
+		}, animDurationMoreInfo);
+		
+		gc("darkener").classList.remove("darkener--in2");
+		ga("send", "event", "v3", "More info close", gaLabel);
+	}
+	gc("footer__more-info").addEventListener("click", function() {
+		window.history.pushState({moreInfo: true}, "More Info", "#moreInfo");
+		moreInfoEventListener("Footer button");
+	});
+	gc("footer-m__more-info").addEventListener("click", function() {
+		window.history.pushState({moreInfo: true}, "More Info", "#moreInfo");
+		moreInfoEventListener("Footer mobile button");
+	});
+	gc("more-info-image").addEventListener("click", function() { moreInfoCloseEventListener("Image click"); });
+	gc("more-info-image__back-button-m").addEventListener("click", function() { moreInfoCloseEventListener("Mobile back button"); });
+	
+	
+	
 	// Adds functionality to "Show intro again" button
 	function showIntroAgain(gaLabel) {
 		removeCookie("firstTime");
@@ -314,140 +481,26 @@ function initMain() {
 	
 	
 	
-	// Adds functionality to "More info" button
-	function moreInfoEventListener(gaLabel) {
-		moreInfoPanel.style.visibility = "visible";
-		/* jshint ignore:start */
-		moreInfoPanel.offsetHeight; // This causes reflow before adding next class
-		/* jshint ignore:end */
-		moreInfoPanel.classList.add("more-info-panel--in");
-		moreInfoImage.style.visibility = "visible";
-		/* jshint ignore:start */
-		moreInfoImage.offsetHeight;
-		/* jshint ignore:end */
-		moreInfoImage.classList.add("more-info-image--in");
-		gc("darkener").classList.add("darkener--in2");
-		ga("send", "event", "v3", "More info", gaLabel);
-	}
-	function moreInfoCloseEventListener(gaLabel) {
-		to(function() {
-			moreInfoPanel.style.visibility = "hidden";
-			moreInfoImage.style.visibility = "hidden";
-		}, animDurationMoreInfo);
-		moreInfoPanel.classList.remove("more-info-panel--in");
-		moreInfoImage.classList.remove("more-info-image--in");
-		gc("darkener").classList.remove("darkener--in2");
-		ga("send", "event", "v3", "More info close", gaLabel);
-	}
-	gc("footer__more-info").addEventListener("click", function() { moreInfoEventListener("Footer button"); });
-	gc("footer-m__more-info").addEventListener("click", function() { moreInfoEventListener("Footer mobile button"); });
-	gc("more-info-image").addEventListener("click", function() { moreInfoCloseEventListener("Image click"); });
-	gc("more-info-image__back-button-m").addEventListener("click", function() { moreInfoCloseEventListener("Back button mobile"); });
-	
-	
-	
-	// Adds necessary logic to show the Description panel for some profile
-	function showOrHideDescriptionBar(newProfile) {
-		if (!descriptionPanel.classList.contains("description-panel--in")) {
-			descriptionPanel.classList.add("description-panel--in", "s" + newProfile);
-			
-			var nProfile = gc("profile--" + newProfile);
-			nProfile.classList.add("profile--z-index");
-			nProfile.classList.add("profile--selected");
-			switch (newProfile) {
-				case 1: nProfile.classList.add("profile--selected-left"); break;
-				case 2: nProfile.classList.add("profile--selected-center"); break;
-				case 3: nProfile.classList.add("profile--selected-right");
-			}
-			nProfile.title = "Back";
-			nProfile.children[2].classList.remove("profile__title-bg--in");
-			nProfile.children[3].firstElementChild.classList.remove("profile__title-text--in");
-			
-			gc("darkener").classList.add("darkener--in");
-
-			for (var n=1; n<=3; ++n)
-				if (newProfile !== n) {
-					gc("profile--" + n).classList.add("profile--not-selected");
-					switch (n) {
-						case 1: gc("profile--" + n).classList.add("profile--selected-left"); break;
-						case 2: gc("profile--" + n).classList.add("profile--selected-center"); break;
-						case 3: gc("profile--" + n).classList.add("profile--selected-right");
-					}
-				}
-			
-			gca("desc-profile--" + newProfile).forEach(function(item) {
-				item.style.display = "inline-block";
-			});
-					
-			window.clearTimeout(toRemoveClasses);
-			to(function() {
-				nProfile.children[4].classList.add("profile__back-button--in");
-				gc("profile-selected-bg--" + newProfile).classList.add("profile-selected-bg--in");
-				qs(".profile-selected-place--" + newProfile + " .profile-selected-place__title").classList.add("profile-selected-place__title--in");
-			}, animDuration);
-			
-			gc("description-panel__overflow-hide").scrollTop = 0;
-			profileSelected = newProfile;
-			ga("send", "event", "v3", "Profile description panel open", "Profile " + newProfile);
-		} else {
-			descriptionPanel.classList.remove("description-panel--in");
-			
-			var sProfile = gc("profile--" + profileSelected);
-			sProfile.classList.remove("profile--selected");
-			switch (newProfile) {
-				case 1: sProfile.classList.remove("profile--selected-left"); break;
-				case 2: sProfile.classList.remove("profile--selected-center"); break;
-				case 3: sProfile.classList.remove("profile--selected-right");
-			}
-			sProfile.title = "";
-			sProfile.children[4].classList.remove("profile__back-button--in");
-			
-			gc("darkener").classList.remove("darkener--in");
-
-			for (var n2=1; n2<=3; ++n2)
-				if (profileSelected !== n2) {
-					gc("profile--" + n2).classList.remove("profile--not-selected");
-					switch (n2) {
-						case 1: gc("profile--" + n2).classList.remove("profile--selected-left"); break;
-						case 2: gc("profile--" + n2).classList.remove("profile--selected-center"); break;
-						case 3: gc("profile--" + n2).classList.remove("profile--selected-right");
-					}
-				}
-
-			gc("profile-selected-bg--" + profileSelected).classList.remove("profile-selected-bg--in");
-			qs(".profile-selected-place--" + profileSelected + " .profile-selected-place__title").classList.remove("profile-selected-place__title--in");
-			
-			ga("send", "event", "v3", "Profile description panel close", "Profile " + profileSelected);
-
-			var removeClasses = function() {
-				descriptionPanel.classList.remove("s" + profileSelected);
-				
-				gca("desc-profile--" + profileSelected).forEach(function(item) {
-					item.style.display = "none";
-				});
-					
-				sProfile.classList.remove("profile--z-index");
-
-				profileSelected = 0;
-			};
-			toRemoveClasses = to(removeClasses, animDuration);
-		}
-	}
-	
-	gc("profile--1").addEventListener("click", function() { showOrHideDescriptionBar(1); });
-	gc("profile--2").addEventListener("click", function() { showOrHideDescriptionBar(2); });
-	gc("profile--3").addEventListener("click", function() { showOrHideDescriptionBar(3); });
-	gc("profile-m--1").addEventListener("click", function() { showOrHideDescriptionBar(1); });
-	gc("profile-m--2").addEventListener("click", function() { showOrHideDescriptionBar(2); });
-	gc("profile-m--3").addEventListener("click", function() { showOrHideDescriptionBar(3); });
-	
-	gc("back-button-m").addEventListener("click", function() { showOrHideDescriptionBar(1); }); // It doesn't matter which profiled is clicked
-	
 	ae("keydown", function(e) {
 		if (descriptionPanel.classList.contains("description-panel--in") && e.keyCode === 27)
-			showOrHideDescriptionBar(1);
+			showOrhideDescriptionPanel();
 		else if (moreInfoPanel.classList.contains("more-info-panel--in") && e.keyCode === 27)
 			moreInfoCloseEventListener("Esc key");
+	});
+	
+	ae("popstate", function(e) {
+		if (e.state) {
+			if (e.state.newProfile)
+				showDescriptionPanel(e.state.newProfile);
+			else if (e.state.moreInfo)
+				moreInfoEventListener("Push state")
+		} else {
+			switch (previousState) {
+				case "descriptionPanel": hideDescriptionPanel(); break;
+				case "moreInfoPanel": moreInfoClose("Push state"); break;
+			}
+			previousState = undefined;
+		}
 	});
 	
 	
@@ -561,6 +614,34 @@ function initMain() {
 	downButton.addEventListener("click", function() {
 		scrollBy(dPScroll, dPScroll.scrollTop + 400, 300);
 	});
+	
+	
+	
+	// If at loading time the URL contains a hash the state will be updated accordingly
+	if (window.location.hash && getCookie("firstTime") !== null) {
+		switch (window.location.hash) {
+			case "#profile1":
+				window.history.pushState({ newProfile: 1 }, "Profile 1", "#profile1");
+				showDescriptionPanel(1);
+				break;
+			case "#profile2":
+				window.history.pushState({ newProfile: 2 }, "Profile 2", "#profile2");
+				showDescriptionPanel(2);
+				break;
+			case "#profile3":
+				window.history.pushState({ newProfile: 3 }, "Profile 3", "#profile3");
+				showDescriptionPanel(3);
+				break;
+			case "#moreInfo":
+				window.history.pushState({ moreInfo: true }, "More Info", "#moreInfo");
+				moreInfoEventListener("Push state");
+				break;
+			default: window.history.replaceState(undefined, "Antonio Redondo", window.location.pathname);
+		}
+	}
+	
+	if (window.location.hash && getCookie("firstTime") === null)
+		window.history.replaceState(undefined, "Antonio Redondo", window.location.pathname);
 }
 
 
@@ -570,11 +651,7 @@ function initMain() {
 function init() {
 	if (getCookie("firstTime") === null) {
 		initIntro();
-	} else {
-		hideIntro(2);
-		if (getCookie("cookieMessage") === null)
-			to(showCookieMessage, 1500);
-	}
+	} else hideIntro(2);
 	
 	initMain();
 }
