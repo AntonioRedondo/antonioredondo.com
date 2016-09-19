@@ -75,7 +75,8 @@ gulp.task("jsHint", () => {
 			nonew: true,
 			quotmark: true,
 			
-			globals: { "WebFont": true, "pg": true, "ga": true },
+			globals: { "WebFont": true, "ga": true, "o": true, "pg": true },
+			predef: ["initIntro", "hideIntro", "initMain"],
 			browser: true,
 			jasmine: true,
 			node: true
@@ -103,6 +104,9 @@ gulp.task("cssLint", () => {
 gulp.task("buildJs", () => {
 	return gulp.src([`node_modules/webfontloader/webfontloader.js`,
 			`${src}/js/plygrnd.js`,
+			`${src}/js/utils.js`,
+			`${src}/js/initIntro.js`,
+			`${src}/js/initMain.js`,
 			`${src}/js/main.js`,
 			`!${src}/js/*.spec.js`])
 		// Remember to comment out generation of sourcemaps when running "allMin"
