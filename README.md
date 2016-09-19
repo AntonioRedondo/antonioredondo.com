@@ -1,3 +1,5 @@
 # antonioredondo.com v3
 
-More info soon.
+Source code for antonioredondo.com. Check in detail my ES5 JavaScript, HTML and CSS details.
+
+A longer and more detailed README text is coming soon.
