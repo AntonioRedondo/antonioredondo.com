@@ -6,34 +6,34 @@
 
 	o.gc = function(className) {
 		return document.getElementsByClassName(className)[0];
-	}
+	};
 
 	o.gca = function(className) {
 		return Array.prototype.slice.call(document.getElementsByClassName(className));
-	}
+	};
 
 	o.qs = function(query) {
 		return document.querySelector(query);
-	}
+	};
 
 	o.qsa = function(query) {
 		return Array.prototype.slice.call(document.querySelectorAll(query));
-	}
+	};
 
 	o.ae = function(event, callback) {
 		return window.addEventListener(event, callback);
-	}
+	};
 
 	o.to = function(callback, time) {
 		return window.setTimeout(callback, time);
-	}
+	};
 	
 	
 	
 	o.getRandomInt = function() {
 		var min = -50, max = 50;
 		return Math.floor(Math.random() * (max - min + 1)) + min;
-	}
+	};
 	
 	
 	
@@ -42,7 +42,7 @@
 			return "transform";
 		else if (document.documentElement.style.webkitTransform !== undefined)
 			return "webkitTransform";
-	}
+	};
 	
 	
 	
@@ -57,7 +57,7 @@
 				return c.substring(nameEQ.length,c.length);
 		}
 		return null;
-	}
+	};
 
 	o.setCookie = function(name, value, days) {
 		var expires;
@@ -67,10 +67,10 @@
 			expires = "; expires=" + date.toGMTString();
 		} else expires = "";
 		document.cookie = name + "=" + value + expires + "; path=/";
-	}
+	};
 
 	o.removeCookie = function(name) {
 		this.setCookie(name,"",-1);
-	}
+	};
 	
 }(window.o = window.o || {}));

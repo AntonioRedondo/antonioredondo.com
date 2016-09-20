@@ -28,11 +28,12 @@
 		height: 105%;
 		
 		position: absolute;
-		right: calc(-@width - 1%);
+		right: calc(-@width);
 		
 		background: $gray2;
-		border-right: white solid 2px;
-		border-left: white solid 2px;
+		/* border-right: white solid 2px;
+		border-left: white solid 2px; */
+		box-shadow: 0 0 30px color(black a(70%));
 		
 		transform-origin: right top;
 		transform: rotate(6deg);
@@ -441,6 +442,7 @@
 .bubbles {
 	width: 100%;
 	height: 100%;
+	overflow: hidden;
 	
 	position: absolute;
 	
@@ -559,10 +561,6 @@
 	
 	&:hover {
 		box-shadow: 1px 3px 3px $black020;
-	}
-	
-	&:active {
-		transform: translate3d(0, 2px, 0);
 	}
 	
 	@media (max-width: $breakpointBig) {

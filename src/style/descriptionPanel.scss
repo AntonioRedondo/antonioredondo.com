@@ -1,5 +1,55 @@
 @import "variables";
 
+.c0 {
+	fill: $whiteD; color: $whiteD;
+}
+
+/* https://coolors.co/app/ceefe7-c2e3e8-b6d6db-8fb3c9-5c80a5 */
+.s1 {
+	& .c1 { fill: #ceefe7; color: #ceefe7; }
+	& .c2 { fill: #c2e3e8; color: #c2e3e8; }
+	& .c3 { fill: #b6d6db; color: #b6d6db; }
+	& .c4 { fill: #8fb3c9; color: #8fb3c9; }
+	& .c5 { fill: #5c80a5; color: #5c80a5; }
+	& .b { color: #c2e3e8; }
+	& a:hover, & a svg:hover { filter: drop-shadow(0 0 0.8vw color(#ceefe7 a(70%))); }
+	& .back-button-m { background-image: linear-gradient(135deg, #b6d6db -20%, #5c80a5 90%); }
+	/* & .block__icon { filter: drop-shadow(0 0 50px color(#ceefe7 a(50%))); } */
+	/* & .desc-table__big-text { filter: drop-shadow(0 0 60px color(#ceefe7 a(50%))); } */
+}
+
+/* https://coolors.co/app/edeec9-dde7c7-bfd8bd-98c9a3-77bfa3 */
+.s2 {
+	& .c1 { fill: #edeec9; color: #edeec9; }
+	& .c2 { fill: #dde7c7; color: #dde7c7; }
+	& .c3 { fill: #bfd8bd; color: #bfd8bd; }
+	& .c4 { fill: #98c9a3; color: #98c9a3; }
+	& .c5 { fill: #77bfa3; color: #77bfa3; }
+	& .b { color: #dde7c7; }
+	& a:hover, & a svg:hover { filter: drop-shadow(0 0 0.8vw color(#edeec9 a(70%))); }
+	& .back-button-m { background-image: linear-gradient(135deg, #bfd8bd -20%, #77bfa3 90%); }
+	/* & .block__icon { filter: drop-shadow(0 0 50px color(#edeec9 a(50%))); } */
+	/* & .desc-table__big-text { filter: drop-shadow(0 0 60px color(#edeec9 a(50%))); } */
+}
+
+/* https://coolors.co/app/ffcdb2-ffb4a2-e5989b-b5838d-6d6875 */
+.s3 {
+	& .c1 { fill: #fff3b2; color: #fff3b2; }
+	& .c2 { fill: #ffe3a3; color: #ffe3a3; }
+	& .c3 { fill: #e5bb97; color: #e5bb97; }
+	& .c4 { fill: #b59082; color: #b59082; }
+	& .c5 { fill: #736875; color: #736875; }
+	& .b { color: #ffe3a3; }
+	& a:hover, & a svg:hover { filter: drop-shadow(0 0 0.8vw color(#fff3b2 a(70%))); }
+	& .back-button-m { background-image: linear-gradient(135deg, #e5bb97 -20%, #736875 90%); }
+	/* & .block__icon { filter: drop-shadow(0 0 50px color(#ffcdb2 a(50%))); } */
+	/* & .desc-table__big-text { filter: drop-shadow(0 0 60px color(#ffcdb2 a(50%))); } */
+}
+
+
+
+
+
 .description-panel {
 	width: 65%;
 	height: 100%;

@@ -32,7 +32,6 @@ const dest = "dist";
 
 
 
-
 gulp.task("default", ["watch"]);
 gulp.task("lint", ["jsHint", "htmlLint", "cssLint"]);
 gulp.task("build", ["buildJs", "buildHtml", "buildCss"/*, "copyAssets"*/]);
@@ -107,7 +106,7 @@ gulp.task("buildJs", () => {
 			`${src}/js/utils.js`,
 			`${src}/js/initIntro.js`,
 			`${src}/js/initMain.js`,
-			`${src}/js/main.js`,
+			`${src}/js/index.js`,
 			`!${src}/js/*.spec.js`])
 		// Remember to comment out generation of sourcemaps when running "allMin"
 		.pipe(sourcemaps.init())
@@ -132,12 +131,12 @@ gulp.task("buildHtml", () => {
 gulp.task("buildCss", function () {
 	return gulp.src([`${src}/style/*.scss`])
 		.pipe(sourcemaps.init())
+		.pipe(concat("style.css"))
 		.pipe(postCss([
 			preCss({extension: "scss"}),
 			autoprefixer({ browsers: ["safari 8", "ie 10"] }), // https://github.com/ai/browserslist
 			assets({ loadPaths: [`${src}`] })
 		]))
-		.pipe(concat("style.css"))
 		.pipe(sourcemaps.write())
 		.pipe(gulp.dest(`${src}`)) // Because 'base' doesn't work for 'inline' module. This file is ignored in .gitignore
 		.pipe(gulp.dest(`${dest}`));

@@ -1,51 +1,5 @@
 @import "variables";
 
-html {
-	width: 100%;
-	height: 100%;
-	overflow: hidden;
-	/* http://stackoverflow.com/questions/14270084/overflow-xhidden-doesnt-prevent-content-from-overflowing-in-mobile-browsers */
-	position: fixed;
-	box-sizing: border-box;
-	
-	background: $gray2;
-	
-	color: white;
-	font-family: 'Open Sans', sans-serif;
-	font-weight: 300;
-}
-
-body {
-	height: 100%;
-	margin: 0;
-}
-
-a {
-	text-decoration: none;
-	color: white;
-	transition: all $time1;
-}
-
-button {
-	padding: 0;
-	border: inherit;
-	cursor: pointer;
-	font-family: inherit;
-	text-align: center; /* For Safari */
-}
-
-button:focus { /* Chrome adds its own blue outline on buttons when focus */
-	outline: none;
-}
-
-* {
-	box-sizing: inherit;
-}
-
-
-
-
-
 .main {
 	display: none;
 	overflow: hidden;
@@ -384,10 +338,6 @@ button:focus { /* Chrome adds its own blue outline on buttons when focus */
 		&:hover {
 			box-shadow: 0 0 15px color($whiteE a(50%));
 		}
-		
-		&:active {
-			transform: translate3d(0, 2px, 0);
-		}
 	}
 	
 	&__more-info {
@@ -408,31 +358,23 @@ button:focus { /* Chrome adds its own blue outline on buttons when focus */
 	}
 	
 	&__more-info, &__show-intro-again {
-		margin-top: 5px;
-		padding: 4px;
+		width: 45%;
+		margin-top: 10px;
+		padding: 10px;
 		
 		background: $gray5;
 		border-radius: 5px;
 		box-shadow: 1px 3px 3px $black040;
 		
 		color: $whiteD;
-		font-size: 0.8em;
+		font-size: 0.9em;
 		font-weight: bold;
 		text-transform: uppercase;
 		
 		transition: all ease-out 0.2s;
 		
-		@media (max-width: $breakpointMobile) {
-			width: 45%;
-			padding: 6px;
-		}
-		
 		&:hover {
 			box-shadow: 1px 3px 3px $black040;
-		}
-		
-		&:active {
-			transform: translate3d(0, 2px, 0);
 		}
 	}
 	
@@ -490,7 +432,6 @@ button:focus { /* Chrome adds its own blue outline on buttons when focus */
 		
 		&:active {
 			box-shadow: #edeec9 0 0 20px;
-			transform: translate3d(0, 2px, 0);
 		}
 	}
 }
