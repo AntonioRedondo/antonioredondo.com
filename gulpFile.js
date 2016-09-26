@@ -2,8 +2,9 @@
 
 const gulp = require("gulp");
 const sourcemaps = require("gulp-sourcemaps");
+const htmlReplace = require("gulp-html-replace");
 const del = require("del");
-const runSequence = require('run-sequence');
+const runSequence = require("run-sequence");
 
 // Lint
 const jsHint = require("gulp-jshint");
@@ -41,9 +42,9 @@ gulp.task("build", ["buildJs", "buildHtml", "buildCss"/*, "copyAssets"*/]);
 
 
 
-gulp.task("watch", [/*"lint", */"build"], () => {
+gulp.task("watch", ["lint", "build"], () => {
 	// http://stackoverflow.com/questions/21608480/gulp-js-watch-task-runs-twice-when-saving-files
-	gulp.watch(`${src}/**`, { awaitWriteFinish: true }, ["build"]);
+	gulp.watch([`gulpFile.js`, `${src}/**`], { awaitWriteFinish: true }, ["lint", "build"]);
 });
 
 
@@ -57,6 +58,8 @@ gulp.task("clean", () => {
 
 
 
+
+// Lint
 
 gulp.task("jsHint", () => {
 	return gulp.src(`${src}/js/*.js`)
@@ -100,10 +103,12 @@ gulp.task("cssLint", () => {
 
 
 
+// Build
+
 gulp.task("buildJs", () => {
 	return gulp.src([`node_modules/webfontloader/webfontloader.js`,
 			`${src}/js/plygrnd.js`,
-			`${src}/js/utils.js`,
+			`${src}/js/o.js`,
 			`${src}/js/initIntro.js`,
 			`${src}/js/initMain.js`,
 			`${src}/js/index.js`,
@@ -118,6 +123,7 @@ gulp.task("buildJs", () => {
 
 gulp.task("buildHtml", () => {
 	return gulp.src([`${src}/index.htm`])
+		// .pipe(htmlReplace({ ga: { src: "" }}, { keepUnassigned: true, keepBlockTags: true })) // Removes Google Analytics code on Dev
 		.pipe(inline({
 			base: `${dest}`, // Doesn't work. Value ignored
 			// js: () => jsMin({mangle: true}),
@@ -160,9 +166,12 @@ gulp.task("copyAssets", () => {
 
 
 
+// Minify
+
 gulp.task("min", () => {
     runSequence("build", () => {
 		return gulp.src([`${src}/index.htm`])
+			.pipe(htmlReplace({ dev: { src: "" }})) // Removes Dev code on Production
 			.pipe(htmlMin({
 				collapseWhitespace: true,
 				minifyCSS: true,

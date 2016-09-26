@@ -14,9 +14,10 @@
 		"webfontloader": "~1.6.26"
 	},
 	"devDependencies": {
-		"del": "~2.2.0",
 		"gulp": "~3.9.1",
 		"gulp-sourcemaps": "~1.6.0",
+		"gulp-html-replace": "~1.6.1",
+		"del": "~2.2.0",
 		"run-sequence": "~1.2.2",
 		
 		"gulp-jshint": "~2.0.0",

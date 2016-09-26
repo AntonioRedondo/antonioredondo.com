@@ -79,7 +79,7 @@ function initIntro() {
 		
 		
 		
-	// On desktop version it moves the phrases and bubbles on the 3d space depending on the mouse position
+	// On desktop version it moves the phrases and bubbles on the 3d space depending on the cursor position
 	if (viewPortWidth >= 810)
 		o.ae("mousemove", mouseMoveListener = function(e) {
 			//console.log("deltaZ: " + e.deltaZ);

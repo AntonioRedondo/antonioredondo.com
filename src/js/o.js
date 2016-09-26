@@ -1,6 +1,10 @@
-// 2016 (C) Antonio Redondo / antonioredondo.com
-// "o" is a micro-library which contains basic DOM functions with a sorter name.
-// It also contains functions to deal with cookies, and some other methods.
+/**
+  * 2016 (C) Antonio Redondo / antonioredondo.com
+  *
+  * "o" is a nano-library which contains a bunch of functions to deal with basic DOM tasks but with a shorter name.
+  * It also contains functions to deal with cookies, and CSS transforms support checking.
+  * Mainly used on my personal projects but open to anyone.
+  */
 
 (function(o) {
 
