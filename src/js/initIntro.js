@@ -29,8 +29,9 @@ function hideIntro(type) {
 	});
 	introDarkener.classList.add("intro-darkener--" + modifier);
 	introDarkener.addEventListener("transitionend", function(e) {
-		if(e.target.classList.contains("intro-darkener"))
+		if(e.target.classList.contains("intro-darkener") && type === 2)
 			introDarkener.style.display = "none";
+		else o.to(function() { introDarkener.style.display = "none"; }, 2500);
 	});
 	
 	o.gc("ar__logo-container").classList.add("ar__logo-container--in");
@@ -80,18 +81,23 @@ function initIntro() {
 		
 		
 	// On desktop version it moves the phrases and bubbles on the 3d space depending on the cursor position
-	if (viewPortWidth >= 810)
+	if (viewPortWidth >= 810) {
+		var phrasesContainer = o.gc("phrases"), 
+			bubblesContainer = o.gc("bubbles");
 		o.ae("mousemove", mouseMoveListener = function(e) {
 			//console.log("deltaZ: " + e.deltaZ);
 			//console.log("deltaMode: " + e.deltaMode);
 			//console.log("clientX: " + e.clientX);
 			//console.log("clientY: " + e.clientY);
 			//console.log("rotateX(" + -(0.02*e.clientY-10) +"deg)");
-			var phrases = o.gc("phrases"), 
-				bubbles = o.gc("bubbles");
-			phrases.style[transform] = "rotateX(" + -(0.02*e.clientY-10) + "deg) rotateY(" + (0.02*e.clientX-25) + "deg) translate3d(" + (-0.05*e.clientX+100) + "px, 0, 0)";
-			bubbles.style[transform] = phrases.style[transform];
+			phrasesContainer.style[transform] = "rotateX(" + -(0.02*e.clientY-10) + "deg) rotateY(" + (0.02*e.clientX-25) + "deg) translate3d(" + (-0.05*e.clientX+100) + "px, 0, 0)";
+			
+			// Due to a weird behaviour the below line spoils the bubbles zoom effect of Chrome.
+			// With this conditional if we avoid execution on Chrome
+			if (!(window.chrome && window.chrome.webstore))
+				bubblesContainer.style[transform] = phrasesContainer.style[transform];
 		});
+	}
 	
 	
 	

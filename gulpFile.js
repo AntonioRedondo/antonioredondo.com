@@ -171,7 +171,7 @@ gulp.task("copyAssets", () => {
 gulp.task("min", () => {
     runSequence("build", () => {
 		return gulp.src([`${src}/index.htm`])
-			.pipe(htmlReplace({ dev: { src: "" }})) // Removes Dev code on Production
+			.pipe(htmlReplace({ dev: { src: "" }}, { keepUnassigned: true })) // Removes Dev code on Production
 			.pipe(htmlMin({
 				collapseWhitespace: true,
 				minifyCSS: true,
