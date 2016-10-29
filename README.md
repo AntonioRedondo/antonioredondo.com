@@ -9,9 +9,9 @@ This is the repository of my portfolio website currently [online](http://antonio
 
 <img align="center" src="http://i.imgur.com/cLYslvy.jpg" width="900px" height="459px" />
 
-<img align="center" src="http://i.imgur.com/Xcoy2Nm.jpg" width="280px" height="489px" />
-<img align="center" src="http://i.imgur.com/t7Dvign.jpg" width="280px" height="489px" />
-<img align="center" src="http://i.imgur.com/7B2GXEn.jpg" "280px" height="489px" />
+<img align="center" src="http://i.imgur.com/Xcoy2Nm.jpg" width="295px" />
+<img align="center" src="http://i.imgur.com/t7Dvign.jpg" width="295px" />
+<img align="center" src="http://i.imgur.com/7B2GXEn.jpg" width="295px" />
 
 Here you can check all the source code involved in the creation of the site explained step by step.
 
