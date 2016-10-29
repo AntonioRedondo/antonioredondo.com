@@ -3,6 +3,12 @@
 
 This is the repository of my portfolio website currently [online](http://antonioredondo.com).
 
+<img align="center" src="http://i.imgur.com/yL7uFOl.jpg" width="900px" height="459px" />
+
+<img align="center" src="http://i.imgur.com/c6XiGcL.jpg" width="900px" height="459px" />
+
+<img align="center" src="http://i.imgur.com/cLYslvy.jpg" width="900px" height="459px" />
+
 Here you can check all the source code involved in the creation of the site explained step by step.
 
 The site is implemented as a [Single Page Application](https://en.wikipedia.org/wiki/Single-page_application). It is a web app focused on visual attractiveness and navigation effectiveness. It doesn't retrieve information from databases, nor it uses reusable widgets or forms. Web frameworks like Angular or React are hence not the best approach for the implementation. Instead vanilla ES5 JavaScript with no frameworks is used. jQuery isn't needed either.
