@@ -39,6 +39,8 @@ The project doesn’t depend on any front-end framework. Only two JavaScript dep
 - [Web Font Loader](https://www.npmjs.com/package/webfontloader): script which notifies once webfonts from Google Fonts have been loaded. Ideal to avoid [FOUCs](https://en.wikipedia.org/wiki/Flash_of_unstyled_content).
 - [Google Analytics](https://developers.google.com/analytics/devguides/collection/analyticsjs): used to track clicks around elements in the page. Further explained below.
 
+A set of basic function like `document.getElementsByClassName()`, functions which check a CSS property is supported by the browser or functions which manage cookies are grouped on the `o` namespace and written on its own [file](https://github.com/AntonioRedondo/antonioredondo.com-v3/blob/master/src/js/o.js). In addition, on this namespace names are considerably sorter: `addEventListener()` to `o.ae()`.
+
 
 ## CSS
 
@@ -51,7 +53,7 @@ I was thinking of adding *CSS modules* support to the project with [`postcss-mod
 
 ## SPA and routing
 
-The site is a SPA. What in a site of the web 1.0 the profile descriptions would be different page loads on this site is just a hide `<section>` which is made visible when the user pushes the profile button. However, the URL bar adds a hash with the profile number: `#profile1`, `#profile2` or `#profile3`. If the page is accessed straight from the URL with hash the page will directly show the corresponding section. Also you can navigate through the different sections going back and forth, sections will be load and unload properly. To implement this behaviour the [`histoyr.pushState()`](https://developer.mozilla.org/en-US/docs/Web/API/History/pushState) API is [used](https://github.com/AntonioRedondo/antonioredondo.com-v3/blob/master/src/js/initMain.js#L117).
+The site is a SPA. What in a site of the web 1.0 the profile descriptions would be different page loads on this site is just a hide `<section>` which is made visible when the user pushes the profile button. However, the URL bar adds a hash with the profile number: `#profile1`, `#profile2` or `#profile3`. If the page is accessed straight from the URL with hash the page will directly show the corresponding section. Also you can navigate through the different sections going back and forth, sections will be load and unload properly. To implement this behaviour the [`history.pushState()`](https://developer.mozilla.org/en-US/docs/Web/API/History/pushState) API is [used](https://github.com/AntonioRedondo/antonioredondo.com-v3/blob/master/src/js/initMain.js#L117).
 
 
 ## Speed and size optimisation
