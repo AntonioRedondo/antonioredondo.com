@@ -30,11 +30,11 @@ See bellow the technical description of the website:
 
 | HTML with inlined JS and CSS (Kb) | JS imports | CSS imports | Images | Front-end framework | Routing | Animations | Other libraries | CSS framework | Building tools | Server |  Readme file | Ready out of the box
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 717 (minified), 227 (gzipped) | 1 async (Google Analytics) | 0 (plus 4 fonts [18.7 Kb] loaded with Web Font Loader) | 6 (574 Kb in total) | - (HTML attached to nodes) | [`history.pushState()`](https://developer.mozilla.org/en-US/docs/Web/API/History/pushState) | Native CSS transitions and animations | Web Font Loader, Google Analytics | PostCSS (with BEM) | NPM, Gulp | Node.js | HTML | On Dist folder |
+| 717 (minified), 227 (gzipped) | 1 async (Google Analytics) | 0 (plus 4 fonts [18.7 Kb] loaded with Web Font Loader) | 6 (574 Kb in total) | - (HTML attached to nodes) | [`history.pushState()`](https://developer.mozilla.org/en-US/docs/Web/API/History/pushState) | Native CSS transitions and animations | [Web Font Loader](https://www.npmjs.com/package/webfontloader), [Google Analytics](https://developers.google.com/analytics/devguides/collection/analyticsjs) | PostCSS (with BEM) | NPM, Gulp | Node.js | HTML | On Dist folder |
 
 In order to allow maximum customization and size optimisation I decided not to use any [template pack](https://startbootstrap.com/). Templates are powerful tools to create attractive and tested websites in a fast way. But at the same time this comes to the expense of [originality](http://adventurega.me/bootstrap/) and refined code. Most template packs follow the blocky design of image boxes with text on top. I decided not to follow this structure and create a more unique site flow with full screen lateral panels.
 
-The site is ultraresponsive in a very dynamic way. This is thanks to the [`vw`, `vh` and `vmin` units](https://www.sitepoint.com/new-css3-relative-font-size/). The desktop version is active from a viewport width of 800px to 2560px (even with a wider viewport the website behaves decently). Unlike many websites which have a fixed width this site takes all width available and adapts to it. This is specially relevant with high resolution screens (width bigger than 1600px) since it avoids to have ugly lateral empty space. The mobile version is active when the viewport width is lower than 800px. The site has 4 `@media` breakpoints at 800px, 1100px, 1470px and 2000px.
+The site is ultraresponsive in a very dynamic way. This is thanks to the [`vw`, `vh` and `vmin` units](https://www.sitepoint.com/new-css3-relative-font-size/). The desktop version is active from a viewport width of 800px to 2560px (even with a wider viewport the website behaves decently). Unlike many websites which have a fixed width this site takes all width available and adapts to it. This is specially relevant with high resolution screens (width bigger than 1600px) since it avoids to have ugly lateral empty space. The mobile version is active when the viewport width is lower than 800px. The site has four `@media` breakpoints at 800px, 1100px, 1470px and 2000px.
 
 
 ## JavaScript
@@ -49,7 +49,7 @@ The project doesn’t depend on any front-end framework. Only two JavaScript dep
 - [Web Font Loader](https://www.npmjs.com/package/webfontloader): script which notifies once webfonts from Google Fonts have been loaded. Ideal to avoid [FOUCs](https://en.wikipedia.org/wiki/Flash_of_unstyled_content).
 - [Google Analytics](https://developers.google.com/analytics/devguides/collection/analyticsjs): used to track clicks around elements in the page. Further explained below.
 
-A set of basic function like `document.getElementsByClassName()`, functions which check a CSS property is supported by the browser or functions which manage cookies are grouped on the `o` namespace and written on its own [file](https://github.com/AntonioRedondo/antonioredondo.com-v3/blob/master/src/js/o.js). In addition, on this namespace names are considerably sorter: `addEventListener()` to `o.ae()`.
+A set of basic functions like `document.getElementsByClassName()`, functions which check that a CSS property is supported by a browser or functions which manage cookies are grouped on the `o` namespace and written on its own [file](https://github.com/AntonioRedondo/antonioredondo.com-v3/blob/master/src/js/o.js). On this namespace names are considerably sorter. For example `addEventListener()` is shorted to `o.ae()`.
 
 
 ## CSS
