@@ -39,7 +39,7 @@ The site is ultraresponsive in a very dynamic way. This is thanks to the [`vw`, 
 
 ## JavaScript
 
-The [project JavaScript](https://github.com/AntonioRedondo/antonioredondo.com-v3/tree/master/src/js) is arranged in several ES5 JavaScript files which are concatenated with Gulp during building time. Slicing the code in different files creates a neater organisation when the JS code reaches several hundred lines.
+The [project JavaScript](https://github.com/AntonioRedondo/antonioredondo.com-v3/tree/master/src/js) is arranged in several ES5 JavaScript files which are concatenated with Gulp at building time. Slicing the code in different files creates a neater organisation when the JS code reaches several hundred lines.
 
 Since the project isn’t a reusable library, in order to have minimum length names functions haven't been embedded within a namespace object. Instead they have been declared in the global `window` namespace.
 
@@ -61,6 +61,7 @@ To generate advanced CSS [PostCSS](https://www.npmjs.com/package/postcss) is use
 BEM has been implemented in the following way:
 
     .block {
+        ...
         @media(...) { }
         &:pseudo-class { }
         &--modifier { }
@@ -97,12 +98,8 @@ will have a CSS like below:
         ...
         @media(...)  }
         &--big { }
-        &__element-1 {
-            ...
-        }
-        &__element-2 {
-            ...
-        } 
+        &__element-1 { }
+        &__element-2 { } 
         &__element-3 {
             ...
             &::first-letter { }
@@ -112,7 +109,7 @@ will have a CSS like below:
 
 As you can see, on the CSS `element-2` and `element-3` aren't inside `element-1` as it happens on the HTML.
 
-The BEM pattern has proved very efective for this webpage. Only on [some `&:hover` pseudo-classes](https://github.com/AntonioRedondo/antonioredondo.com-v3/blob/master/src/style/profile.scss#L35) it was necessary to add children within children. And still the CSS was quite readable.
+The BEM pattern has proved very efective for this webpage. Only on [some `&:hover` pseudo-classes](https://github.com/AntonioRedondo/antonioredondo.com-v3/blob/master/src/style/profile.scss#L35) it was necessary to add children within children. Also, sparingly you will see that some elements where selected directly instead of adding a class: `& span`. This was so because adding a class was adding too much complexity to the existing BEM structure for the number of CSS properties that were used.
 
 Also, CSS properties order is keept among classes. On the [CSS source code](https://github.com/AntonioRedondo/antonioredondo.com-v3/tree/master/src/style) you can see properties are always declared on the following way:
 
