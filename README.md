@@ -54,16 +54,104 @@ A set of basic functions like `document.getElementsByClassName()`, functions whi
 
 ## CSS
 
-To generate advanced CSS [PostCSS](https://www.npmjs.com/package/postcss) is used. Unlike SASS PostCSS allows simple feature extensibility with the help of plug-ins. Since PostCSS isn't monolithic new features can be added with plug-ins without waiting for a new PostCSS release. The deal-breaker plug-in which make me switch from SASS to PostCSS was [Autoprefixer](https://www.npmjs.com/package/autoprefixer), amazing tool which take on adding vendor prefixes to css properties for a given browser and version so that you don't have to worry about this, allowing cleaner CSS.
+To generate advanced CSS [PostCSS](https://www.npmjs.com/package/postcss) is used. Unlike SASS PostCSS allows simple feature extensibility with the help of plug-ins. Since PostCSS isn't monolithic new features can be added with plug-ins without waiting for a new PostCSS release. The deal-breaker plug-in which make me switch from SASS to PostCSS was [Autoprefixer](https://www.npmjs.com/package/autoprefixer), tool which takes on adding vendor prefixes to css properties for a given browser and version so that you don't have to worry about.
 
 [CSS](https://github.com/AntonioRedondo/antonioredondo.com-v3/tree/master/src/style) has been written using the [BEM pattern](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax). Together with the PostCSS nesting capabilities and the [`&` parent selector](http://sass-lang.com/documentation/file.SASS_REFERENCE.html#parent-script) BEM allows very neat and organised CSS with a shallow nesting hierarchy.
+
+BEM has been implemented in the following way:
+
+    .block {
+        @media(...) { }
+        &:pseudo-class { }
+        &--modifier { }
+        &::pseudo-element { }
+        &__element {
+            ...
+            @media(...) { }
+            &:pseudo-class { }
+            &--modifier { }
+            &::pseudo-element { }
+            
+            /*
+               No more children/sub-elements.
+               If the HTML contains more children with its own class
+               on the CSS they will appear as siblings and not as children of element.
+               See below explanation.
+            */
+        }
+    }
+
+In order to avoid deep nesting and to foster simple element hirerchies, if an element hosts another element, on the CSS the element child won't appear as child but as sibling. That is:
+
+    <div class="block block--big">
+        <div class="block__element-1">
+            <h1 class="block__element-2">Header</h1>
+            <p class="block__element-3">Some text</p>
+        </div>
+        <div class="block__element-4">...</div>
+    </div>
+    
+will have a CSS like below:
+
+    .block {
+        ...
+        @media(...)  }
+        &--big { }
+        &__element-1 {
+            ...
+        }
+        &__element-2 {
+            ...
+        } 
+        &__element-3 {
+            ...
+            &::first-letter { }
+        }
+        ...
+    }
+
+As you can see, on the CSS `element-2` and `element-3` aren't inside `element-1` as it happens on the HTML.
+
+The BEM pattern has proved very efective for this webpage. Only on [some `&:hover` pseudo-classes](https://github.com/AntonioRedondo/antonioredondo.com-v3/blob/master/src/style/profile.scss#L35) it was necessary to add children within children. And still the CSS was quite readable.
+
+Also, CSS properties order is keept among classes. On the [CSS source code](https://github.com/AntonioRedondo/antonioredondo.com-v3/tree/master/src/style) you can see properties are always declared on the following way:
+
+    .class {
+        width:
+        height:
+        margin:
+        padding:
+        display:
+        
+        position:
+        top:
+        left:
+        
+        flex:
+        
+        background:
+        border:
+        
+        color:
+        font-size:
+        font-weight:
+        text-shadow:
+        line-height:
+        
+        animation:
+        
+        transition:
+        /* any property using transition will be declared after transition */
+        opacity:
+        transform:
+    }
 
 I was thinking of adding *CSS modules* support to the project with [`postcss-modules`](https://www.npmjs.com/package/postcss-modules) so that every CSS class would receive its unique hash string added to the name. But due to the fact the project is small and class name collision doesn’t happen makes adding this extra task unnecessary.
 
 
 ## SPA and routing
 
-The site is a SPA. What in a site of the web 1.0 the profile descriptions would be different page loads on this site is just a hide `<section>` which is made visible when the user pushes the profile button. However, the URL bar adds a hash with the profile number: `#profile1`, `#profile2` or `#profile3`. If the page is accessed straight from the URL with hash the page will directly show the corresponding section. Also you can navigate through the different sections going back and forth, sections will be load and unload properly. To implement this behaviour the [`history.pushState()`](https://developer.mozilla.org/en-US/docs/Web/API/History/pushState) API is [used](https://github.com/AntonioRedondo/antonioredondo.com-v3/blob/master/src/js/initMain.js#L117).
+The site is a SPA. What in a web 1.0 site profile descriptions would be different page loads, on this 2.0 site is just a hide `<section>` which is made visible when the user pushes the profile button. However, when the corresponding profile button is pressed the URL is updated with a hash and the profile number selected: `#profile1`, `#profile2` or `#profile3`. If the page is accessed straight from the URL and hash the page will directly show the corresponding section. Also you can navigate through the different sections going back and forth. Sections will load and unload accordingly. To implement this behaviour the [`history.pushState()`](https://developer.mozilla.org/en-US/docs/Web/API/History/pushState) API is [used](https://github.com/AntonioRedondo/antonioredondo.com-v3/blob/master/src/js/initMain.js#L117).
 
 
 ## Speed and size optimisation
