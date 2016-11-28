@@ -117,15 +117,15 @@
 		line-height: 0.7em;
 		letter-spacing: -0.05em;
 		text-shadow: 0.5vw 0.5vw $gray2;
-		
-		& span {
-			display: inline-block;
-			background: #222;
-		}
 			
 		@media (max-width: $breakpointMobile) {
 			margin-bottom: 6vw;
 			font-size: 12vw;
+		}
+		
+		& span {
+			display: inline-block;
+			background: #222;
 		}
 	}
 
@@ -135,13 +135,13 @@
 		margin: 0 0.1vw;
 		transition: filter $time1;
 		
-		&:hover {
-			filter: drop-shadow(0 0 0.8vw $profile1);
-		}
-		
 		@media (max-width: $breakpointMobile) {
 			width: 16vw;
 			margin: 1vw 0.1vw;
+		}
+		
+		&:hover {
+			filter: drop-shadow(0 0 0.8vw $profile1);
 		}
 		
 		&--first {
