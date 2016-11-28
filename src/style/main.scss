@@ -149,6 +149,11 @@
 			transform $time3 ease-out $time4,
 			opacity $time3 ease-out $time4;
 		
+		&--in {
+			opacity: 1;
+			transform: scale(1);
+		}
+		
 		&::before {
 			content: "";
 			
@@ -168,11 +173,6 @@
 				top: calc(50% - 200vw / 2);
 				left: calc(50% - 200vw / 2);
 			}
-		}
-		
-		&--in {
-			opacity: 1;
-			transform: scale(1);
 		}
 	}
 	
