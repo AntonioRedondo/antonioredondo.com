@@ -275,6 +275,10 @@
 			transform: rotate(-6deg) scale(0.7);
 		}
 		
+		&--in {
+			opacity: 0.7;
+		}
+		
 		&::after {
 			content: "";
 			
@@ -289,10 +293,6 @@
 			/* background: url('img/arrow.png') no-repeat center / cover; */
 			background: url('img/logos.png') no-repeat $gray1 0 -128px / 950px auto;
 			transform: rotate(90deg);
-		}
-		
-		&--in {
-			opacity: 0.7;
 		}
 	}
 }
