@@ -41,15 +41,13 @@ The site is ultraresponsive in a very dynamic way. This is thanks to the [`vw`, 
 
 The [project JavaScript](https://github.com/AntonioRedondo/antonioredondo.com-v3/tree/master/src/js) is arranged in several ES5 JavaScript files which are concatenated with Gulp at building time. Slicing the code in different files creates a neater organisation when the JS code reaches several hundred lines.
 
-Since the project isn’t a reusable library, in order to have minimum length names functions haven't been embedded within a namespace object. Instead they have been declared in the global `window` namespace.
+Since the project isn’t a reusable library, in order to have minimum length names functions haven't been embedded within a namespace object. Instead they have been declared in the global `window` namespace. However a set of basic functions like `document.getElementsByClassName()`, functions which check that a CSS property is supported by a browser or functions which manage cookies are grouped on the `o` namespace and written on its own [file](https://github.com/AntonioRedondo/antonioredondo.com-v3/blob/master/src/js/o.js). On this namespace names are considerably sorter. For example `addEventListener()` is shorted to `o.ae()`.
 
 Although ES6 features are handy I decided to used ES5 in order to have a minimum file size. Transpiling generates more code than native ES5. ES6 is used on `gulpfile.js`.
 
 The project doesn’t depend on any front-end framework. Only two JavaScript dependencies are used:
-- [Web Font Loader](https://www.npmjs.com/package/webfontloader): script which notifies once webfonts from Google Fonts have been loaded. Ideal to avoid [FOUCs](https://en.wikipedia.org/wiki/Flash_of_unstyled_content).
+- [Web Font Loader](https://www.npmjs.com/package/webfontloader): script which notifies once fonts from Google Fonts have been loaded. Ideal to avoid [FOUCs](https://en.wikipedia.org/wiki/Flash_of_unstyled_content).
 - [Google Analytics](https://developers.google.com/analytics/devguides/collection/analyticsjs): used to track clicks around elements in the page. Further explained below.
-
-A set of basic functions like `document.getElementsByClassName()`, functions which check that a CSS property is supported by a browser or functions which manage cookies are grouped on the `o` namespace and written on its own [file](https://github.com/AntonioRedondo/antonioredondo.com-v3/blob/master/src/js/o.js). On this namespace names are considerably sorter. For example `addEventListener()` is shorted to `o.ae()`.
 
 
 ## CSS
@@ -206,3 +204,4 @@ All these tracking events are made with the `ga()` function call. For example:
     ga("send", "event", "v3", "Description panel bottom reached", "Profile 1");
 
 You’re more than welcome to use your favourite ad/tracker blocker to avoid the collecting of these user events.
+
