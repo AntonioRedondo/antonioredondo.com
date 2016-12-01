@@ -205,3 +205,31 @@ All these tracking events are made with the `ga()` function call. For example:
 
 You’re more than welcome to use your favourite ad/tracker blocker to avoid the collecting of these user events.
 
+
+## Installing, running and modifiying the site
+
+The built site is already available on the `dist` project folder. So after downloading the project:
+
+    $ git clone https://github.com/AntonioRedondo/antonioredondo.com-v3.git antonioredondo.com-v3
+
+just open `dist/index.htm` with Firefox (a browser which supports the `file:///` standard with [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)). If you're using other browser than Firefox you need to start the Node.js server:
+
+    $ cd pathto/antonioredondo.com-v3
+    $ npm start
+
+And automatically the default system browser will open showing the website.
+
+To build the site after changes on the source code run:
+
+    $ cd pathto/antonioredondo.com-v3
+    $ npm i
+    $ gulp
+
+And the default Gulp task will run. This task lints, builds and deploys the app to the `dist` folder every time there is a change to a source file.
+
+The availabe Gulp tasks are:
+ - `gulp`: default Gulp task. Lints, builds and deploy the app by watching source files. It actually execute the `lint` and `build` below Gulp tasks.
+ - `gulp lint`: lints source files.
+ - `gulp build`: builds and deploys the project onto the `dist` folder.
+ - `gulp min`: builds and deploys the inlined and minimised version of the project onto the `dist` folder. This is what is actually deployed on [antoniordondo.com](http://antonioredondo.com).
+ 
