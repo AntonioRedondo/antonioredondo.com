@@ -14,11 +14,10 @@
 		"webfontloader": "~1.6.26"
 	},
 	"devDependencies": {
-		"gulp": "~3.9.1",
-		"gulp-sourcemaps": "~1.6.0",
-		"gulp-html-replace": "~1.6.1",
 		"del": "~2.2.0",
 		"run-sequence": "~1.2.2",
+		"gulp": "~3.9.1",
+		"gulp-sourcemaps": "~1.6.0",
 		
 		"gulp-jshint": "~2.0.0",
 		"jshint": "~2.9.2",
@@ -27,6 +26,7 @@
 		"gulp-stylelint": "~2.0.2",
 		
 		"gulp-concat": "~2.6.0",
+		"gulp-replace": "~0.5.4",
 		"gulp-postcss": "~6.1.1",
 		"precss": "~1.4.0",
 		"autoprefixer": "~6.3.6",

@@ -69,26 +69,24 @@
 		<meta property="og:site_name" content="Antonio Redondo">
 		<meta property="og:image" content="http://antonioredondo.com/img/preview.jpg">
 		
-
+		
 		<link href="favicon.ico" rel="icon" type="image/x-icon" />
 		<link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
 		<link href="style.css" rel="stylesheet">
 		
-		<!-- build:dev -->
-		<!-- Anything inside build:js will be removed when the min task is run -->
-		<script type="text/javascript" src="http://livejs.com/live.js"></script>
-		<!-- endbuild -->
 		
-		<!-- build:ga -->
 		<!-- https://developers.google.com/analytics/devguides/collection/analyticsjs -->
-		<!-- When the build task is run Google Analytics code is removed -->
 		<script>
 			window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
 			ga("create", "UA-17567733-6", "auto");
 			ga("send", "pageview");
 		</script>
 		<script async src="https://www.google-analytics.com/analytics.js"></script>
-		<!-- endbuild -->
+		
+		<!-- buildDev:start -->
+		<!-- Anything inside build:dev will be removed when the min task is run -->
+		<script type="text/javascript" src="http://livejs.com/live.js"></script>
+		<!-- buildDev:end -->
 		
 	</head>
 

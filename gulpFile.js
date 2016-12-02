@@ -1,10 +1,9 @@
 "use strict";
 
-const gulp = require("gulp");
-const sourcemaps = require("gulp-sourcemaps");
-const htmlReplace = require("gulp-html-replace");
 const del = require("del");
 const runSequence = require("run-sequence");
+const gulp = require("gulp");
+const sourcemaps = require("gulp-sourcemaps");
 
 // Lint
 const jsHint = require("gulp-jshint");
@@ -13,6 +12,7 @@ const cssLint = require("gulp-stylelint");
 
 // Build
 const concat = require("gulp-concat");
+const replace = require("gulp-replace");
 const inline = require("gulp-inline");
 const postCss = require("gulp-postcss");
 const preCss = require("precss");
@@ -42,6 +42,14 @@ gulp.task("build", ["buildJs", "buildHtml", "buildCss"/*, "copyAssets"*/]);
 
 
 
+gulp.task("clean", () => {
+	return del([`${dest}`]);
+});
+
+
+
+
+
 gulp.task("watch", ["lint", "build"], () => {
 	// http://stackoverflow.com/questions/21608480/gulp-js-watch-task-runs-twice-when-saving-files
 	gulp.watch([`gulpFile.js`, `${src}/**`], { awaitWriteFinish: true }, ["lint", "build"]);
@@ -51,15 +59,7 @@ gulp.task("watch", ["lint", "build"], () => {
 
 
 
-gulp.task("clean", () => {
-	return del([`${dest}`]);
-});
-
-
-
-
-
-// Lint
+// ---------- LINT ---------- //
 
 gulp.task("jsHint", () => {
 	return gulp.src(`${src}/js/*.js`)
@@ -103,7 +103,7 @@ gulp.task("cssLint", () => {
 
 
 
-// Build
+// ---------- BUILD ---------- //
 
 gulp.task("buildJs", () => {
 	return gulp.src([`node_modules/webfontloader/webfontloader.js`,
@@ -166,12 +166,12 @@ gulp.task("copyAssets", () => {
 
 
 
-// Minify
+// ---------- MINIFY ---------- //
 
 gulp.task("min", () => {
     runSequence("build", () => {
 		return gulp.src([`${src}/index.htm`])
-			.pipe(htmlReplace({ dev: { src: "" }}, { keepUnassigned: true })) // Removes Dev code on Production
+			.pipe(replace(/(<!-- buildDev:start -->)[\s\S]+(<!-- buildDev:end -->)/, "")) // Removes Dev code on Production
 			.pipe(htmlMin({
 				collapseWhitespace: true,
 				minifyCSS: true,

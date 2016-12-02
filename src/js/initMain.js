@@ -139,15 +139,15 @@ function initMain() {
 		previousState = "moreInfoPanel";
 		
 		moreInfoPanel.style.visibility = "visible";
-		/* jshint ignore:start */
+		/* jshint -W030 */
 		moreInfoPanel.offsetHeight; // This causes reflow before adding next class
-		/* jshint ignore:end */
+		/* jshint +W030 */
 		moreInfoPanel.classList.add("more-info-panel--in");
 		
 		moreInfoImage.style.visibility = "visible";
-		/* jshint ignore:start */
+		/* jshint -W030 */
 		moreInfoImage.offsetHeight;
-		/* jshint ignore:end */
+		/* jshint +W030 */
 		moreInfoImage.classList.add("more-info-image--in");
 		
 		o.gc("darkener").classList.add("darkener--in2");

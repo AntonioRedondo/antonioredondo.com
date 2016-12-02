@@ -52,7 +52,7 @@ The project doesn’t depend on any front-end framework. Only two JavaScript dep
 
 ## CSS
 
-To generate advanced CSS [PostCSS](https://www.npmjs.com/package/postcss) is used. Unlike SASS PostCSS allows simple feature extensibility with the help of plug-ins. Since PostCSS isn't monolithic new features can be added with plug-ins without waiting for a new PostCSS release. The deal-breaker plug-in which make me switch from SASS to PostCSS was [Autoprefixer](https://www.npmjs.com/package/autoprefixer), tool which takes on adding vendor prefixes to css properties for a given browser and version so that you don't have to worry about.
+To generate advanced CSS [PostCSS](https://www.npmjs.com/package/postcss) is used. Unlike SASS PostCSS allows simple feature extensibility with the help of plug-ins. Since PostCSS isn't monolithic new features can be added with plug-ins without waiting for a new PostCSS release. The deal-breaker plug-in which make me switch from SASS to PostCSS was [Autoprefixer](https://www.npmjs.com/package/autoprefixer), tool which takes on adding vendor prefixes to CSS properties for a given browser and version so that you don't have to worry about.
 
 [CSS](https://github.com/AntonioRedondo/antonioredondo.com-v3/tree/master/src/style) has been written using the [BEM pattern](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax). Together with the PostCSS nesting capabilities and the [`&` parent selector](http://sass-lang.com/documentation/file.SASS_REFERENCE.html#parent-script) BEM allows very neat and organised CSS with a shallow nesting hierarchy.
 
@@ -80,7 +80,7 @@ BEM has been implemented in the following way:
         }
     }
 
-In order to avoid deep nesting and to foster simple element hirerchies, if an element hosts another element, on the CSS the element child won't appear as child but as sibling. That is:
+In order to avoid deep nesting and to foster simple element hierarchies, if an element hosts another element, on the CSS the element child won't appear as child but as sibling. That is:
 
     <div class="block block--big">
         <div class="block__element-1">
@@ -107,9 +107,9 @@ will have a CSS like below:
 
 As you can see, on the CSS `element-2` and `element-3` aren't inside `element-1` as it happens on the HTML.
 
-The BEM pattern has proved very efective for this webpage. Only on [some `&:hover` pseudo-classes](https://github.com/AntonioRedondo/antonioredondo.com-v3/blob/master/src/style/profile.scss#L35) it was necessary to add children within children. Also, sparingly you will see that some elements where selected directly instead of adding a class: `& span`. This was so because adding a class was adding too much complexity to the existing BEM structure for the number of CSS properties that were used.
+The BEM pattern has proved very effective for this webpage. Only on [some `&:hover` pseudo-classes](https://github.com/AntonioRedondo/antonioredondo.com-v3/blob/master/src/style/profile.scss#L35) it was necessary to add children within children. Also, sparingly you will see that some elements where selected directly instead of adding a class: `& span`. This was so because adding a class was adding too much complexity to the existing BEM structure for the number of CSS properties that were used.
 
-Also, CSS properties order is keept among classes. On the [CSS source code](https://github.com/AntonioRedondo/antonioredondo.com-v3/tree/master/src/style) you can see properties are always declared on the following way:
+Also, CSS properties order is kept among classes. On the [CSS source code](https://github.com/AntonioRedondo/antonioredondo.com-v3/tree/master/src/style) you can see properties are always declared on the following way:
 
     .class {
         width:
@@ -163,7 +163,7 @@ Images have been also merged together to avoid more HTTP calls. Then they are us
 
 <img align="center" src="https://github.com/AntonioRedondo/antonioredondo.com-v3/raw/master/src/img/logos.png" width="600px" height="157px" />
 
-[SVG images](https://github.com/AntonioRedondo/antonioredondo.com-v3/tree/master/src/img) are used all around the page. They take little space, scale up perfectly on high density screens and can easily be inlined and compressed. The big _“Who you are”_, _“The knowledge I can provide you”_ and _“What you get”_ texts and rest of SVGs around the page were created or edited with [Inkscape](http://www.inkscape.org). Inkscape allows exporting vectorial images to SVG files in a lightweight and minimal XML format.
+[SVG images](https://github.com/AntonioRedondo/antonioredondo.com-v3/tree/master/src/img) are used all around the page. They take little space, scale up perfectly on high density screens and can easily be inlined and compressed. The big _“Who you are”_, _“The knowledge I can provide you”_ and _“What you get”_ texts and rest of SVGs around the page were created or edited with [Inkscape](http://www.inkscape.org). Inkscape allows exporting vector images to SVG files in a lightweight and minimal XML format.
 
 Many of the SVG images are black silhouettes that are later coloured with the CSS `fill` property. This allows reuse of images and customisation from CSS. On this [official GitHub blog post](https://github.com/blog/2112-delivering-octicons-with-svg) this technique is better explained.
 
@@ -206,7 +206,7 @@ All these tracking events are made with the `ga()` function call. For example:
 You’re more than welcome to use your favourite ad/tracker blocker to avoid the collecting of these user events.
 
 
-## Installing, running and modifiying the site
+## Installing, running and modifying the site locally
 
 The built site is already available on the `dist` project folder. So after downloading the project:
 
@@ -227,9 +227,9 @@ To build the site after changes on the source code run:
 
 And the default Gulp task will run. This task lints, builds and deploys the app to the `dist` folder every time there is a change to a source file.
 
-The availabe Gulp tasks are:
+The available Gulp tasks are:
  - `gulp`: default Gulp task. Lints, builds and deploy the app by watching source files. It actually execute the `lint` and `build` below Gulp tasks.
  - `gulp lint`: lints source files.
  - `gulp build`: builds and deploys the project onto the `dist` folder.
- - `gulp min`: builds and deploys the inlined and minimised version of the project onto the `dist` folder. This is what is actually deployed on [antoniordondo.com](http://antonioredondo.com).
+ - `gulp min`: builds and deploys the inlined and minimised version of the project onto the `dist` folder. This is what is actually deployed on [antonioredondo.com](http://antonioredondo.com).
  
