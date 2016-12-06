@@ -21,7 +21,6 @@ This is the repository of my portfolio website currently [online](http://antonio
 1. [SPA and routing](#spa-and-routing)
 1. [Speed and size optimisation](#speed-and-size-optimisation)
 1. [Google Analytics](#google-analytics)
-1. [Speed and size optimisation](#speed-and-size-optimisation)
 1. [Installing, running and modifying the site locally](#installing-running-and-modifying-the-site-locally)
 
 
