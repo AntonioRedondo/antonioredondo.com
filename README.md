@@ -13,6 +13,20 @@ This is the repository of my portfolio website currently [online](http://antonio
 <img align="center" src="http://i.imgur.com/Xcoy2Nm.jpg" width="292px" />
 <img align="center" src="http://i.imgur.com/t7Dvign.jpg" width="292px" />
 
+## Table of Contents
+
+1. [Introduction](#introduction)
+1. [JavaScript](#javascript)
+1. [CSS](#css)
+1. [SPA and routing](#spa-and-routing)
+1. [Speed and size optimisation](#speed-and-size-optimisation)
+1. [Google Analytics](#google-analytics)
+1. [Speed and size optimisation](#speed-and-size-optimisation)
+1. [Installing, running and modifying the site locally](#installing-running-and-modifying-the-site-locally)
+
+
+## Introduction
+
 Here you can check all the source code involved in the creation of the site explained step by step.
 
 The site is implemented as a [Single Page Application](https://en.wikipedia.org/wiki/Single-page_application). It's a web app focused on visual attractiveness and navigation effectiveness. It doesn't retrieve information from databases, nor it uses reusable widgets or forms. Web frameworks like Angular or React are hence not the best approach for the implementation. Instead vanilla ES5 JavaScript with no frameworks is used. jQuery isn't needed either.
