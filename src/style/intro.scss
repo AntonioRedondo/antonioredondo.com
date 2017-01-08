@@ -560,10 +560,6 @@
 	
 	transition: all ease-out 0.2s;
 	
-	&:hover {
-		box-shadow: 1px 3px 3px $black020;
-	}
-	
 	@media (max-width: $breakpointBig) {
 		font-size: 0.7vw;
 	}
@@ -577,6 +573,10 @@
 		font-size: 4vw;
 		bottom: auto;
 		top: 2.5vh;
+	}
+	
+	&:hover {
+		box-shadow: 1px 3px 3px $black020;
 	}
 	
 	&--in {
