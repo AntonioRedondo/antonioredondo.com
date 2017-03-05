@@ -25,15 +25,15 @@ function initMain() {
 	
 	
 	
-	// Adds necessary logic to show the Description panel for some profile	
-	function showDescriptionPanel(newProfile) {
+	// Adds necessary logic to show the Description panel for a profile	
+	function showDescriptionPanel(nextProfile) {
 		previousState = "descriptionPanel";
-		descriptionPanel.classList.add("description-panel--in", "s" + newProfile);
+		descriptionPanel.classList.add("description-panel--in", "s" + nextProfile);
 		
-		var nProfile = o.gc("profile--" + newProfile);
+		var nProfile = o.gc("profile--" + nextProfile);
 		nProfile.classList.add("profile--z-index");
 		nProfile.classList.add("profile--selected");
-		switch (newProfile) {
+		switch (nextProfile) {
 			case 1: nProfile.classList.add("profile--selected-left"); break;
 			case 2: nProfile.classList.add("profile--selected-center"); break;
 			case 3: nProfile.classList.add("profile--selected-right");
@@ -45,7 +45,7 @@ function initMain() {
 		o.gc("darkener").classList.add("darkener--in");
 
 		for (var n=1; n<=3; ++n)
-			if (newProfile !== n) {
+			if (nextProfile !== n) {
 				o.gc("profile--" + n).classList.add("profile--not-selected");
 				switch (n) {
 					case 1: o.gc("profile--" + n).classList.add("profile--selected-left"); break;
@@ -54,20 +54,21 @@ function initMain() {
 				}
 			}
 		
-		o.gca("desc-profile--" + newProfile).forEach(function(item) {
+		o.gca("desc-profile--" + nextProfile).forEach(function(item) {
 			item.style.display = "inline-block";
 		});
 				
 		window.clearTimeout(toRemoveClasses);
 		o.to(function() {
 			nProfile.children[4].classList.add("profile__back-button--in");
-			o.gc("profile-selected-bg--" + newProfile).classList.add("profile-selected-bg--in");
-			o.qs(".profile-selected-place--" + newProfile + " .profile-selected-place__title").classList.add("profile-selected-place__title--in");
+			o.gc("profile-selected-bg--" + nextProfile).classList.add("profile-selected-bg--in");
+			o.qs(".profile-selected-place--" + nextProfile + " .profile-selected-place__title").classList.add("profile-selected-place__title--in");
 		}, animDuration);
 		
 		o.gc("description-panel__overflow-hide").scrollTop = 0;
-		profileSelected = newProfile;
-		ga("send", "event", "v3", "Profile description panel open", "Profile " + newProfile);
+		profileSelected = nextProfile;
+		
+		ga("send", "event", "v3", "Profile description panel open", "Profile " + nextProfile);
 	}
 	
 	function hideDescriptionPanel() {
@@ -114,10 +115,10 @@ function initMain() {
 		toRemoveClasses = o.to(removeClasses, animDuration);
 	}
 	
-	function showOrhideDescriptionPanel(newProfile) {
+	function showOrhideDescriptionPanel(nextProfile) {
 		if (!descriptionPanel.classList.contains("description-panel--in")) {
-			window.history.pushState({newProfile: newProfile}, "Profile " + newProfile, "#profile" + newProfile);
-			showDescriptionPanel(newProfile);
+			window.history.pushState({nextProfile: nextProfile}, "Profile " + nextProfile, "#profile" + nextProfile);
+			showDescriptionPanel(nextProfile);
 		} else {
 			window.history.pushState(undefined, "Antonio Redondo", window.location.pathname);
 			hideDescriptionPanel();
@@ -188,7 +189,7 @@ function initMain() {
 	function showIntroAgain(gaLabel) {
 		o.removeCookie("firstTime");
 		ga("send", "event", "v3", "Show intro again", gaLabel);
-		location.reload();
+		window.location.reload();
 	}
 	o.gc("footer__show-intro-again").addEventListener("click", function() { showIntroAgain("Footer button"); });
 	o.gc("footer-m__show-intro-again").addEventListener("click", function() { showIntroAgain("Footer mobile button"); });
@@ -204,8 +205,8 @@ function initMain() {
 	
 	o.ae("popstate", function(e) {
 		if (e.state) {
-			if (e.state.newProfile)
-				showDescriptionPanel(e.state.newProfile);
+			if (e.state.nextProfile)
+				showDescriptionPanel(e.state.nextProfile);
 			else if (e.state.moreInfo)
 				moreInfoEventListener("Push state");
 		} else {
@@ -274,8 +275,8 @@ function initMain() {
 		
 		// based on http://en.wikipedia.org/wiki/Smoothstep
 		var smoothStep = function(start, end, point) {
-			if(point <= start) { return 0; }
-			if(point >= end) { return 1; }
+			if (point <= start) { return 0; }
+			if (point >= end) { return 1; }
 			var x = (point - start) / (end - start); // interpolation
 			return x*x*(3 - 2*x);
 		};
@@ -287,7 +288,7 @@ function initMain() {
 			
 			// This is like a think function from a game loop
 			var scrollFrame = function() {
-				if(element.scrollTop != previousTop) {
+				if (element.scrollTop != previousTop) {
 					reject("interrupted");
 					return;
 				}
@@ -299,7 +300,7 @@ function initMain() {
 				element.scrollTop = frameTop;
 				
 				// check if we"re done!
-				if(now >= endTime) {
+				if (now >= endTime) {
 					resolve();
 					return;
 				}
@@ -307,18 +308,18 @@ function initMain() {
 				// If we were supposed to scroll but didn"t, then we
 				// probably hit the limit, so consider it done; not
 				// interrupted.
-				if(element.scrollTop === previousTop && element.scrollTop !== frameTop) {
+				if (element.scrollTop === previousTop && element.scrollTop !== frameTop) {
 					resolve();
 					return;
 				}
 				previousTop = element.scrollTop;
 				
 				// schedule next frame for execution
-				setTimeout(scrollFrame, 0);
+				o.to(scrollFrame, 0);
 			};
 			
 			// boostrap the animation process
-			setTimeout(scrollFrame, 0);
+			o.to(scrollFrame, 0);
 		});
 	}
 	
@@ -335,15 +336,15 @@ function initMain() {
 	if (window.location.hash && o.getCookie("firstTime") !== null) {
 		switch (window.location.hash) {
 			case "#profile1":
-				window.history.pushState({ newProfile: 1 }, "Profile 1", "#profile1");
+				window.history.pushState({ nextProfile: 1 }, "Profile 1", "#profile1");
 				showDescriptionPanel(1);
 				break;
 			case "#profile2":
-				window.history.pushState({ newProfile: 2 }, "Profile 2", "#profile2");
+				window.history.pushState({ nextProfile: 2 }, "Profile 2", "#profile2");
 				showDescriptionPanel(2);
 				break;
 			case "#profile3":
-				window.history.pushState({ newProfile: 3 }, "Profile 3", "#profile3");
+				window.history.pushState({ nextProfile: 3 }, "Profile 3", "#profile3");
 				showDescriptionPanel(3);
 				break;
 			case "#moreInfo":
