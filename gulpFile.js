@@ -28,7 +28,7 @@ const cssMin = require("gulp-clean-css");
 
 
 const src = "src";
-const dest = "dist";
+const dest = "docs";
 
 
 
@@ -36,7 +36,6 @@ const dest = "dist";
 gulp.task("default", ["watch"]);
 gulp.task("lint", ["jsHint", "htmlLint", "cssLint"]);
 gulp.task("build", ["buildJs", "buildHtml", "buildCss"/*, "copyAssets"*/]);
-// gulp.task("min", ["build", "allMin"]); // This needs to be synchronous. Waiting for Gulp 4. Using "run-sequence" module in the meanwhile. Check "min" task at the bottom.
 
 
 
@@ -51,8 +50,7 @@ gulp.task("clean", () => {
 
 
 gulp.task("watch", ["lint", "build"], () => {
-	// http://stackoverflow.com/questions/21608480/gulp-js-watch-task-runs-twice-when-saving-files
-	gulp.watch([`gulpFile.js`, `${src}/**`], { awaitWriteFinish: true }, ["lint", "build"]);
+	gulp.watch([`gulpFile.js`, `${src}/**`], ["lint", "build"]);
 });
 
 
@@ -62,7 +60,7 @@ gulp.task("watch", ["lint", "build"], () => {
 // ---------- LINT ---------- //
 
 gulp.task("jsHint", () => {
-	return gulp.src(`${src}/js/*.js`)
+	return gulp.src([`${src}/js/*.js`])
 		.pipe(jsHint({
 			lookup: false,
 
@@ -113,24 +111,14 @@ gulp.task("buildJs", () => {
 			`${src}/js/initMain.js`,
 			`${src}/js/index.js`,
 			`!${src}/js/*.spec.js`])
-		// Remember to comment out generation of sourcemaps when running "allMin"
 		.pipe(sourcemaps.init())
 		.pipe(concat("app.js"))
 		.pipe(sourcemaps.write())
-		.pipe(gulp.dest(`${src}`)) // Because 'base' doesn't work for 'inline' module. This file is ignored in .gitignore
 		.pipe(gulp.dest(`${dest}`));
 });
 
 gulp.task("buildHtml", () => {
 	return gulp.src([`${src}/index.htm`])
-		// .pipe(htmlReplace({ ga: { src: "" }}, { keepUnassigned: true, keepBlockTags: true })) // Removes Google Analytics code on Dev
-		.pipe(inline({
-			base: `${dest}`, // Doesn't work. Value ignored
-			// js: () => jsMin({mangle: true}),
-			// css: cssMin,
-			disabledTypes: ["img", "js", "css"/*, "svg"*/],
-			// ignore: [""]
-		}))
 		.pipe(gulp.dest(`${dest}`));
 });
 
@@ -144,7 +132,6 @@ gulp.task("buildCss", function () {
 			assets({ loadPaths: [`${src}`] })
 		]))
 		.pipe(sourcemaps.write())
-		.pipe(gulp.dest(`${src}`)) // Because 'base' doesn't work for 'inline' module. This file is ignored in .gitignore
 		.pipe(gulp.dest(`${dest}`));
 });
 
@@ -170,7 +157,7 @@ gulp.task("copyAssets", () => {
 
 gulp.task("min", () => {
     runSequence("build", () => {
-		return gulp.src([`${src}/index.htm`])
+		return gulp.src([`${dest}/index.htm`])
 			.pipe(replace(/(<!-- buildDev:start -->)[\s\S]+(<!-- buildDev:end -->)/, "")) // Removes Dev code on Production
 			.pipe(htmlMin({
 				collapseWhitespace: true,
@@ -180,42 +167,17 @@ gulp.task("min", () => {
 				removeRedundantAttributes: true
 			}))
 			.pipe(inline({
-				base: `${dest}`, // Doesn't work. Value ignored
+				// base: `${dest}`,
 				js: () => jsMin({mangle: true}),
 				css: cssMin,
 				svg: () => htmlMin({collapseWhitespace: true,
-						minifyCSS: true,
-						removeAttributeQuotes: true,
-						removeComments: true,
-						removeRedundantAttributes: true}),
-				disabledTypes: ["img"/*, "svg", "js", "css"*/],
-				// ignore: [""]
+					minifyCSS: true,
+					removeAttributeQuotes: true,
+					removeComments: true,
+					removeRedundantAttributes: true}),
+					disabledTypes: ["img"/*, "svg", "js", "css"*/],
+					// ignore: [""]
 			}))
 			.pipe(gulp.dest(`${dest}`));
     });
 });
-
-
-
-
-
-// Minimising tasks when JavaScript and CSS isn't inlined. Currently not in use.
-
-// gulp.task("jsMin", () => {
-// 	return gulp.src([`${src}/js/*.js`, `!${src}/js/*.spec.js`])
-// 		.pipe(jsMin())
-// 		.pipe(concat("app.js"))
-// 		.pipe(gulp.dest(`${dest}`));
-// });
-
-// gulp.task("cssMin", () => {
-// 	return gulp.src([`${src}/style/*.scss`])
-// 		.pipe(postCss([
-// 			preCss({extension: "scss"}),
-// 			autoprefixer({browsers: ["safari 8", "ie 10"]}),
-// 			inlineOnCss({path: `${src}`})
-// 		]))
-// 		.pipe(concat("style.css"))
-// 		.pipe(cssMin())
-// 		.pipe(gulp.dest(`${dest}`));
-// });
