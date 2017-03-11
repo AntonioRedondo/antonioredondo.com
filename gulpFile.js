@@ -92,9 +92,10 @@ gulp.task("htmlLint", () => {
 
 gulp.task("cssLint", () => {
 	return gulp.src([`${src}/style/*.scss`])
-		.pipe(cssLint( // http://stylelint.io/user-guide/rules
-			{ reporters: [ {formatter: "string", console: true} ] }
-		));
+		.pipe(cssLint({ // http://stylelint.io/user-guide/rules
+				failAfterError: false,
+				reporters: [ {formatter: "string", console: true} ]
+		}));
 });
 
 
