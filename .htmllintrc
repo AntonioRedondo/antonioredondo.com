@@ -7,5 +7,6 @@
 	"//": "img-req-alt ignores allownull. This is because changes to understand this value haven't be released on the last version of htmllint on NPM as of 2016 07 13", 
 	"img-req-alt": false, 
 	"img-req-src": true,
+	"line-end-style": "crlf",
 	"tag-bans": ["b"]
 }
