@@ -50,7 +50,7 @@ gulp.task("clean", () => {
 
 
 gulp.task("watch", ["lint", "build"], () => {
-	gulp.watch([`gulpFile.js`, `${src}/**`], ["lint", "build"]);
+	gulp.watch([`${src}/**`], ["lint", "build"]);
 });
 
 
@@ -119,6 +119,9 @@ gulp.task("buildJs", () => {
 
 gulp.task("buildHtml", () => {
 	return gulp.src([`${src}/index.htm`])
+		.pipe(inline({
+			disabledTypes: ["img", "js", "css"/*, "svg"*/]
+		}))
 		.pipe(gulp.dest(`${dest}`));
 });
 
@@ -156,9 +159,15 @@ gulp.task("copyAssets", () => {
 // ---------- MINIFY ---------- //
 
 gulp.task("min", () => {
-    runSequence("build", () => {
+	runSequence("build", () => {
 		return gulp.src([`${dest}/index.htm`])
 			.pipe(replace(/(<!-- buildDev:start -->)[\s\S]+(<!-- buildDev:end -->)/, "")) // Removes Dev code on Production
+			.pipe(inline({
+				// base: `${dest}`,
+				// ignore: [""],
+				disabledTypes: ["img"/*, "svg", "js", "css"*/],
+				js: () => jsMin({mangle: true})
+			}))
 			.pipe(htmlMin({
 				collapseWhitespace: true,
 				minifyCSS: true,
@@ -166,18 +175,6 @@ gulp.task("min", () => {
 				removeComments: true,
 				removeRedundantAttributes: true
 			}))
-			.pipe(inline({
-				// base: `${dest}`,
-				js: () => jsMin({mangle: true}),
-				css: cssMin,
-				svg: () => htmlMin({collapseWhitespace: true,
-					minifyCSS: true,
-					removeAttributeQuotes: true,
-					removeComments: true,
-					removeRedundantAttributes: true}),
-					disabledTypes: ["img"/*, "svg", "js", "css"*/],
-					// ignore: [""]
-			}))
 			.pipe(gulp.dest(`${dest}`));
-    });
+		});
 });
