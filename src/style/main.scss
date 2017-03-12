@@ -28,7 +28,7 @@
 	transition: all $time3 3s;
 	
 	&--in {
-		opacity: 0.8;
+		opacity: 0.7;
 	}
 }
 
@@ -281,29 +281,29 @@
 
 
 
+
 .footer {
-	width: 100%;
-	z-index: 3;
+	z-index: 4;
 	
 	position: absolute;
-	bottom: 10px;
-	left: 15px;
+	bottom: 0;
 	
 	opacity: 0;
 	
-	font-size: 0.6vw;
-	font-weight: bold;
-	
-	transform: translate3d(15px, 0, 0);
+	transform-origin: left bottom;
 	
 	transition: all $time3 ease-out $time5;
 	
 	@media (max-width: $breakpointBig) {
-		font-size: 0.7vw;
+		transform: scale(0.85);
 	}
 	
 	@media (max-width: $breakpointMedium) {
-		font-size: 0.8vw;
+		transform: scale(0.7);
+	}
+	
+	@media (max-width: $breakpointSmall) {
+		transform: scale(0.6);
 	}
 	
 	@media (max-width: $breakpointMobile) {
@@ -312,37 +312,104 @@
 	
 	&--in {
 		opacity: 1;
-		transform: translate3d(0, 0, 0);
 	}
 	
-	&--no-delay {
-		transition-duration: $time2;
-		transition-delay: 0s;
+	&__text {
+		position: absolute;
+		bottom: 0;
+		
+		pointer-events: none;
 	}
 	
-	&__more-info, &__show-intro-again {
-		margin-left: 0.5vw;
-		padding: 4px;
+	&__copyright, &__more-info, &__show-intro-again {
+		margin: 0;
+		padding: 11px;
 		
-		background: $gray5;
-		border-radius: 4px;
-		box-shadow: 1px 3px 3px $black040;
-		cursor: pointer;
+		display: inline-block;
+		position: absolute;
+		bottom: 0;
+		left: 0;
 		
-		color: $whiteD;
 		font-size: 0.8em;
 		font-weight: bold;
 		text-transform: uppercase;
+		white-space: nowrap;
 		
+		cursor: pointer;
 		transition: all $time1;
-		
-		&:hover {
-			box-shadow: 0 0 15px color($whiteE a(50%));
-		}
+	}
+	
+	&__copyright {
+		width: 50px;
+		margin-left: 5px;
 	}
 	
 	&__more-info {
-		background-color: $profile2;
+		width: 50px;
+		left: 215px;
+	}
+	
+	&__show-intro-again {
+		width: 50px;
+		left: 325px;
+	}
+	
+	&__bgs {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+	}
+	
+	&__bg1, &__bg2, &__bg3 {
+		height: 60px;
+		transform: skew(-6deg) translateY(20px);
+		
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		
+		transition: $time1 height;
+		
+		&:hover {
+			height: 70px;
+			cursor: pointer;
+		}
+	}
+	
+	&__bg1 {
+		width: 210px;
+		pointer-events: none;
+		background: $gray1;
+	}
+	
+	&__bg2 {
+		width: 110px;
+		left: 210px;
+		background-image: linear-gradient(30deg, black -20%, $profile2 70%);
+	}
+	
+	&__bg3 {
+		width: 165px;
+		left: 320px;
+		background-image: linear-gradient(30deg, black -20%, $gray5 70%);
+	}
+	
+	&__contact-icons {
+		position: absolute;
+		bottom: 0;
+		left: 500px;
+		white-space: nowrap;
+	}
+
+	&__contact-icon {
+		width: 30px;
+		height: 100%;
+		margin: 2px 1px;
+		transition: filter $time1;
+		
+		&:hover {
+			filter: drop-shadow(0 0 0.6vw $profile1);
+		}
 	}
 }
 

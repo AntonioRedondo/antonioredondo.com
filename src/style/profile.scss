@@ -13,9 +13,6 @@
 	
 	position: absolute;
 	
-	border: 2px solid $whiteD;
-	/* border: 2px solid $whiteD; */
-	
 	opacity: 0;
 
 	transition:
@@ -78,7 +75,7 @@
 		}
 
 		& .profile__bg {
-			background-image: linear-gradient(30deg, transparent 20%, $profile1 50%);
+			background-image: linear-gradient(30deg, color($profile1 a(20%)) 25%, $profile1 50%);
 		}
 	}
 	
@@ -91,7 +88,7 @@
 		}
 
 		& .profile__bg {
-			background-image: linear-gradient(30deg, transparent 20%, $profile2 50%);
+			background-image: linear-gradient(30deg, color($profile2 a(20%)) 25%, $profile2 50%);
 		}
 	}
 	

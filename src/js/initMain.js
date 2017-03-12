@@ -172,7 +172,7 @@ function initMain() {
 		moreInfoClose(gaLabel);
 	}
 	
-	o.gc("footer__more-info").addEventListener("click", function() {
+	o.gc("footer__bg2").addEventListener("click", function() {
 		window.history.pushState({moreInfo: true}, "More Info", "#moreInfo");
 		moreInfoEventListener("Footer button");
 	});
@@ -191,7 +191,7 @@ function initMain() {
 		ga("send", "event", "v3", "Show intro again", gaLabel);
 		window.location.reload();
 	}
-	o.gc("footer__show-intro-again").addEventListener("click", function() { showIntroAgain("Footer button"); });
+	o.gc("footer__bg3").addEventListener("click", function() { showIntroAgain("Footer button"); });
 	o.gc("footer-m__show-intro-again").addEventListener("click", function() { showIntroAgain("Footer mobile button"); });
 	
 	
