@@ -2,7 +2,7 @@ dev
 node_modules
 npm-debug.log
 build
-other
+assets
 src/style.css
 src/app.js
 .idea
