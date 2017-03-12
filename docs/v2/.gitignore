@@ -1,0 +1,8 @@
+.idea
+assets
+build
+dev
+node_modules
+npm-debug.log
+other
+src/style/_atoms.scss

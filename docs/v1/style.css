@@ -1,0 +1,123 @@
+ html {
+	margin: 0;
+	padding: 0;
+	background: url(img/bg.png) #2A2A2A;
+	background-attachment: fixed;
+	font-family: "Museo300-Regular", sans-serif;
+	color: white;
+	box-model: border-box;
+}
+body {
+	margin: 0;
+	padding: 0;
+}
+p {
+	font-size: 1.2em;
+	font-family: "MuseoSans300", sans-serif;
+	color: whitesmoke;
+	text-shadow: 2px 2px 8px gray;
+}
+img {
+	border: 0;
+}
+a {
+	color: rgba(117, 240, 240, 1);
+	text-decoration: none;
+}
+a:hover {
+	color: rgba(117, 240, 240, 1);
+	text-decoration: underline;
+}
+.face {
+	display: block;
+	width: 200px;
+	height: 200px;
+	margin: 80px auto 3em auto;
+	border-radius: 100%;
+	box-shadow: 0em 0em 2em rgba(128, 255, 255, 0.8);
+	border: 8px solid;
+}
+.container {
+	padding: 75px;
+	box-model: border-box;
+	overflow: hidden;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.5)
+}
+.central {
+	max-width: 940px;
+	margin: 0 auto;
+	position: relative
+}
+.centralTextSubtitle {
+	font-size: 2em;
+	margin:0;
+	color: dimgray;
+}
+.googlePlayBadge {
+	display: block;
+	margin: 0;
+	width: 260px;
+	box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+	border-radius: 20px;
+	border: 3px solid #FFF;
+}
+.icon {
+	width: 96px;
+	margin-right: 30px;
+	vertical-align: top;
+	margin-top: -10px;
+	margin-bottom: 30px;
+}
+.wrapper {
+	display:table;
+}
+.cell {
+	display:table-cell;
+	vertical-align:middle;
+}
+#nav {
+	width: 940px;
+	margin: auto 0;
+}
+#nav ul, #nav li {
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+#nav li {
+	display: inline-block;
+	margin: 10px;
+	padding: 20px;
+	background-color: white;
+	text-transform: uppercase;
+}
+#nav li #nav1 {
+	background-color: red;
+}
+#nav li #nav2 {
+	background-color: red;
+}
+#nav li #nav3 {
+	background-color: red;
+}
+#nav li #nav4 {
+	background-color: red;
+}
+#nav li #nav5 {
+	background-color: red;
+}
+@font-face {
+	font-family: "Museo300-Regular";
+	src: url('Museo300-Regular.eot');
+	src: local("?"), url("fonts/Museo300-Regular.woff") format("woff"), url("fonts/Museo300-Regular.ttf") format("truetype"), url("fonts/Museo300-Regular.svg") format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: "MuseoSans300";
+	src: url('MuseoSans-300.eot');
+	src: local("?"), url("fonts/MuseoSans-300.woff") format("woff"), url("fonts/MuseoSans-300.ttf") format("truetype"), url("fonts/MuseoSans-300.svg") format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
