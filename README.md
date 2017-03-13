@@ -1,4 +1,4 @@
-# antonioredondo.com v3
+# antonioredondo.com
 
 
 This is the repository of my portfolio website currently [online](http://antonioredondo.com).
