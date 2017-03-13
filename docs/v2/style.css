@@ -646,10 +646,10 @@ i {
 	background: no-repeat scroll left top / cover #266c6a;
 }
 .mainHeader#headerProjects {
-	background: url('http://i.imgur.com/PoMe36y.jpg') no-repeat scroll left top / cover #266c6a;
+	background: url('img/hprojects.jpg') no-repeat scroll left top / cover #266c6a;
 }
 .mainHeader#headerContact {
-	background: url('http://i.imgur.com/wjh2LC5.jpg') no-repeat scroll left top / cover #266c6a;
+	background: url('img/hcontact.jpg') no-repeat scroll left top / cover #266c6a;
 }
 @media (max-width: 1950px) {
 	.mainHeader {
@@ -695,13 +695,13 @@ i {
 		text-shadow: 0 0 15px gray;
 	}
 	.mainHeader#headerHola {
-		background: url('http://i.imgur.com/kifNNVC.jpg') no-repeat scroll top / cover #009688;
+		background: url('img/hholam.jpg') no-repeat scroll top / cover #009688;
 	}
 	.mainHeader#headerProjects {
-		background: url('http://i.imgur.com/DO3TnxH.jpg') no-repeat scroll top / cover #904e5a;
+		background: url('img/hprojectsm.jpg') no-repeat scroll top / cover #904e5a;
 	}
 	.mainHeader#headerContact {
-		background: url('http://i.imgur.com/VczRZkY.jpg') no-repeat scroll top / cover #f57c00;
+		background: url('img/hcontactm.jpg') no-repeat scroll top / cover #f57c00;
 	}
 	.mainHeader div {
 		padding: 0 40px 40px;
@@ -941,7 +941,7 @@ i {
 	bottom: 270px;
 	z-index: 3;
 	box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.4);
-	background: url('http://i.imgur.com/1WtuQ7v.png') no-repeat center / contain black;
+	background: url('img/googlePlayBadge.png') no-repeat center / contain black;
 	border-radius: 20px;
 	border: 3px solid #FFF;
 	
@@ -962,7 +962,7 @@ i {
 	bottom: 150px;
 	z-index: 3;
 	box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.4);
-	background: url('http://i.imgur.com/1BY2trC.png') no-repeat scroll 0% 0% / cover black;
+	background: url('img/gitHubBadge.png') no-repeat scroll 0% 0% / cover black;
 	border: 3px solid #FFF;
 	border-radius: 20px;
 }
