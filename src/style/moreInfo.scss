@@ -52,7 +52,7 @@
 	
 	&__content {
 		width: 75%;
-		height: 98%;
+		height: 100%;
 		
 		
 		position: absolute;
@@ -74,12 +74,12 @@
 	}
 	
 	&__scroll {
-		padding: 30px 10%;
 		overflow-y: auto;
 	}
 	
 	&__text {
 		margin: 0.7vw 0;
+		padding: 0 10%;
 	
 		font-size: 1vw;
 		font-family: 'Trirong', sans-serif;
@@ -107,8 +107,9 @@
 		}
 	}
 	
-	&__text-hola {
+	&__text-title {
 		margin-bottom: 2vw;
+		padding: 0 10%;
 		
 		font-size: 5vw;
 		font-family: 'Open Sans', sans-serif;
@@ -119,8 +120,15 @@
 		text-shadow: 0.5vw 0.5vw $gray2;
 			
 		@media (max-width: $breakpointMobile) {
-			margin-bottom: 6vw;
-			font-size: 12vw;
+			display: none;
+		}
+		
+		&--mobile {
+			display: block;
+			position: absolute;
+			bottom: 0;
+			margin-bottom: 8vw;
+			font-size: 14vw;
 		}
 		
 		& span {
@@ -137,7 +145,7 @@
 		
 		@media (max-width: $breakpointMobile) {
 			width: 16vw;
-			margin: 1vw 0.1vw;
+			margin: 1vw 0.1vw 5vw;
 		}
 		
 		&:hover {
@@ -150,6 +158,20 @@
 			@media (max-width: $breakpointMobile) {
 				margin-left: -1vw;
 			}
+		}
+	}
+
+	&__image-m {
+		width: 100%;
+		height: 70vh;
+		margin: 0 0 10vw;
+		
+		position: relative;
+		
+		background: url('img/moreInfoM.jpg') $gray1 center 35% / cover;
+		
+		@media (min-width: $breakpointMobile) {
+			display: none;
 		}
 	}
 }

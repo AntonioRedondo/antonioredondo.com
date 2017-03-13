@@ -308,8 +308,6 @@
 	
 	position: relative;
 	
-	border-bottom: white solid 2px;
-	
 	@media (min-width: $breakpointMobile) {
 		display: none;
 	}
@@ -342,10 +340,6 @@
 		& .profile-m__bg {
 			background-image: linear-gradient(30deg, transparent 20%, $profile3 90%);
 		}
-	}
-	
-	&--first {
-		border-top: white solid 2px;
 	}
 	
 	&__bg {
