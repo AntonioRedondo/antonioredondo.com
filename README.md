@@ -3,15 +3,15 @@
 
 This is the repository of my portfolio website currently [online](http://antonioredondo.com).
 
-<img align="center" src="http://i.imgur.com/cLYslvy.jpg" width="900px" height="459px" />
+<img align="center" src="https://github.com/AntonioRedondo/antonioredondo.com/raw/master/readmeImages/1.jpg" width="900px" height="459px" />
 
-<img align="center" src="http://i.imgur.com/yL7uFOl.jpg" width="900px" height="459px" />
+<img align="center" src="https://github.com/AntonioRedondo/antonioredondo.com/raw/master/readmeImages/2.jpg" height="459px" />
 
-<img align="center" src="http://i.imgur.com/c6XiGcL.jpg" width="900px" height="459px" />
+<img align="center" src="https://github.com/AntonioRedondo/antonioredondo.com/raw/master/readmeImages/3.jpg" width="900px" height="459px" />
 
-<img align="center" src="http://i.imgur.com/7B2GXEn.jpg" width="292px" />
-<img align="center" src="http://i.imgur.com/Xcoy2Nm.jpg" width="292px" />
-<img align="center" src="http://i.imgur.com/t7Dvign.jpg" width="292px" />
+<img align="center" src="https://github.com/AntonioRedondo/antonioredondo.com/raw/master/readmeImages/m1.jpg" width="292px" />
+<img align="center" src="https://github.com/AntonioRedondo/antonioredondo.com/raw/master/readmeImages/m2.jpg" width="292px" />
+<img align="center" src="https://github.com/AntonioRedondo/antonioredondo.com/raw/master/readmeImages/m3.jpg" width="292px" />
 
 ## Table of Contents
 
@@ -22,6 +22,7 @@ This is the repository of my portfolio website currently [online](http://antonio
 1. [Speed and size optimisation](#speed-and-size-optimisation)
 1. [Google Analytics](#google-analytics)
 1. [Installing, running and modifying the site locally](#installing-running-and-modifying-the-site-locally)
+1. [Hosting](#hosting)
 
 
 ## Introduction
@@ -52,9 +53,9 @@ The site is ultraresponsive in a very dynamic way. This is thanks to the [`vw`, 
 
 ## JavaScript
 
-The [project JavaScript](https://github.com/AntonioRedondo/antonioredondo.com-v3/tree/master/src/js) is arranged in several ES5 JavaScript files which are concatenated with Gulp at building time. Slicing the code in different files creates a neater organisation when the JS code reaches several hundred lines.
+The [project JavaScript](https://github.com/AntonioRedondo/antonioredondo.com/tree/master/src/js) is arranged in several ES5 JavaScript files which are concatenated with Gulp at building time. Slicing the code in different files creates a neater organisation when the JS code reaches several hundred lines.
 
-Since the project isn’t a reusable library, in order to have minimum length names functions haven't been embedded within a namespace object. Instead they have been declared in the global `window` namespace. However a set of basic functions like `document.getElementsByClassName()`, functions which check that a CSS property is supported by a browser or functions which manage cookies are grouped on the `o` namespace and written on its own [file](https://github.com/AntonioRedondo/antonioredondo.com-v3/blob/master/src/js/o.js). On this namespace names are considerably sorter. For example `addEventListener()` is shorted to `o.ae()`.
+Since the project isn’t a reusable library, in order to have minimum length names functions haven't been embedded within a namespace object. Instead they have been declared in the global `window` namespace. However a set of basic functions like `document.getElementsByClassName()`, functions which check that a CSS property is supported by a browser or functions which manage cookies are grouped on the `o` namespace and written on its own [file](https://github.com/AntonioRedondo/antonioredondo.com/blob/master/src/js/o.js). On this namespace names are considerably sorter. For example `addEventListener()` is shorted to `o.ae()`.
 
 Although ES6 features are handy I decided to used ES5 in order to have a minimum file size. Transpiling generates more code than native ES5. ES6 is used on `gulpfile.js`.
 
@@ -67,7 +68,7 @@ The project doesn’t depend on any front-end framework. Only two JavaScript dep
 
 To generate advanced CSS [PostCSS](https://www.npmjs.com/package/postcss) is used. Unlike SASS PostCSS allows simple feature extensibility with the help of plug-ins. Since PostCSS isn't monolithic new features can be added with plug-ins without waiting for a new PostCSS release. The deal-breaker plug-in which make me switch from SASS to PostCSS was [Autoprefixer](https://www.npmjs.com/package/autoprefixer), tool which takes on adding vendor prefixes to CSS properties for a given browser and version so that you don't have to worry about.
 
-[CSS](https://github.com/AntonioRedondo/antonioredondo.com-v3/tree/master/src/style) has been written using the [BEM pattern](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax). Together with the PostCSS nesting capabilities and the [`&` parent selector](http://sass-lang.com/documentation/file.SASS_REFERENCE.html#parent-script) BEM allows very neat and organised CSS with a shallow nesting hierarchy.
+[CSS](https://github.com/AntonioRedondo/antonioredondo.com/tree/master/src/style) has been written using the [BEM pattern](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax). Together with the PostCSS nesting capabilities and the [`&` parent selector](http://sass-lang.com/documentation/file.SASS_REFERENCE.html#parent-script) BEM allows very neat and organised CSS with a shallow nesting hierarchy.
 
 BEM has been implemented in the following way:
 
@@ -120,9 +121,9 @@ will have a CSS like below:
 
 As you can see, on the CSS `element-2` and `element-3` aren't inside `element-1` as it happens on the HTML.
 
-The BEM pattern has proved very effective for this webpage. Only on [some `&:hover` pseudo-classes](https://github.com/AntonioRedondo/antonioredondo.com-v3/blob/master/src/style/profile.scss#L35) it was necessary to add children within children. Also, sparingly you will see that some elements where selected directly instead of adding a class: `& span`. This was so because adding a class was adding too much complexity to the existing BEM structure for the number of CSS properties that were used.
+The BEM pattern has proved very effective for this webpage. Only on [some `&:hover` pseudo-classes](https://github.com/AntonioRedondo/antonioredondo.com/blob/master/src/style/profile.scss#L35) it was necessary to add children within children. Also, sparingly you will see that some elements where selected directly instead of adding a class: `& span`. This was so because adding a class was adding too much complexity to the existing BEM structure for the number of CSS properties that were used.
 
-Also, CSS properties order is kept among classes. On the [CSS source code](https://github.com/AntonioRedondo/antonioredondo.com-v3/tree/master/src/style) you can see properties are always declared on the following way:
+Also, CSS properties order is kept among classes. On the [CSS source code](https://github.com/AntonioRedondo/antonioredondo.com/tree/master/src/style) you can see properties are always declared on the following way:
 
     .class {
         width:
@@ -159,7 +160,7 @@ I was thinking of adding *CSS modules* support to the project with [`postcss-mod
 
 ## SPA and routing
 
-The site is a SPA. What in a web 1.0 site profile descriptions would be different page loads, on this 2.0 site is just a hide `<section>` which is made visible when the user pushes the profile button. However, when the corresponding profile button is pressed the URL is updated with a hash and the profile number selected: `#profile1`, `#profile2` or `#profile3`. If the page is accessed straight from the URL and hash the page will directly show the corresponding section. Also you can navigate through the different sections going back and forth. Sections will load and unload accordingly. To implement this behaviour the [`history.pushState()`](https://developer.mozilla.org/en-US/docs/Web/API/History/pushState) API is [used](https://github.com/AntonioRedondo/antonioredondo.com-v3/blob/master/src/js/initMain.js#L117).
+The site is a SPA. What in a web 1.0 site profile descriptions would be different page loads, on this 2.0 site is just a hide `<section>` which is made visible when the user pushes the profile button. However, when the corresponding profile button is pressed the URL is updated with a hash and the profile number selected: `#profile1`, `#profile2` or `#profile3`. If the page is accessed straight from the URL and hash the page will directly show the corresponding section. Also you can navigate through the different sections going back and forth. Sections will load and unload accordingly. To implement this behaviour the [`history.pushState()`](https://developer.mozilla.org/en-US/docs/Web/API/History/pushState) API is [used](https://github.com/AntonioRedondo/antonioredondo.com/blob/master/src/js/initMain.js#L117).
 
 
 ## Speed and size optimisation
@@ -168,19 +169,19 @@ When deployed on production the Gulp `min` task minifies JavaScript, HTML and CS
 
 Also, to avoid unnecessary extra HTTP calls JavaScript, CSS and SVG images which are referenced from HTML code are inlined with the [`gulp-inline`](https://www.npmjs.com/package/gulp-inline) module.
 
-There is more inlining. On SCSS files the [`postcss-assets`](https://www.npmjs.com/package/postcss-assets) module is used to inline SVG and some PNG images (small ones, see [example](https://github.com/AntonioRedondo/antonioredondo.com-v3/blob/master/src/style/intro.scss#L69)) within CSS code. This avoid more HTTP calls made from CSS code.
+There is more inlining. On SCSS files the [`postcss-assets`](https://www.npmjs.com/package/postcss-assets) module is used to inline SVG and some PNG images (small ones, see [example](https://github.com/AntonioRedondo/antonioredondo.com/blob/master/src/style/intro.scss#L69)) within CSS code. This avoid more HTTP calls made from CSS code.
 
 As you can see **inlining is a technique I find very powerful**. You must be careful with it however. On HTML code if a same image is used several times among the page the image must not be inlined on the HTML since the code will be repeated for every time the image is used. Instead the image must be inlined as a `background-image` CSS property in a `<div>` or similar element. When using inlined images on SCSS code be careful about the transpiled CSS code doesn’t duplicate any inlined content in generated classes. Inspect the generated CSS file and if duplication happens CSS selectors and nesting must be rearranged.
 
-Images have been also merged together to avoid more HTTP calls. Then they are used as `background-image` CSS properties and placed with `background-position` (see [example](https://github.com/AntonioRedondo/antonioredondo.com-v3/blob/master/src/style/profile.scss#L72)). The final production build only makes use of [6 image files](https://github.com/AntonioRedondo/antonioredondo.com-v3/tree/master/dist/img) (plus another one for the Facebook preview but not used on the website). Below you can see a set of images combined into one single file and used with `background-image` and `background-position` CSS properties:
+Images have been also merged together to avoid more HTTP calls. Then they are used as `background-image` CSS properties and placed with `background-position` (see [example](https://github.com/AntonioRedondo/antonioredondo.com/blob/master/src/style/profile.scss#L72)). The final production build only makes use of [6 image files](https://github.com/AntonioRedondo/antonioredondo.com/tree/master/dist/img) (plus another one for the Facebook preview but not used on the website). Below you can see a set of images combined into one single file and used with `background-image` and `background-position` CSS properties:
 
-<img align="center" src="https://github.com/AntonioRedondo/antonioredondo.com-v3/raw/master/src/img/logos.png" width="600px" height="157px" />
+<img align="center" src="https://github.com/AntonioRedondo/antonioredondo.com/raw/master/src/img/logos.png" width="600px" height="157px" />
 
-[SVG images](https://github.com/AntonioRedondo/antonioredondo.com-v3/tree/master/src/img) are used all around the page. They take little space, scale up perfectly on high density screens and can easily be inlined and compressed. The big _“Who you are”_, _“The knowledge I can provide you”_ and _“What you get”_ texts and rest of SVGs around the page were created or edited with [Inkscape](http://www.inkscape.org). Inkscape allows exporting vector images to SVG files in a lightweight and minimal XML format.
+[SVG images](https://github.com/AntonioRedondo/antonioredondo.com/tree/master/src/img) are used all around the page. They take little space, scale up perfectly on high density screens and can easily be inlined and compressed. The big _“Who you are”_, _“The knowledge I can provide you”_ and _“What you get”_ texts and rest of SVGs around the page were created or edited with [Inkscape](http://www.inkscape.org). Inkscape allows exporting vector images to SVG files in a lightweight and minimal XML format.
 
 Many of the SVG images are black silhouettes that are later coloured with the CSS `fill` property. This allows reuse of images and customisation from CSS. On this [official GitHub blog post](https://github.com/blog/2112-delivering-octicons-with-svg) this technique is better explained.
 
-Thanks to the above optimisations the whole app is composed by only one HTML file with no CSS imports, only one online async JS import (Google Analytics) and just [six images](https://github.com/AntonioRedondo/antonioredondo.com-v3/tree/master/dist/img) downloaded from the same domain. The inlined HTML file minified weights 717 Kb (227 gzipped) and the six images together weight 574 Kb. All this together with 18.7 Kb of downloaded fonts makes a **total size of 819.7 Kb**, less than 1 Mb to load the whole page.
+Thanks to the above optimisations the whole app is composed by only one HTML file with no CSS imports, only one online async JS import (Google Analytics) and just [six images](https://github.com/AntonioRedondo/antonioredondo.com/tree/master/dist/img) downloaded from the same domain. The inlined HTML file minified weights 717 Kb (227 gzipped) and the six images together weight 574 Kb. All this together with 18.7 Kb of downloaded fonts makes a **total size of 819.7 Kb**, less than 1 Mb to load the whole page.
 
 
 ## Google Analytics
@@ -223,18 +224,18 @@ You’re more than welcome to use your favourite ad/tracker blocker to avoid the
 
 The built site is already available on the `dist` project folder. So after downloading the project:
 
-    $ git clone https://github.com/AntonioRedondo/antonioredondo.com-v3.git antonioredondo.com-v3
+    $ git clone https://github.com/AntonioRedondo/antonioredondo.com.git antonioredondo.com
 
 just open `dist/index.htm` with Firefox (a browser which supports the `file:///` standard with [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)). If you're using other browser than Firefox you need to start the Node.js server:
 
-    $ cd pathto/antonioredondo.com-v3
+    $ cd pathto/antonioredondo.com
     $ npm start
 
 And automatically the default system browser will open showing the website.
 
 To build the site after changes on the source code run:
 
-    $ cd pathto/antonioredondo.com-v3
+    $ cd pathto/antonioredondo.com
     $ npm i
     $ gulp
 
@@ -245,4 +246,9 @@ The available Gulp tasks are:
  - `gulp lint`: lints source files.
  - `gulp build`: builds and deploys the project onto the `dist` folder.
  - `gulp min`: builds and deploys the inlined and minimised version of the project onto the `dist` folder. This is what is actually deployed on [antonioredondo.com](http://antonioredondo.com).
+ 
+ 
+ ## Hosting
+ 
+ The whole website is hosted on [GitHub Pages](https://pages.github.com/). GitHub Pages allows very good free hosting conditions, with a [generous storage and bandwidth limit](https://help.github.com/articles/what-is-github-pages/#usage-limits) and the possibility of [using your own DNS domain](https://help.github.com/articles/using-a-custom-domain-with-github-pages/). So the [`docs`](https://github.com/AntonioRedondo/antonioredondo.com/tree/master/docs) folder is actually the final distributable page that is delivered when visiting [antonioredondo.com](http://antonioredondo.com).
  
