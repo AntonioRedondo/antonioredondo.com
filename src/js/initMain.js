@@ -161,6 +161,7 @@ function initMain() {
 		o.to(function() {
 			moreInfoPanel.style.visibility = "hidden";
 			moreInfoImage.style.visibility = "hidden";
+			o.gc("more-info-panel__scroll").scrollTop = 0;
 		}, animDurationMoreInfo);
 		
 		o.gc("darkener").classList.remove("darkener--in2");
