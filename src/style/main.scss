@@ -372,10 +372,10 @@
 		bottom: 0;
 		left: 0;
 		
-		transition: $time1 height;
+		transition: $time1 transform;
 		
 		&:hover {
-			height: 70px;
+			transform: skew(-6deg) translateY(10px);
 			cursor: pointer;
 		}
 	}
