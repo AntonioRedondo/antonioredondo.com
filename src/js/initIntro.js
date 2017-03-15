@@ -104,7 +104,7 @@ function initIntro() {
 	// Shows a text hint if the intro doesn't start scrolling down in 3 seconds
 	toHints = o.to(function() {
 		if (wheelLevel === 0)
-			if (viewPortWidth >= 810)
+			if (viewPortWidth >= 810 && o.getOS() !== 'Android' && o.getOS() !== 'iOS')
 				o.gc("scroll-down-hint").classList.add("scroll-down-hint--in");
 			else o.gc("swipe-up-hint").classList.add("swipe-up-hint--in");
 	}, 3000);
