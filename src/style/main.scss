@@ -318,6 +318,11 @@
 		opacity: 1;
 	}
 	
+	&--no-delay {
+		transition-duration: $time2;
+		transition-delay: 0s;
+	}
+	
 	&__text {
 		position: absolute;
 		bottom: 0;
