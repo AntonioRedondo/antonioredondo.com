@@ -3,9 +3,9 @@
 
 This is the repository of my portfolio website currently [online](http://antonioredondo.com).
 
-<img align="center" src="https://github.com/AntonioRedondo/antonioredondo.com/raw/master/readmeImages/1.jpg" width="900px" height="459px" />
-<img align="center" src="https://github.com/AntonioRedondo/antonioredondo.com/raw/master/readmeImages/2.jpg" width="900px" height="459px" />
-<img align="center" src="https://github.com/AntonioRedondo/antonioredondo.com/raw/master/readmeImages/3.jpg" width="900px" height="459px" />
+<img src="https://github.com/AntonioRedondo/antonioredondo.com/raw/master/readmeImages/1.jpg" width="900px" />
+<img src="https://github.com/AntonioRedondo/antonioredondo.com/raw/master/readmeImages/2.jpg" width="900px" />
+<img src="https://github.com/AntonioRedondo/antonioredondo.com/raw/master/readmeImages/3.jpg" width="900px" />
 <img src="https://github.com/AntonioRedondo/antonioredondo.com/raw/master/readmeImages/m.jpg" width="900px" />
 
 ## Table of Contents
