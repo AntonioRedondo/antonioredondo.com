@@ -131,7 +131,7 @@ function initMain() {
 	o.gc("profile-m--1").addEventListener("click", function() { showOrhideDescriptionPanel(1); });
 	o.gc("profile-m--2").addEventListener("click", function() { showOrhideDescriptionPanel(2); });
 	o.gc("profile-m--3").addEventListener("click", function() { showOrhideDescriptionPanel(3); });
-	o.gc("back-button-m").addEventListener("click", function() { showOrhideDescriptionPanel(); });
+	// o.gc("back-button-m").addEventListener("click", function() { showOrhideDescriptionPanel(); });
 	
 	
 	
@@ -182,7 +182,7 @@ function initMain() {
 		moreInfoEventListener("Footer mobile button");
 	});
 	o.gc("more-info-image").addEventListener("click", function() { moreInfoCloseEventListener("Image click"); });
-	o.gc("more-info-image__back-button-m").addEventListener("click", function() { moreInfoCloseEventListener("Mobile back button"); });
+	// o.gc("more-info-image__back-button-m").addEventListener("click", function() { moreInfoCloseEventListener("Mobile back button"); });
 	
 	
 	

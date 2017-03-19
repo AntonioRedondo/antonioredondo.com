@@ -16,7 +16,7 @@
 		
 	@media (max-width: $breakpointMobile) {
 		width: 100%;
-		top: 70px;
+		/*top: 70px;*/
 		left: 0;
 		transform: translate3d(15%, 0, 0);
 	}
@@ -54,7 +54,6 @@
 		width: 75%;
 		height: 100%;
 		
-		
 		position: absolute;
 		left: 10%;
 		
@@ -64,7 +63,7 @@
 			
 		@media (max-width: $breakpointMobile) {
 			width: 100%;
-			height: calc(100% - 70px);
+			/*height: calc(100% - 70px);*/
 			margin: 0 auto;
 			overflow: auto;
 			
@@ -206,9 +205,10 @@
 	opacity: 0;
 		
 	@media (max-width: $breakpointMobile) {
-		height: 70px;
+		/*height: 70px;
 		background: linear-gradient(135deg, $profile1 -20%, $profile2 90%);
-		transform: translate3d(15%, 0, 0);
+		transform: translate3d(15%, 0, 0);*/
+		display: none;
 	}
 	
 	&:hover {
@@ -270,7 +270,7 @@
 		}
 	}
 	
-	&__back-button-m {
+	/*&__back-button-m {
 		display: none;
 	
 		@media (max-width: $breakpointMobile) {
@@ -280,5 +280,5 @@
 			display: block;
 			background: url('img/logos.png') -70px 63px / 530px;
 		}
-	}
+	}*/
 }

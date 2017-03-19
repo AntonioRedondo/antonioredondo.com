@@ -132,7 +132,7 @@
 		overflow-y: auto;
 		
 		@media (max-width: $breakpointMobile) {
-			padding-top: 6vw;
+			padding-top: 4vw;
 		}
 	}
 	
@@ -231,10 +231,12 @@
 
 
 
-.back-button-m {
+/*.back-button-m {
 	width: 100%;
 	height: 70px;
 	z-index: 4;
+	
+	display: none;
 	
 	position: absolute;
 	top: 0;
@@ -252,7 +254,7 @@
 		display: block;
 		background: url('img/logos.png') -70px 63px / 530px;
 	}
-}
+}*/
 
 
 
@@ -401,10 +403,6 @@
 	
 	&--first {
 		margin-top: 2vw;
-	
-		@media (max-width: $breakpointMobile) {
-			margin: calc(6vw + 60px) auto 8vw;
-		}
 	}
 	
 	&--last {
