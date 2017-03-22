@@ -408,6 +408,11 @@
 		bottom: 0;
 		left: 500px;
 		white-space: nowrap;
+		
+		&--m {
+			margin-top: 12px;
+			position: static;
+		}
 	}
 
 	&__contact-icon {
@@ -415,6 +420,10 @@
 		height: 100%;
 		margin: 2px 1px;
 		transition: filter $time1;
+		
+		@media (max-width: $breakpointMobile) {
+			width: 60px;
+		}
 		
 		&:hover {
 			filter: drop-shadow(0 0 0.6vw $profile1);
@@ -424,7 +433,7 @@
 
 .footer-m {
 	width: 100%;
-	margin: 40px auto 10px;
+	margin: 40px auto 0;
 	
 	font-size: 3.5vw;
 	font-weight: bold;

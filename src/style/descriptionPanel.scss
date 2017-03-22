@@ -505,10 +505,21 @@
 		}
 	}
 	
+	&__companies {
+		width: 95%;
+		margin: 0 auto;
+		
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-around;
+	}
+		
 	&__company-logo {
 		height: 2.4vw;
-		margin: 0 1.1vw;
-		display: inline-block;
+		margin: 0.3vw 1.1vw;
+		
+		display: block;
+		flex: 0 1 auto;
 		
 		background-image: url('img/logos.png');
 		background-size: 51vw auto;
@@ -520,18 +531,19 @@
 			margin: 0 3vw 2vw;
 			background-size: 200vw auto;
 		}
-	
-		&--line-break {
-			display: none;
+		
+		&--1 {
+			width: 8.8vw;
+			background-position: -36.75vw -17.65vw;
 			
 			@media (max-width: $breakpointMobile) {
-				display: inline-block;
+				width: 34vw;
+				background-position: -144.2vw -17.2vw;
 			}
 		}
 	
-		&--1 {
+		&--2 {
 			width: 6.8vw;
-			margin-left: 0;
 			background-position: 0 -17.7vw;
 			
 			@media (max-width: $breakpointMobile) {
@@ -540,7 +552,7 @@
 			}
 		}
 		
-		&--2 {
+		&--3 {
 			width: 5.2vw;
 			background-position: -9.7vw -17.75vw;
 			
@@ -550,7 +562,7 @@
 			}
 		}
 		
-		&--3 {
+		&--4 {
 			width: 7.2vw;
 			background-position: -68.9vw -17.65vw;
 			
@@ -560,14 +572,23 @@
 			}
 		}
 		
-		&--4 {
+		&--5 {
 			width: 8.3vw;
-			margin-right: 0;
 			background-position: -27.6vw -17.75vw;
 			
 			@media (max-width: $breakpointMobile) {
 				width: 33vw;
 				background-position: -108vw -17.4vw;
+			}
+		}
+		
+		&--6 {
+			width: 7.6vw;
+			background-position: -14.4vw -20.5vw;
+			
+			@media (max-width: $breakpointMobile) {
+				width: 30vw;
+				background-position: -56.5vw -28.2vw;
 			}
 		}
 	}
