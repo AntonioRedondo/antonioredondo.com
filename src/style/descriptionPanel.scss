@@ -515,6 +515,7 @@
 	}
 		
 	&__company-logo {
+		width: 8.6vw;
 		height: 2.4vw;
 		margin: 0.3vw 1.1vw;
 		
@@ -527,68 +528,57 @@
 		transition: filter $time1;
 		
 		@media (max-width: $breakpointMobile) {
+			width: 34vw;
 			height: 9vw;
 			margin: 0 3vw 2vw;
 			background-size: 200vw auto;
 		}
 		
 		&--1 {
-			width: 8.8vw;
-			background-position: -36.75vw -17.65vw;
+			background-position: -36.8vw -17.65vw;
 			
 			@media (max-width: $breakpointMobile) {
-				width: 34vw;
 				background-position: -144.2vw -17.2vw;
 			}
 		}
 	
 		&--2 {
-			width: 6.8vw;
-			background-position: 0 -17.7vw;
+			background-position: 1vw -17.7vw;
 			
 			@media (max-width: $breakpointMobile) {
-				width: 27vw;
-				background-position: 0 35vw;
+				background-position: 4vw 35vw;
 			}
 		}
 		
 		&--3 {
-			width: 5.2vw;
-			background-position: -9.7vw -17.75vw;
+			background-position: -8vw -17.75vw;
 			
 			@media (max-width: $breakpointMobile) {
-				width: 20vw;
-				background-position: -238.4vw 35vw;
+				background-position: -232vw 35vw;
 			}
 		}
 		
 		&--4 {
-			width: 7.2vw;
-			background-position: -68.9vw -17.65vw;
+			background-position: -68.2vw -17.75vw;
 			
 			@media (max-width: $breakpointMobile) {
-				width: 28vw;
-				background-position: 130vw -17.65vw;
+				background-position: 133vw -17.65vw;
 			}
 		}
 		
 		&--5 {
-			width: 8.3vw;
 			background-position: -27.6vw -17.75vw;
 			
 			@media (max-width: $breakpointMobile) {
-				width: 33vw;
 				background-position: -108vw -17.4vw;
 			}
 		}
 		
 		&--6 {
-			width: 7.6vw;
-			background-position: -14.4vw -20.5vw;
+			background-position: -14vw -20.5vw;
 			
 			@media (max-width: $breakpointMobile) {
-				width: 30vw;
-				background-position: -56.5vw -28.2vw;
+				background-position: -54.5vw -28.2vw;
 			}
 		}
 	}
