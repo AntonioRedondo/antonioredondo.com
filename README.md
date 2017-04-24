@@ -37,9 +37,9 @@ This is the version 3 of my personal portfolio. There is [v1](http://antonioredo
 
 See bellow the technical description of the website:
 
-HTML with inlined JS and CSS (Kb) | JS imports | CSS imports | Images | Front-end framework | Routing | Animations | Other libraries | CSS framework | Building tools | Server |  Readme file | Ready out of the box
---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---
-717 (minified), 227 (gzipped) | 1 async (Google Analytics) | 0 (plus 4 fonts [18.7 Kb] loaded with Web Font Loader) | 6 (574 Kb in total) | - (HTML attached to nodes) | [`history.pushState()`](https://developer.mozilla.org/en-US/docs/Web/API/History/pushState) | Native CSS transitions and animations | [Web Font Loader](https://www.npmjs.com/package/webfontloader), [Google Analytics](https://developers.google.com/analytics/devguides/collection/analyticsjs) | PostCSS (using BEM pattern) | NPM, Gulp | Node.js | Yes, comprehensive `README.md` file | On [`docs`](docs) folder
+HTML with inlined JS and CSS (Kb) | JS imports | CSS imports | Images | Front-end framework | Routing | Animations | Other libraries | CSS framework | Linter | Building tools | Server | Readme file | Ready out of the box
+--- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---
+717 (minified), 227 (gzipped) | 1 async (Google Analytics) | 0 (plus 4 fonts [18.7 Kb] loaded with Web Font Loader) | 6 (574 Kb in total) | - (HTML attached to nodes) | [`history.pushState()`](https://developer.mozilla.org/en-US/docs/Web/API/History/pushState) | Native CSS transitions and animations | [Google Analytics](https://developers.google.com/analytics/devguides/collection/analyticsjs) | [PostCSS](https://www.npmjs.com/package/postcss) (using BEM pattern) | JavaScript: [JSHint](https://www.npmjs.com/package/jshint), CSS: [stylelint](https://www.npmjs.com/package/stylelint), HTML: [htmllint](https://www.npmjs.com/package/htmllint) | npm, Gulp | Node.js | Yes, comprehensive `README.md` file | On [`docs`](docs) folder
 
 In order to allow maximum customization and size optimisation I decided not to use any [template pack](https://startbootstrap.com/). Templates are powerful tools to create attractive and tested websites in a fast way. But at the same time this comes to the expense of [originality](http://adventurega.me/bootstrap/) and refined code. Most template packs follow the blocky design of image boxes with text on top. I decided not to follow this structure and create a more unique site flow with full viewport lateral panels.
 
