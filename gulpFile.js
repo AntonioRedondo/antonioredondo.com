@@ -82,7 +82,7 @@ gulp.task("jsHint", () => {
 			node: true
 		}))
 		.pipe(jsHint.reporter("jshint-stylish"))
-		.pipe(jsHint.reporter("fail"));
+		// .pipe(jsHint.reporter("fail")); // It makes Gulp fail on warning or error
 });
 
 gulp.task("htmlLint", () => {
