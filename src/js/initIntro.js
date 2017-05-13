@@ -63,6 +63,7 @@ function initIntro() {
 	var viewPortWidth = document.documentElement.offsetWidth,
 		wheelLevel = 0,
 		wheelLevelFormer = 0,
+		onTransition = false,
 		phrases = o.gca("phrases__phrase"),
 		bubbles = o.gca("bubbles__layer"),
 		visiblePhrases = [],
@@ -153,10 +154,19 @@ function initIntro() {
 	}
 	
 	o.ae("wheel", mouseWheelListener = function (e) {
+		if (onTransition)
+			return;
+		
+		onTransition = true;
+			
 		if (e.deltaY > 0)
 			movePhrases(1);
 		else if (e.deltaY < 0)
 			movePhrases(-1);
+		
+		o.to(function() {
+			onTransition = false;
+		}, 700);
 	});
 	
 	// http://stackoverflow.com/questions/2264072/detect-a-finger-swipe-through-javascript-on-the-iphone-and-android
