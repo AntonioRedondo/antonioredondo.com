@@ -168,7 +168,7 @@ There is more inlining. On SCSS files the [`postcss-assets`](https://www.npmjs.c
 
 As you can see **inlining is a technique I find very powerful**. You must be careful with it however. On HTML code if a same image is used several times among the page the image must not be inlined on the HTML since the code will be repeated for every time the image is used. Instead the image must be inlined as a `background-image` CSS property in a `<div>` or similar element. When using inlined images on SCSS code be careful about the transpiled CSS code doesn’t duplicate any inlined content in generated classes. Inspect the generated CSS file and if duplication happens CSS selectors and nesting must be rearranged.
 
-Images have been also merged together to avoid more HTTP calls. Then they are used as `background-image` CSS properties and placed with `background-position` (see [example](https://github.com/AntonioRedondo/antonioredondo.com/blob/master/src/style/profile.scss#L72)). The final production build only makes use of [6 image files](https://github.com/AntonioRedondo/antonioredondo.com/tree/master/dist/img) (plus another one for the Facebook preview but not used on the website). Below you can see a set of images combined into one single file and used with `background-image` and `background-position` CSS properties:
+Images have been also merged together to avoid more HTTP calls. Then they are used as `background-image` CSS properties and placed with `background-position` (see [example](https://github.com/AntonioRedondo/antonioredondo.com/blob/master/src/style/profile.scss#L72)). The final production build only makes use of [6 image files](https://github.com/AntonioRedondo/antonioredondo.com/tree/master/docs/img) (plus another one for the Facebook preview but not used on the website). Below you can see a set of images combined into one single file and used with `background-image` and `background-position` CSS properties:
 
 <img align="center" src="https://github.com/AntonioRedondo/antonioredondo.com/raw/master/src/img/logos.png" width="600px" height="157px" />
 
@@ -176,7 +176,7 @@ Images have been also merged together to avoid more HTTP calls. Then they are us
 
 Many of the SVG images are black silhouettes that are later coloured with the CSS `fill` property. This allows reuse of images and customisation from CSS. On this [official GitHub blog post](https://github.com/blog/2112-delivering-octicons-with-svg) this technique is better explained.
 
-Thanks to the above optimisations the whole app is composed by only one HTML file with no CSS imports, only one online async JS import (Google Analytics) and just [six images](https://github.com/AntonioRedondo/antonioredondo.com/tree/master/dist/img) downloaded from the same domain. The inlined HTML file minified weights 717 Kb (227 gzipped) and the six images together weight 574 Kb. All this together with 18.7 Kb of downloaded fonts makes a **total size of 819.7 Kb**, less than 1 Mb to load the whole page.
+Thanks to the above optimisations the whole app is composed by only one HTML file with no CSS imports, only one online async JS import (Google Analytics) and just [six images](https://github.com/AntonioRedondo/antonioredondo.com/tree/master/docs/img) downloaded from the same domain. The inlined HTML file minified weights 717 Kb (227 gzipped) and the six images together weight 574 Kb. All this together with 18.7 Kb of downloaded fonts makes a **total size of 819.7 Kb**, less than 1 Mb to load the whole page.
 
 
 ## Google Analytics
@@ -217,16 +217,18 @@ You’re more than welcome to use your favourite ad/tracker blocker to avoid the
 
 ## Installing, running and modifying the site locally
 
-The built site is already available on the `dist` project folder. So after downloading the project:
+The built site is already available on the `docs` folder. This folder doesn't contain any documentation, it should actually be called `dist`. But by calling the distribution folder `docs` the process of online deployment from GitHub Pages is [much easier](https://github.com/blog/2228-simpler-github-pages-publishing). Read more on [Hosting](#hosting).
+
+After downloading the project:
 
     $ git clone https://github.com/AntonioRedondo/antonioredondo.com.git antonioredondo.com
 
-just open `dist/index.htm` with Firefox (a browser which supports the `file:///` standard with [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)). If you're using other browser than Firefox you need to start the Node.js server:
+just open `docs/index.htm` with Firefox (a browser which supports the `file:///` standard with [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)). If you're using other browser than Firefox you need to start the Node.js server:
 
     $ cd pathto/antonioredondo.com
     $ npm start
 
-And automatically the default system browser will open showing the website.
+and automatically the default system browser will open showing the website.
 
 To build the site after changes on the source code run:
 
@@ -234,16 +236,16 @@ To build the site after changes on the source code run:
     $ npm i
     $ gulp
 
-And the default Gulp task will run. This task lints, builds and deploys the app to the `dist` folder every time there is a change to a source file.
+and the default Gulp task will run. This task lints, builds and deploys the app to the `docs` folder every time there is a change to a source file.
 
 The available Gulp tasks are:
- - `gulp`: default Gulp task. Lints, builds and deploy the app by watching source files. It actually execute the `lint` and `build` below Gulp tasks.
+ - `gulp`: default Gulp task. Lints, builds and deploy the app by watching source files. It just executes the `lint` and `build` below Gulp tasks.
  - `gulp lint`: lints source files.
- - `gulp build`: builds and deploys the project onto the `dist` folder.
- - `gulp min`: builds and deploys the inlined and minimised version of the project onto the `dist` folder. This is what is actually deployed on [antonioredondo.com](http://antonioredondo.com).
+ - `gulp build`: builds and deploys the project onto the `docs` folder.
+ - `gulp min`: builds and deploys the inlined and minimised version of the project onto the `docs` folder. This is what is actually deployed on [antonioredondo.com](http://antonioredondo.com).
  
  
  ## Hosting
  
- The whole website is hosted on [GitHub Pages](https://pages.github.com/). GitHub Pages allows very good free hosting conditions, with a [generous storage and bandwidth limit](https://help.github.com/articles/what-is-github-pages/#usage-limits) and the possibility of [using your own DNS domain](https://help.github.com/articles/using-a-custom-domain-with-github-pages/). So the [`docs`](https://github.com/AntonioRedondo/antonioredondo.com/tree/master/docs) folder is actually the final distributable page that is delivered when visiting [antonioredondo.com](http://antonioredondo.com).
+ The whole website is hosted on [GitHub Pages](https://pages.github.com/). GitHub Pages allows very good free hosting conditions, with a [generous storage and bandwidth limit](https://help.github.com/articles/what-is-github-pages/#usage-limits) and the possibility of [using your own DNS domain](https://help.github.com/articles/using-a-custom-domain-with-github-pages/). The [`docs`](https://github.com/AntonioRedondo/antonioredondo.com/tree/master/docs) folder is the final distributable page that is delivered when visiting [antonioredondo.com](http://antonioredondo.com).
  
