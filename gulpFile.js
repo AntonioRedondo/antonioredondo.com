@@ -49,7 +49,7 @@ gulp.task("clean", () => del(DEST));
 // ---------- LINT ---------- //
 
 gulp.task("esLint", () => {
-	return gulp.src([`${SRC}/js/*.js`])
+	return gulp.src([`${SRC}/js/*.js`, "gulpfile.js"])
 		.pipe(esLint())
 		.pipe(esLint.format())
 		.pipe(esLint.failAfterError());
@@ -57,13 +57,15 @@ gulp.task("esLint", () => {
 
 gulp.task("htmlHint", () => {
 	return gulp.src([`${SRC}/*.htm`])
-		.pipe(htmlHint());
+		.pipe(htmlHint())
+		// .pipe(htmlHint.reporter())
+		.pipe(htmlHint.failReporter());
 });
 
 gulp.task("styleLint", () => {
 	return gulp.src([`${SRC}/style/*.scss`])
 		.pipe(cssLint({
-			failAfterError: false,
+			// failAfterError: false, // It defaults to true
 			reporters: [{ formatter: "string", console: true }]
 		}));
 });

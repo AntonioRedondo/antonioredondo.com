@@ -7,6 +7,10 @@
 	"repository": "antonioredondo/antonioredondo.com",
 	"license": "CC-BY-NC-ND-4.0",
 	"main": "",
+	"scripts": {
+		"precommit": "gulp lint",
+		"prepush": "gulp lint"
+	},
 	"dependencies": {
 		"webfontloader": "1.6"
 	},
@@ -20,6 +24,7 @@
 		"gulp-htmlhint": "0.3",
 		"gulp-stylelint": "3.9.0",
 		"stylelint-config-standard": "16.0",
+		"husky": "0.13",
 		
 		"gulp-concat": "2.6",
 		"gulp-replace": "0.5",
