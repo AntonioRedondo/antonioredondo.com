@@ -1,0 +1,7 @@
+{
+	"//": "https://github.com/yaniswang/HTMLHint/wiki/Rules",
+	"attr-unsafe-chars": true,
+	"doctype-first": false,
+	"doctype-html5": true,
+	"space-tab-mixed-disabled": "tab"
+}

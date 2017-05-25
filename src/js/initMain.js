@@ -1,5 +1,5 @@
 
-function initMain() {
+function initMain() { // eslint-disable-line
 	
 	var toRemoveClasses,
 		previousState,
@@ -25,7 +25,7 @@ function initMain() {
 	
 	
 	
-	// Adds necessary logic to show the Description panel for a profile	
+	// Adds necessary logic to show the Description panel for a profile
 	function showDescriptionPanel(nextProfile) {
 		previousState = "descriptionPanel";
 		descriptionPanel.classList.add("description-panel--in", "s" + nextProfile);
@@ -34,9 +34,11 @@ function initMain() {
 		nProfile.classList.add("profile--z-index");
 		nProfile.classList.add("profile--selected");
 		switch (nextProfile) {
+			/* eslint-disable indent */
 			case 1: nProfile.classList.add("profile--selected-left"); break;
 			case 2: nProfile.classList.add("profile--selected-center"); break;
 			case 3: nProfile.classList.add("profile--selected-right");
+			/* eslint-enable indent */
 		}
 		nProfile.title = "Back";
 		nProfile.children[2].classList.remove("profile__title-bg--in");
@@ -48,9 +50,11 @@ function initMain() {
 			if (nextProfile !== n) {
 				o.gc("profile--" + n).classList.add("profile--not-selected");
 				switch (n) {
+					/* eslint-disable indent */
 					case 1: o.gc("profile--" + n).classList.add("profile--selected-left"); break;
 					case 2: o.gc("profile--" + n).classList.add("profile--selected-center"); break;
 					case 3: o.gc("profile--" + n).classList.add("profile--selected-right");
+					/* eslint-enable indent */
 				}
 			}
 		
@@ -58,7 +62,7 @@ function initMain() {
 			item.style.display = "inline-block";
 		});
 				
-		window.clearTimeout(toRemoveClasses);
+		clearTimeout(toRemoveClasses);
 		o.to(function() {
 			nProfile.children[4].classList.add("profile__back-button--in");
 			o.gc("profile-selected-bg--" + nextProfile).classList.add("profile-selected-bg--in");
@@ -77,9 +81,11 @@ function initMain() {
 		var sProfile = o.gc("profile--" + profileSelected);
 		sProfile.classList.remove("profile--selected");
 		switch (profileSelected) {
+			/* eslint-disable indent */
 			case 1: sProfile.classList.remove("profile--selected-left"); break;
 			case 2: sProfile.classList.remove("profile--selected-center"); break;
 			case 3: sProfile.classList.remove("profile--selected-right");
+			/* eslint-enable indent */
 		}
 		sProfile.title = "";
 		sProfile.children[4].classList.remove("profile__back-button--in");
@@ -90,9 +96,11 @@ function initMain() {
 			if (profileSelected !== n2) {
 				o.gc("profile--" + n2).classList.remove("profile--not-selected");
 				switch (n2) {
+					/* eslint-disable indent */
 					case 1: o.gc("profile--" + n2).classList.remove("profile--selected-left"); break;
 					case 2: o.gc("profile--" + n2).classList.remove("profile--selected-center"); break;
 					case 3: o.gc("profile--" + n2).classList.remove("profile--selected-right");
+					/* eslint-enable indent */
 				}
 			}
 
@@ -117,7 +125,7 @@ function initMain() {
 	
 	function showOrhideDescriptionPanel(nextProfile) {
 		if (!descriptionPanel.classList.contains("description-panel--in")) {
-			window.history.pushState({nextProfile: nextProfile}, "Profile " + nextProfile, "#profile" + nextProfile);
+			window.history.pushState({ nextProfile: nextProfile }, "Profile " + nextProfile, "#profile" + nextProfile);
 			showDescriptionPanel(nextProfile);
 		} else {
 			window.history.pushState(undefined, "Antonio Redondo", window.location.pathname);
@@ -140,15 +148,11 @@ function initMain() {
 		previousState = "moreInfoPanel";
 		
 		moreInfoPanel.style.visibility = "visible";
-		/* jshint -W030 */
 		moreInfoPanel.offsetHeight; // This causes reflow before adding next class
-		/* jshint +W030 */
 		moreInfoPanel.classList.add("more-info-panel--in");
 		
 		moreInfoImage.style.visibility = "visible";
-		/* jshint -W030 */
 		moreInfoImage.offsetHeight;
-		/* jshint +W030 */
 		moreInfoImage.classList.add("more-info-image--in");
 		
 		o.gc("darkener").classList.add("darkener--in2");
@@ -169,16 +173,16 @@ function initMain() {
 	}
 	
 	function moreInfoCloseEventListener(gaLabel) {
-		window.history.pushState(undefined, "Antonio Redondo", window.location.pathname);
+		history.pushState(undefined, "Antonio Redondo", location.pathname);
 		moreInfoClose(gaLabel);
 	}
 	
 	o.gc("footer__bg2").addEventListener("click", function() {
-		window.history.pushState({moreInfo: true}, "More Info", "#moreInfo");
+		history.pushState({ moreInfo: true }, "More Info", "#moreInfo");
 		moreInfoEventListener("Footer button");
 	});
 	o.gc("footer-m__more-info").addEventListener("click", function() {
-		window.history.pushState({moreInfo: true}, "More Info", "#moreInfo");
+		history.pushState({ moreInfo: true }, "More Info", "#moreInfo");
 		moreInfoEventListener("Footer mobile button");
 	});
 	o.gc("more-info-image").addEventListener("click", function() { moreInfoCloseEventListener("Image click"); });
@@ -190,7 +194,7 @@ function initMain() {
 	function showIntroAgain(gaLabel) {
 		o.removeCookie("firstTime");
 		ga("send", "event", "v3", "Show intro again", gaLabel);
-		window.location.reload();
+		location.reload();
 	}
 	o.gc("footer__bg3").addEventListener("click", function() { showIntroAgain("Footer button"); });
 	o.gc("footer-m__show-intro-again").addEventListener("click", function() { showIntroAgain("Footer mobile button"); });
@@ -212,8 +216,10 @@ function initMain() {
 				moreInfoEventListener("Push state");
 		} else {
 			switch (previousState) {
+				/* eslint-disable indent */
 				case "descriptionPanel": hideDescriptionPanel(); break;
 				case "moreInfoPanel": moreInfoClose("Push state"); break;
+				/* eslint-enable indent */
 			}
 			previousState = undefined;
 		}
@@ -336,6 +342,7 @@ function initMain() {
 	// If at loading time the URL contains a hash the state will be updated accordingly
 	if (window.location.hash && o.getCookie("firstTime") !== null) {
 		switch (window.location.hash) {
+			/* eslint-disable indent */
 			case "#profile1":
 				window.history.pushState({ nextProfile: 1 }, "Profile 1", "#profile1");
 				showDescriptionPanel(1);
@@ -353,6 +360,7 @@ function initMain() {
 				moreInfoEventListener("Push state");
 				break;
 			default: window.history.replaceState(undefined, "Antonio Redondo", window.location.pathname);
+			/* eslint-enable indent */
 		}
 	}
 	

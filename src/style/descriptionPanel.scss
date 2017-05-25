@@ -1,8 +1,8 @@
 @import "variables";
 
-.c0 {
-	fill: $whiteD; color: $whiteD;
-}
+/* stylelint-disable declaration-block-single-line-max-declarations */
+
+.c0 { fill: $whiteD; color: $whiteD; }
 
 /* https://coolors.co/app/ceefe7-c2e3e8-b6d6db-8fb3c9-5c80a5 */
 .s1 {
@@ -231,7 +231,7 @@
 
 
 
-/*.back-button-m {
+/* .back-button-m {
 	width: 100%;
 	height: 70px;
 	z-index: 4;
@@ -254,7 +254,7 @@
 		display: block;
 		background: url('img/logos.png') -70px 63px / 530px;
 	}
-}*/
+} */
 
 
 

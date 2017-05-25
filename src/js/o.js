@@ -200,7 +200,7 @@
 	
 	o.getCookie = function(name) {
 		var nameEQ = name + "=",
-				ca = document.cookie.split(";");
+			ca = document.cookie.split(";");
 		for (var i=0; i < ca.length;i++) {
 			var c = ca[i];
 			while (c.charAt(0) == " ")

@@ -1,0 +1,41 @@
+{
+	"extends": [
+		"eslint:recommended"
+	],
+	"plugins": [
+	],
+	"parserOptions": {
+		"ecmaVersion": 5,
+		"sourceType": "module"
+	},
+	"env": {
+		"browser": true,
+		"es6": true,
+		"node": true
+	},
+	"globals": {
+		"ga": true,
+		"hideIntro": true,
+		"initIntro": true,
+		"initMain": true,
+		"o": true,
+		"pg": true,
+		"WebFont": true
+	},
+	"rules": {
+		"comma-dangle": [2, "only-multiline"],
+		"eol-last": 2,
+		"indent": [2, "tab"],
+		"quotes": [2, "double"],
+		"jsx-quotes": 2,
+		"no-console": 1,
+		"no-debugger": 1,
+		"no-trailing-spaces": [2, { "skipBlankLines": true }],
+		"no-var": 0,
+		"no-alert": 1,
+		"no-lone-blocks": 1,
+		"object-curly-spacing": [2, "always"],
+		"semi": [1, "always"],
+		"space-before-function-paren": [2, "never"]
+	}
+}

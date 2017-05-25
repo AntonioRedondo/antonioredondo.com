@@ -5,7 +5,7 @@ var Plygrnd = function() {
 	this.views = [];                    // Array with views
 	this.totalViews = [];               // Counter to keep track if all views are loaded.
 	this.currentView = 0;               // CurrentView
-	this.mousePosition = {x: (document.body.clientWidth/100*20), y: (document.body.clientHeight/100*20)};  // Mouse position (can be used by views)
+	this.mousePosition = { x: (document.body.clientWidth/100*20), y: (document.body.clientHeight/100*20) }; // Mouse position (can be used by views)
 	this.frameRate = 60;
 	this.mouseDown = false;
 	this.click = false;
@@ -139,7 +139,7 @@ var Plygrnd = function() {
 			intervalTimeout++;
 			if(intervalTimeout == 300) {
 				// waited for 30 seconds. Something is clearly wrong.
-				alert("Time out! Is your Internet connection thát slow?!?");
+				// alert("Time out! Is your Internet connection thát slow?!?");
 				clearInterval(intervalID);
 			}
 			// Check if all views are loaded:
@@ -200,7 +200,7 @@ var Plygrnd = function() {
 			_this.views[_this.currentView].stepFunction(_this.ctx, _this.views[_this.currentView].vars);
 			requestAnimationFrame(aName);
 		// }, 1000 / _this.frameRate); // default = 60 fps.
-			})();
+		})();
 	};
 
 	this.playView = function(viewNr)
@@ -208,7 +208,7 @@ var Plygrnd = function() {
 		// Un-initialize the current view:
 		try {
 			_this.views[_this.currentView].unInitFunction(_this.ctx, _this.views[_this.currentView].vars);
-		} catch(e) {}
+		} catch(e) {} // eslint-disable-line
 		// Go further with the requested view from here:
 		_this.currentView = viewNr;
 		// Remove the class of the active view:
@@ -299,7 +299,7 @@ pg.views.push({
 		vars.prevDistances = {};
 	},
 	// Un-initialisation:
-	unInitFunction  : function(ctx, vars){},
+	unInitFunction  : function(ctx, vars){}, // eslint-disable-line
 	// Stepping function:
 	stepFunction    : function(ctx, vars){
 		ctx.clearRect(0, 0, ctx.width, ctx.height);

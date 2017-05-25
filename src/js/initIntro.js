@@ -14,7 +14,7 @@ function hideIntro(type) {
 	var modifier = "out",
 		time = 4000;
 	switch (type) {
-		case 2: modifier = "out2"; time = 1000;
+		case 2: modifier = "out2"; time = 1000; // eslint-disable-line
 	}
 	
 	if (o.getCookie("cookieMessage") === null)
@@ -56,7 +56,7 @@ function hideIntro(type) {
 
 
 
-function initIntro() {
+function initIntro() { // eslint-disable-line
 	o.gc("scroll-down").classList.add("scroll-down--bottom");
 	o.gc("scroll-down__inner").classList.add("scroll-down__inner--out");
 	
@@ -83,7 +83,7 @@ function initIntro() {
 		
 	// On desktop version it moves the phrases and bubbles on the 3d space depending on the cursor position
 	if (viewPortWidth >= 810) {
-		var phrasesContainer = o.gc("phrases"), 
+		var phrasesContainer = o.gc("phrases"),
 			bubblesContainer = o.gc("bubbles");
 		o.ae("mousemove", mouseMoveListener = function(e) {
 			//console.log("deltaZ: " + e.deltaZ);
@@ -121,7 +121,7 @@ function initIntro() {
 		if (wheelLevel === 1) {
 			o.gc("scroll-down-hint").classList.add("scroll-down-hint--out");
 			o.gc("swipe-up-hint").classList.add("swipe-up-hint--out");
-		} 
+		}
 		
 		if (wheelLevel === 5) {
 			o.to(function() { o.gc("enter-button").classList.add("enter-button--in"); }, 1000);
@@ -153,7 +153,7 @@ function initIntro() {
 		wheelLevelFormer = wheelLevel;
 	}
 	
-	o.ae("wheel", mouseWheelListener = function (e) {
+	o.ae("wheel", mouseWheelListener = function(e) {
 		if (onTransition)
 			return;
 		
@@ -213,16 +213,18 @@ function initIntro() {
 		ga("send", "event", "v3", "Skip Intro", gaLabel);
 	}
 	
-	o.gc("enter-button").addEventListener("click", function(e) { skipIntro("Enter button"); });
-	o.gc("skip-intro").addEventListener("click", function(e) { skipIntro("Skip intro button"); });
+	o.gc("enter-button").addEventListener("click", function() { skipIntro("Enter button"); });
+	o.gc("skip-intro").addEventListener("click", function() { skipIntro("Skip intro button"); });
 	
-	o.ae("keydown", keyDownListener = function(e) {			
+	o.ae("keydown", keyDownListener = function(e) {
 		switch (e.keyCode) {
+			/* eslint-disable indent */
 			case 39:
 			case 40: movePhrases(1); break;
 			case 37:
 			case 38: movePhrases(-1); break;
 			case 27: skipIntro("Esc key");
+			/* eslint-enable indent */
 		}
 	});
 	
