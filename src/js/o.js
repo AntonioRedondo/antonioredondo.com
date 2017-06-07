@@ -1,12 +1,24 @@
 /**
   * 2016-2017 (C) Antonio Redondo / antonioredondo.com
   *
-  * "o" is a nano-library which contains a bunch of functions to deal with basic DOM tasks but with a shorter name.
-  * It also contains functions to deal with cookies, and CSS transforms support checking.
-  * Mainly used on my personal projects but open to anyone.
+  * 'o' is a nano-library which contains a bunch of functions to deal with basic
+  * needs and problems faced on front-end web applications.
+  *
+  * It's implemented on ES5 JavaScript as the 'o' object on the global namespace.
+  *
+  * It contains the following functionality:
+  * - Sorter name functions wrapping quering, events and timeouts functions.
+  * - Generation of random integers.
+  * - Adding, retrieving and removing cookies.
+  * - Checking of CSS transforms support.
+  * - Checking of OS.
+  * - Calculation of element heights and positions.
+  * - Loading of images and executing a callback once they're loaded.
+  *
   */
 
 (function(o) {
+	"use strict";
 	
 	o.gi = function(id) {
 		return document.getElementById(id);
@@ -44,8 +56,15 @@
 	
 	
 	
-	o.getRandomInt = function() {
-		var min = -50, max = 50;
+	/**
+	  * Returns a random integer within a range.
+	  * @param {number} min - The lower limit of the range. It defaults to -50.
+	  * @param {number} max - The higher limit of the range. It defaults to 50.
+	  * @returns {number} - The generated ramdon integer within the range.
+	  */
+	o.getRandomInt = function(min, max) {
+		min = min || -50;
+		max = max || 50;
 		return Math.floor(Math.random() * (max - min + 1)) + min;
 	};
 	
@@ -53,69 +72,88 @@
 	
 	
 	
-	o.calcTotalClientHeight = function(selector) {
-		var total = 0,
-			elements = [].slice.call(o.qsa(selector));
-			
-		elements.forEach(function(e) {
-			total += e.clientHeight;
-		});
+	/**
+	  * Returns the sum of clientHeights of all the elements selected by the CSS query provided.
+	  * @param {string} selectors - CSS query.
+	  * @returns {number} - The sum of all clientHeights. 0 if no elements selected.
+	  */
+	o.calcClientHeightsSum = function(selector) {
+		var total = 0;
+		var elements = [].slice.call(o.qsa(selector));
 		
-		// console.log(total);
-		// console.log(document.body.scrollHeight);
+		elements.forEach(function(item) {
+			total += item.clientHeight;
+		});
 		
 		return total;
 	};
 	
-	o.calcRelativePositions = function(selector) {
-		var positions = [],
-			elements = [].slice.call(o.qsa(selector));
-		
+	/**
+	  * Returns an Array with DOMRects of all the elements selected by the CSS query provided.
+	  * The border-box coordinates' origin is relative to the viewport.
+	  * @param {string} selectors - CSS query.
+	  * @returns {Array} - An array with DOMRects. undefined if no elements selected.
+	  */
+	o.calcPositionsToViewport = function(selectors) {
+		var positions = [];
+		var elements = [].slice.call(o.qsa(selectors));
+
 		if (elements.length === 0)
 			return;
-		
-		elements.forEach(function(e) {
-			positions.push(e.getBoundingClientRect());
-			// console.log(e.getBoundingClientRect());
+
+		elements.forEach(function(item) {
+			positions.push(item.getBoundingClientRect());
 		});
-		
+
 		return positions;
 	};
 	
-	o.calcAbsolutePosition = function(parentSelector, childSelector) {
-		var parent = o.qs(parentSelector);
-		var child = o.qs(childSelector);
-		
-		if (!parent || !child)
+	/**
+	  * Returns an Object with left, top, width and height properties of the child
+	  * element border-box position relative to a parent element specified by parentSelector.
+	  * The parent and the child don't need to be directly nested on the elements' hierarchy.
+	  * If a CSS selector string is provided and it selects more than one element
+	  * only the first element will be used.
+	  * @param {string|HTMLElement} parentSelector - CSS selector string or HTMLElement for a reference parent.
+	  * @param {string|HTMLElement} childSelector - CSS selector string or HTMLElement for the child.
+	  * @returns {Object} - An Object with left, top, width and height properties.
+	*/
+	o.calcRelativePosition = function(parent, child) {
+		if (typeof parent === "string")
+			parent = o.qs(parent);
+		if (typeof child === "string")
+			parent = o.qs(child);
+
+		if ((!parent || !child)
+				&& (!(parent instanceof HTMLElement) || !(child instanceof HTMLElement))) {
+			console.error("The parent or child were undefined or they weren\'t HTMLElements");// eslint-disable-line no-console
 			return;
-		
-		var offset = {
-			left: 0,
-			top: 0
-		};
-		
-		while (child !== parent && child) {
-			offset.left += child.offsetLeft;
-			offset.top += child.offsetTop;
-			child = child.parentNode;
 		}
+
+		var parentRect = parent.getBoundingClientRect();
+		var childRect = child.getBoundingClientRect();
+
+		var offset = {
+			left: null,
+			top: null,
+			width: null,
+			height: null
+		};
+
+		offset.left = childRect.left - parentRect.left;
+		offset.top = childRect.top - parentRect.top;
+		offset.width = child.offsetWidth;
+		offset.height = child.offsetHeight;
 
 		return offset;
 	};
 	
-	o.checkTransformsSupported = function() {
-		if (document.documentElement.style.transform !== undefined)
-			return "transform";
-		else if (document.documentElement.style.webkitTransform !== undefined)
-			return "webkitTransform";
-	};
 	
 	
 	
 	
-	
-	var elementsToLoad = [],
-		callbacks = [];
+	var elementsToLoad = [];
+	var	callbacks = [];
 		
 	var runCallbacks = function() {
 		var allLoaded = elementsToLoad.every(function(i) {
@@ -180,6 +218,13 @@
 	
 	
 	
+	o.checkTransformsSupported = function() {
+		if (document.documentElement.style.transform !== undefined)
+			return "transform";
+		else if (document.documentElement.style.webkitTransform !== undefined)
+			return "webkitTransform";
+	};
+	
 	// http://stackoverflow.com/questions/11219582/how-to-detect-my-browser-version-and-operating-system-using-javascript
 	o.getOS = function() {
 		var os;
@@ -201,7 +246,7 @@
 	o.getCookie = function(name) {
 		var nameEQ = name + "=",
 			ca = document.cookie.split(";");
-		for (var i=0; i < ca.length;i++) {
+		for (var i=0;i < ca.length;i++) {
 			var c = ca[i];
 			while (c.charAt(0) == " ")
 				c = c.substring(1,c.length);
