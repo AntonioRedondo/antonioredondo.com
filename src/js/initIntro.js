@@ -18,7 +18,7 @@ function hideIntro(type) {
 	}
 	
 	if (o.getCookie("cookieMessage") === null)
-		o.to(showCookieMessage, time);
+		o.st(showCookieMessage, time);
 	
 	var intro = o.gc("intro"),
 		introDarkener = o.gc("intro-darkener");
@@ -31,7 +31,7 @@ function hideIntro(type) {
 	introDarkener.addEventListener("transitionend", function(e) {
 		if(e.target.classList.contains("intro-darkener") && type === 2)
 			introDarkener.style.display = "none";
-		else o.to(function() { introDarkener.style.display = "none"; }, 2500);
+		else o.st(function() { introDarkener.style.display = "none"; }, 2500);
 	});
 	
 	o.gc("ar__logo-container").classList.add("ar__logo-container--in");
@@ -42,12 +42,12 @@ function hideIntro(type) {
 	o.gc("profile--1").classList.add("profile--1in");
 	o.gc("profile--2").classList.add("profile--2in");
 	o.gc("profile--3").classList.add("profile--3in");
-	o.to(function() {
+	o.st(function() {
 		o.qsa(".profile").forEach(function(item) { item.classList.add("profile--no-delay"); } );
 	}, 200);
 	
 	o.gc("footer").classList.add("footer--in");
-	o.to(function() { o.gc("footer").classList.add("footer--no-delay"); }, 2000);
+	o.st(function() { o.gc("footer").classList.add("footer--no-delay"); }, 2000);
 	
 	if (document.documentElement.offsetWidth >= 810) {
 		pg.load();
@@ -103,7 +103,7 @@ function initIntro() { // eslint-disable-line
 	
 	
 	// Shows a text hint if the intro doesn't start scrolling down in 3 seconds
-	toHints = o.to(function() {
+	toHints = o.st(function() {
 		if (wheelLevel === 0)
 			if (viewPortWidth >= 810 && o.getOS() !== "Android" && o.getOS() !== "iOS")
 				o.gc("scroll-down-hint").classList.add("scroll-down-hint--in");
@@ -124,7 +124,7 @@ function initIntro() { // eslint-disable-line
 		}
 		
 		if (wheelLevel === 5) {
-			o.to(function() { o.gc("enter-button").classList.add("enter-button--in"); }, 1000);
+			o.st(function() { o.gc("enter-button").classList.add("enter-button--in"); }, 1000);
 			o.gc("scroll-down").classList.add("scroll-down--out");
 			o.gc("skip-intro").classList.remove("skip-intro--in");
 		} else {
@@ -164,7 +164,7 @@ function initIntro() { // eslint-disable-line
 		else if (e.deltaY < 0)
 			movePhrases(-1);
 		
-		o.to(function() {
+		o.st(function() {
 			onTransition = false;
 		}, 700);
 	});
@@ -191,7 +191,7 @@ function initIntro() { // eslint-disable-line
 			visibleBubbles[n].firstChild.style[transform] = "translate3d(" + o.getRandomInt() + "px, " + o.getRandomInt() + "px, 0)";
 			visibleBubbles[n].firstChild.style[transform] = "translate3d(" + o.getRandomInt() + "px, " + o.getRandomInt() + "px, 0)";
 		}
-		toControlledRandomMovement = o.to(controlledRandomMovement, 3000);
+		toControlledRandomMovement = o.st(controlledRandomMovement, 3000);
 	})();
 	
 	

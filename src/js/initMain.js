@@ -63,7 +63,7 @@ function initMain() { // eslint-disable-line
 		});
 				
 		clearTimeout(toRemoveClasses);
-		o.to(function() {
+		o.st(function() {
 			nProfile.children[4].classList.add("profile__back-button--in");
 			o.gc("profile-selected-bg--" + nextProfile).classList.add("profile-selected-bg--in");
 			o.qs(".profile-selected-place--" + nextProfile + " .profile-selected-place__title").classList.add("profile-selected-place__title--in");
@@ -120,7 +120,7 @@ function initMain() { // eslint-disable-line
 
 			profileSelected = 0;
 		};
-		toRemoveClasses = o.to(removeClasses, animDuration);
+		toRemoveClasses = o.st(removeClasses, animDuration);
 	}
 	
 	function showOrhideDescriptionPanel(nextProfile) {
@@ -162,7 +162,7 @@ function initMain() { // eslint-disable-line
 	function moreInfoClose(gaLabel) {
 		moreInfoPanel.classList.remove("more-info-panel--in");
 		moreInfoImage.classList.remove("more-info-image--in");
-		o.to(function() {
+		o.st(function() {
 			moreInfoPanel.style.visibility = "hidden";
 			moreInfoImage.style.visibility = "hidden";
 			o.gc("more-info-panel__scroll").scrollTop = 0;
@@ -322,11 +322,11 @@ function initMain() { // eslint-disable-line
 				previousTop = element.scrollTop;
 				
 				// schedule next frame for execution
-				o.to(scrollFrame, 0);
+				o.st(scrollFrame, 0);
 			};
 			
 			// boostrap the animation process
-			o.to(scrollFrame, 0);
+			o.st(scrollFrame, 0);
 		});
 	}
 	

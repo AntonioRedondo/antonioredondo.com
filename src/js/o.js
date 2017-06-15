@@ -44,7 +44,7 @@
 		return window.addEventListener(event, callback);
 	};
 	
-	o.to = function(callback, time) {
+	o.st = function(callback, time) {
 		return window.setTimeout(callback, time);
 	};
 	
