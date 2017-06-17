@@ -143,7 +143,7 @@ gulp.task("min", ["build"], () => {
 			// base: DEST,
 			disabledTypes: ["img"/*, "svg", "js", "css"*/]
 		}))
-		.pipe(replace(/(<!-- buildDev:start -->)[\s\S]+(<!-- buildDev:end -->)/, "")) // Removes Dev code on Production
+		.pipe(replace(/(<!-- buildDev:start -->)[\s\S]+(<!-- buildDev:end -->)/, ""))
 		.pipe(htmlMin({
 			collapseWhitespace: true,
 			minifyCSS: true,

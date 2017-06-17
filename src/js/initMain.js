@@ -34,11 +34,9 @@ function initMain() { // eslint-disable-line
 		nProfile.classList.add("profile--z-index");
 		nProfile.classList.add("profile--selected");
 		switch (nextProfile) {
-			/* eslint-disable indent */
 			case 1: nProfile.classList.add("profile--selected-left"); break;
 			case 2: nProfile.classList.add("profile--selected-center"); break;
 			case 3: nProfile.classList.add("profile--selected-right");
-			/* eslint-enable indent */
 		}
 		nProfile.title = "Back";
 		nProfile.children[2].classList.remove("profile__title-bg--in");
@@ -50,11 +48,9 @@ function initMain() { // eslint-disable-line
 			if (nextProfile !== n) {
 				o.gc("profile--" + n).classList.add("profile--not-selected");
 				switch (n) {
-					/* eslint-disable indent */
 					case 1: o.gc("profile--" + n).classList.add("profile--selected-left"); break;
 					case 2: o.gc("profile--" + n).classList.add("profile--selected-center"); break;
 					case 3: o.gc("profile--" + n).classList.add("profile--selected-right");
-					/* eslint-enable indent */
 				}
 			}
 		
@@ -81,11 +77,9 @@ function initMain() { // eslint-disable-line
 		var sProfile = o.gc("profile--" + profileSelected);
 		sProfile.classList.remove("profile--selected");
 		switch (profileSelected) {
-			/* eslint-disable indent */
 			case 1: sProfile.classList.remove("profile--selected-left"); break;
 			case 2: sProfile.classList.remove("profile--selected-center"); break;
 			case 3: sProfile.classList.remove("profile--selected-right");
-			/* eslint-enable indent */
 		}
 		sProfile.title = "";
 		sProfile.children[4].classList.remove("profile__back-button--in");
@@ -96,11 +90,9 @@ function initMain() { // eslint-disable-line
 			if (profileSelected !== n2) {
 				o.gc("profile--" + n2).classList.remove("profile--not-selected");
 				switch (n2) {
-					/* eslint-disable indent */
 					case 1: o.gc("profile--" + n2).classList.remove("profile--selected-left"); break;
 					case 2: o.gc("profile--" + n2).classList.remove("profile--selected-center"); break;
 					case 3: o.gc("profile--" + n2).classList.remove("profile--selected-right");
-					/* eslint-enable indent */
 				}
 			}
 
@@ -216,10 +208,8 @@ function initMain() { // eslint-disable-line
 				moreInfoEventListener("Push state");
 		} else {
 			switch (previousState) {
-				/* eslint-disable indent */
 				case "descriptionPanel": hideDescriptionPanel(); break;
 				case "moreInfoPanel": moreInfoClose("Push state"); break;
-				/* eslint-enable indent */
 			}
 			previousState = undefined;
 		}
@@ -342,7 +332,6 @@ function initMain() { // eslint-disable-line
 	// If at loading time the URL contains a hash the state will be updated accordingly
 	if (window.location.hash && o.getCookie("firstTime") !== null) {
 		switch (window.location.hash) {
-			/* eslint-disable indent */
 			case "#profile1":
 				window.history.pushState({ nextProfile: 1 }, "Profile 1", "#profile1");
 				showDescriptionPanel(1);
@@ -360,7 +349,6 @@ function initMain() { // eslint-disable-line
 				moreInfoEventListener("Push state");
 				break;
 			default: window.history.replaceState(undefined, "Antonio Redondo", window.location.pathname);
-			/* eslint-enable indent */
 		}
 	}
 	

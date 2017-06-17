@@ -218,13 +218,11 @@ function initIntro() { // eslint-disable-line
 	
 	o.ae("keydown", keyDownListener = function(e) {
 		switch (e.keyCode) {
-			/* eslint-disable indent */
 			case 39:
 			case 40: movePhrases(1); break;
 			case 37:
 			case 38: movePhrases(-1); break;
 			case 27: skipIntro("Esc key");
-			/* eslint-enable indent */
 		}
 	});
 	

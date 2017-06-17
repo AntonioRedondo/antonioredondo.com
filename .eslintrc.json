@@ -25,7 +25,7 @@
 	"rules": {
 		"comma-dangle": [2, "only-multiline"],
 		"eol-last": 2,
-		"indent": [2, "tab"],
+		"indent": [2, "tab", { "SwitchCase": 1}],
 		"quotes": [2, "double"],
 		"jsx-quotes": 2,
 		"no-console": 1,
