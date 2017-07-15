@@ -82,7 +82,7 @@ gulp.task("buildJs", () => {
 		[
 			"node_modules/webfontloader/webfontloader.js",
 			`${SRC}/js/plygrnd.js`,
-			`${SRC}/js/o.js`,
+			`${SRC}/js/DOMTools.js`,
 			`${SRC}/js/initIntro.js`,
 			`${SRC}/js/initMain.js`,
 			`${SRC}/js/index.js`

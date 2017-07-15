@@ -1,9 +1,9 @@
 
 function showCookieMessage() {
-	o.gc("cookies").classList.add("cookies--in");
-	o.gc("cookies__close-button").addEventListener("click", function() {
-		o.gc("cookies").classList.remove("cookies--in");
-		o.setCookie("cookieMessage", false, 365);
+	d.gc("cookies").classList.add("cookies--in");
+	d.gc("cookies__close-button").addEventListener("click", function() {
+		d.gc("cookies").classList.remove("cookies--in");
+		d.setCookie("cookieMessage", false, 365);
 		ga("send", "event", "v3", "Cookies close");
 	});
 }
@@ -17,11 +17,11 @@ function hideIntro(type) {
 		case 2: modifier = "out2"; time = 1000; // eslint-disable-line
 	}
 	
-	if (o.getCookie("cookieMessage") === null)
-		o.st(showCookieMessage, time);
+	if (d.getCookie("cookieMessage") === null)
+		d.st(showCookieMessage, time);
 	
-	var intro = o.gc("intro"),
-		introDarkener = o.gc("intro-darkener");
+	var intro = d.gc("intro"),
+		introDarkener = d.gc("intro-darkener");
 	intro.classList.add("intro--" + modifier);
 	intro.addEventListener("transitionend", function(e) {
 		if(e.target.classList.contains("intro"))
@@ -31,23 +31,23 @@ function hideIntro(type) {
 	introDarkener.addEventListener("transitionend", function(e) {
 		if(e.target.classList.contains("intro-darkener") && type === 2)
 			introDarkener.style.display = "none";
-		else o.st(function() { introDarkener.style.display = "none"; }, 2500);
+		else d.st(function() { introDarkener.style.display = "none"; }, 2500);
 	});
 	
-	o.gc("ar__logo-container").classList.add("ar__logo-container--in");
-	o.gc("ar__text").classList.add("ar__text--in");
-	o.gc("main-bg").classList.add("main-bg--in");
-	o.gc("choose-profile-text").classList.add("choose-profile-text--in");
+	d.gc("ar__logo-container").classList.add("ar__logo-container--in");
+	d.gc("ar__text").classList.add("ar__text--in");
+	d.gc("main-bg").classList.add("main-bg--in");
+	d.gc("choose-profile-text").classList.add("choose-profile-text--in");
 	
-	o.gc("profile--1").classList.add("profile--1in");
-	o.gc("profile--2").classList.add("profile--2in");
-	o.gc("profile--3").classList.add("profile--3in");
-	o.st(function() {
-		o.qsa(".profile").forEach(function(item) { item.classList.add("profile--no-delay"); } );
+	d.gc("profile--1").classList.add("profile--1in");
+	d.gc("profile--2").classList.add("profile--2in");
+	d.gc("profile--3").classList.add("profile--3in");
+	d.st(function() {
+		d.qsa(".profile").forEach(function(item) { item.classList.add("profile--no-delay"); } );
 	}, 200);
 	
-	o.gc("footer").classList.add("footer--in");
-	o.st(function() { o.gc("footer").classList.add("footer--no-delay"); }, 2000);
+	d.gc("footer").classList.add("footer--in");
+	d.st(function() { d.gc("footer").classList.add("footer--no-delay"); }, 2000);
 	
 	if (document.documentElement.offsetWidth >= 810) {
 		pg.load();
@@ -57,20 +57,20 @@ function hideIntro(type) {
 
 
 function initIntro() { // eslint-disable-line
-	o.gc("scroll-down").classList.add("scroll-down--bottom");
-	o.gc("scroll-down__inner").classList.add("scroll-down__inner--out");
+	d.gc("scroll-down").classList.add("scroll-down--bottom");
+	d.gc("scroll-down__inner").classList.add("scroll-down__inner--out");
 	
 	var viewPortWidth = document.documentElement.offsetWidth,
 		wheelLevel = 0,
 		wheelLevelFormer = 0,
 		onTransition = false,
-		phrases = o.gca("phrases__phrase"),
-		bubbles = o.gca("bubbles__layer"),
+		phrases = d.gca("phrases__phrase"),
+		bubbles = d.gca("bubbles__layer"),
 		visiblePhrases = [],
 		visibleBubbles = [],
 		yStart,
 		yEnd,
-		transform = o.checkTransformsSupported(),
+		transform = d.checkTransformsSupported(),
 		mouseMoveListener,
 		mouseWheelListener,
 		touchStartListener,
@@ -83,9 +83,9 @@ function initIntro() { // eslint-disable-line
 		
 	// On desktop version it moves the phrases and bubbles on the 3d space depending on the cursor position
 	if (viewPortWidth >= 810) {
-		var phrasesContainer = o.gc("phrases"),
-			bubblesContainer = o.gc("bubbles");
-		o.ae("mousemove", mouseMoveListener = function(e) {
+		var phrasesContainer = d.gc("phrases"),
+			bubblesContainer = d.gc("bubbles");
+		d.ae("mousemove", mouseMoveListener = function(e) {
 			//console.log("deltaZ: " + e.deltaZ);
 			//console.log("deltaMode: " + e.deltaMode);
 			//console.log("clientX: " + e.clientX);
@@ -103,11 +103,11 @@ function initIntro() { // eslint-disable-line
 	
 	
 	// Shows a text hint if the intro doesn't start scrolling down in 3 seconds
-	toHints = o.st(function() {
+	toHints = d.st(function() {
 		if (wheelLevel === 0)
-			if (viewPortWidth >= 810 && o.getOS() !== "Android" && o.getOS() !== "iOS")
-				o.gc("scroll-down-hint").classList.add("scroll-down-hint--in");
-			else o.gc("swipe-up-hint").classList.add("swipe-up-hint--in");
+			if (viewPortWidth >= 810 && d.getOS() !== "Android" && d.getOS() !== "iOS")
+				d.gc("scroll-down-hint").classList.add("scroll-down-hint--in");
+			else d.gc("swipe-up-hint").classList.add("swipe-up-hint--in");
 	}, 3000);
 	
 	
@@ -119,19 +119,19 @@ function initIntro() { // eslint-disable-line
 		else return;
 		
 		if (wheelLevel === 1) {
-			o.gc("scroll-down-hint").classList.add("scroll-down-hint--out");
-			o.gc("swipe-up-hint").classList.add("swipe-up-hint--out");
+			d.gc("scroll-down-hint").classList.add("scroll-down-hint--out");
+			d.gc("swipe-up-hint").classList.add("swipe-up-hint--out");
 		}
 		
 		if (wheelLevel === 5) {
-			o.st(function() { o.gc("enter-button").classList.add("enter-button--in"); }, 1000);
-			o.gc("scroll-down").classList.add("scroll-down--out");
-			o.gc("skip-intro").classList.remove("skip-intro--in");
+			d.st(function() { d.gc("enter-button").classList.add("enter-button--in"); }, 1000);
+			d.gc("scroll-down").classList.add("scroll-down--out");
+			d.gc("skip-intro").classList.remove("skip-intro--in");
 		} else {
-			o.gc("enter-button").classList.remove("enter-button--in");
-			o.gc("scroll-down").classList.remove("scroll-down--out");
+			d.gc("enter-button").classList.remove("enter-button--in");
+			d.gc("scroll-down").classList.remove("scroll-down--out");
 			if (wheelLevel > 0)
-				o.gc("skip-intro").classList.add("skip-intro--in");
+				d.gc("skip-intro").classList.add("skip-intro--in");
 		}
 
 		if (wheelLevel > wheelLevelFormer) {
@@ -153,7 +153,7 @@ function initIntro() { // eslint-disable-line
 		wheelLevelFormer = wheelLevel;
 	}
 	
-	o.ae("wheel", mouseWheelListener = function(e) {
+	d.ae("wheel", mouseWheelListener = function(e) {
 		if (onTransition)
 			return;
 		
@@ -164,17 +164,17 @@ function initIntro() { // eslint-disable-line
 		else if (e.deltaY < 0)
 			movePhrases(-1);
 		
-		o.st(function() {
+		d.st(function() {
 			onTransition = false;
 		}, 700);
 	});
 	
 	// http://stackoverflow.com/questions/2264072/detect-a-finger-swipe-through-javascript-on-the-iphone-and-android
-	o.ae("touchstart", touchStartListener = function(e) {
+	d.ae("touchstart", touchStartListener = function(e) {
 		yStart = e.touches[0].clientY;
 	});
 	
-	o.ae("touchend", touchEndListener = function(e) {
+	d.ae("touchend", touchEndListener = function(e) {
 		yEnd = e.changedTouches[0].clientY;
 		if (yEnd - yStart < -60)
 			movePhrases(1);
@@ -188,10 +188,10 @@ function initIntro() { // eslint-disable-line
 	(function controlledRandomMovement() {
 		for (var n=0; n<visibleBubbles.length; ++n) {
 			//var zTrans = /\.*translateZ\((.*)px\)/i.exec(document.getElementById("dv").getAttribute("style"))[1];
-			visibleBubbles[n].firstChild.style[transform] = "translate3d(" + o.getRandomInt() + "px, " + o.getRandomInt() + "px, 0)";
-			visibleBubbles[n].firstChild.style[transform] = "translate3d(" + o.getRandomInt() + "px, " + o.getRandomInt() + "px, 0)";
+			visibleBubbles[n].firstChild.style[transform] = "translate3d(" + d.getRandomInt() + "px, " + d.getRandomInt() + "px, 0)";
+			visibleBubbles[n].firstChild.style[transform] = "translate3d(" + d.getRandomInt() + "px, " + d.getRandomInt() + "px, 0)";
 		}
-		toControlledRandomMovement = o.st(controlledRandomMovement, 3000);
+		toControlledRandomMovement = d.st(controlledRandomMovement, 3000);
 	})();
 	
 	
@@ -208,15 +208,15 @@ function initIntro() { // eslint-disable-line
 		
 		hideIntro();
 		
-		o.setCookie("firstTime", false, 365);
+		d.setCookie("firstTime", false, 365);
 			
 		ga("send", "event", "v3", "Skip Intro", gaLabel);
 	}
 	
-	o.gc("enter-button").addEventListener("click", function() { skipIntro("Enter button"); });
-	o.gc("skip-intro").addEventListener("click", function() { skipIntro("Skip intro button"); });
+	d.gc("enter-button").addEventListener("click", function() { skipIntro("Enter button"); });
+	d.gc("skip-intro").addEventListener("click", function() { skipIntro("Skip intro button"); });
 	
-	o.ae("keydown", keyDownListener = function(e) {
+	d.ae("keydown", keyDownListener = function(e) {
 		switch (e.keyCode) {
 			case 39:
 			case 40: movePhrases(1); break;

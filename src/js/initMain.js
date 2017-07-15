@@ -6,22 +6,22 @@ function initMain() { // eslint-disable-line
 		profileSelected = 0,
 		animDuration = 400,
 		animDurationMoreInfo = 300,
-		descriptionPanel = o.gc("description-panel"),
-		moreInfoPanel = o.gc("more-info-panel"),
-		moreInfoImage = o.gc("more-info-image");
+		descriptionPanel = d.gc("description-panel"),
+		moreInfoPanel = d.gc("more-info-panel"),
+		moreInfoImage = d.gc("more-info-image");
 	
-	o.gc("main").style.display = "block";
+	d.gc("main").style.display = "block";
 	
 	
 	
 	// https://developers.google.com/analytics/devguides/collection/analyticsjs/sending-hits
-	o.qs(".block__contact-icon.email").addEventListener("click", function() { ga("send", "event", "v3", "Contact icon", "Email"); });
-	o.qs(".block__contact-icon.linkedin").addEventListener("click", function() { ga("send", "event", "v3", "Contact icon", "LinkedIn"); });
-	o.qs(".block__contact-icon.github").addEventListener("click", function() { ga("send", "event", "v3", "Contact icon", "GitHub"); });
-	o.qs(".more-info-panel__contact-icon.email").addEventListener("click", function() { ga("send", "event", "v3", "Contact icon", "Email MI"); });
-	o.qs(".more-info-panel__contact-icon.linkedin").addEventListener("click", function() { ga("send", "event", "v3", "Contact icon", "LinkedIn MI"); });
-	o.qs(".more-info-panel__contact-icon.github").addEventListener("click", function() { ga("send", "event", "v3", "Contact icon", "GitHub MI"); });
-	o.gc("more-info-panel__source-code-link").addEventListener("click", function() { ga("send", "event", "v3", "Contact icon", "Source code link"); });
+	d.qs(".block__contact-icon.email").addEventListener("click", function() { ga("send", "event", "v3", "Contact icon", "Email"); });
+	d.qs(".block__contact-icon.linkedin").addEventListener("click", function() { ga("send", "event", "v3", "Contact icon", "LinkedIn"); });
+	d.qs(".block__contact-icon.github").addEventListener("click", function() { ga("send", "event", "v3", "Contact icon", "GitHub"); });
+	d.qs(".more-info-panel__contact-icon.email").addEventListener("click", function() { ga("send", "event", "v3", "Contact icon", "Email MI"); });
+	d.qs(".more-info-panel__contact-icon.linkedin").addEventListener("click", function() { ga("send", "event", "v3", "Contact icon", "LinkedIn MI"); });
+	d.qs(".more-info-panel__contact-icon.github").addEventListener("click", function() { ga("send", "event", "v3", "Contact icon", "GitHub MI"); });
+	d.gc("more-info-panel__source-code-link").addEventListener("click", function() { ga("send", "event", "v3", "Contact icon", "Source code link"); });
 	
 	
 	
@@ -30,7 +30,7 @@ function initMain() { // eslint-disable-line
 		previousState = "descriptionPanel";
 		descriptionPanel.classList.add("description-panel--in", "s" + nextProfile);
 		
-		var nProfile = o.gc("profile--" + nextProfile);
+		var nProfile = d.gc("profile--" + nextProfile);
 		nProfile.classList.add("profile--z-index");
 		nProfile.classList.add("profile--selected");
 		switch (nextProfile) {
@@ -42,30 +42,30 @@ function initMain() { // eslint-disable-line
 		nProfile.children[2].classList.remove("profile__title-bg--in");
 		nProfile.children[3].firstElementChild.classList.remove("profile__title-text--in");
 		
-		o.gc("darkener").classList.add("darkener--in");
+		d.gc("darkener").classList.add("darkener--in");
 
 		for (var n=1; n<=3; ++n)
 			if (nextProfile !== n) {
-				o.gc("profile--" + n).classList.add("profile--not-selected");
+				d.gc("profile--" + n).classList.add("profile--not-selected");
 				switch (n) {
-					case 1: o.gc("profile--" + n).classList.add("profile--selected-left"); break;
-					case 2: o.gc("profile--" + n).classList.add("profile--selected-center"); break;
-					case 3: o.gc("profile--" + n).classList.add("profile--selected-right");
+					case 1: d.gc("profile--" + n).classList.add("profile--selected-left"); break;
+					case 2: d.gc("profile--" + n).classList.add("profile--selected-center"); break;
+					case 3: d.gc("profile--" + n).classList.add("profile--selected-right");
 				}
 			}
 		
-		o.gca("desc-profile--" + nextProfile).forEach(function(item) {
+		d.gca("desc-profile--" + nextProfile).forEach(function(item) {
 			item.style.display = "inline-block";
 		});
 				
 		clearTimeout(toRemoveClasses);
-		o.st(function() {
+		d.st(function() {
 			nProfile.children[4].classList.add("profile__back-button--in");
-			o.gc("profile-selected-bg--" + nextProfile).classList.add("profile-selected-bg--in");
-			o.qs(".profile-selected-place--" + nextProfile + " .profile-selected-place__title").classList.add("profile-selected-place__title--in");
+			d.gc("profile-selected-bg--" + nextProfile).classList.add("profile-selected-bg--in");
+			d.qs(".profile-selected-place--" + nextProfile + " .profile-selected-place__title").classList.add("profile-selected-place__title--in");
 		}, animDuration);
 		
-		o.gc("description-panel__overflow-hide").scrollTop = 0;
+		d.gc("description-panel__overflow-hide").scrollTop = 0;
 		profileSelected = nextProfile;
 		
 		ga("send", "event", "v3", "Profile description panel open", "Profile " + nextProfile);
@@ -74,7 +74,7 @@ function initMain() { // eslint-disable-line
 	function hideDescriptionPanel() {
 		descriptionPanel.classList.remove("description-panel--in");
 		
-		var sProfile = o.gc("profile--" + profileSelected);
+		var sProfile = d.gc("profile--" + profileSelected);
 		sProfile.classList.remove("profile--selected");
 		switch (profileSelected) {
 			case 1: sProfile.classList.remove("profile--selected-left"); break;
@@ -84,27 +84,27 @@ function initMain() { // eslint-disable-line
 		sProfile.title = "";
 		sProfile.children[4].classList.remove("profile__back-button--in");
 		
-		o.gc("darkener").classList.remove("darkener--in");
+		d.gc("darkener").classList.remove("darkener--in");
 
 		for (var n2=1; n2<=3; ++n2)
 			if (profileSelected !== n2) {
-				o.gc("profile--" + n2).classList.remove("profile--not-selected");
+				d.gc("profile--" + n2).classList.remove("profile--not-selected");
 				switch (n2) {
-					case 1: o.gc("profile--" + n2).classList.remove("profile--selected-left"); break;
-					case 2: o.gc("profile--" + n2).classList.remove("profile--selected-center"); break;
-					case 3: o.gc("profile--" + n2).classList.remove("profile--selected-right");
+					case 1: d.gc("profile--" + n2).classList.remove("profile--selected-left"); break;
+					case 2: d.gc("profile--" + n2).classList.remove("profile--selected-center"); break;
+					case 3: d.gc("profile--" + n2).classList.remove("profile--selected-right");
 				}
 			}
 
-		o.gc("profile-selected-bg--" + profileSelected).classList.remove("profile-selected-bg--in");
-		o.qs(".profile-selected-place--" + profileSelected + " .profile-selected-place__title").classList.remove("profile-selected-place__title--in");
+		d.gc("profile-selected-bg--" + profileSelected).classList.remove("profile-selected-bg--in");
+		d.qs(".profile-selected-place--" + profileSelected + " .profile-selected-place__title").classList.remove("profile-selected-place__title--in");
 		
 		ga("send", "event", "v3", "Profile description panel close", "Profile " + profileSelected);
 
 		var removeClasses = function() {
 			descriptionPanel.classList.remove("s" + profileSelected);
 			
-			o.gca("desc-profile--" + profileSelected).forEach(function(item) {
+			d.gca("desc-profile--" + profileSelected).forEach(function(item) {
 				item.style.display = "none";
 			});
 				
@@ -112,7 +112,7 @@ function initMain() { // eslint-disable-line
 
 			profileSelected = 0;
 		};
-		toRemoveClasses = o.st(removeClasses, animDuration);
+		toRemoveClasses = d.st(removeClasses, animDuration);
 	}
 	
 	function showOrhideDescriptionPanel(nextProfile) {
@@ -125,13 +125,13 @@ function initMain() { // eslint-disable-line
 		}
 	}
 	
-	o.gc("profile--1").addEventListener("click", function() { showOrhideDescriptionPanel(1); });
-	o.gc("profile--2").addEventListener("click", function() { showOrhideDescriptionPanel(2); });
-	o.gc("profile--3").addEventListener("click", function() { showOrhideDescriptionPanel(3); });
-	o.gc("profile-m--1").addEventListener("click", function() { showOrhideDescriptionPanel(1); });
-	o.gc("profile-m--2").addEventListener("click", function() { showOrhideDescriptionPanel(2); });
-	o.gc("profile-m--3").addEventListener("click", function() { showOrhideDescriptionPanel(3); });
-	// o.gc("back-button-m").addEventListener("click", function() { showOrhideDescriptionPanel(); });
+	d.gc("profile--1").addEventListener("click", function() { showOrhideDescriptionPanel(1); });
+	d.gc("profile--2").addEventListener("click", function() { showOrhideDescriptionPanel(2); });
+	d.gc("profile--3").addEventListener("click", function() { showOrhideDescriptionPanel(3); });
+	d.gc("profile-m--1").addEventListener("click", function() { showOrhideDescriptionPanel(1); });
+	d.gc("profile-m--2").addEventListener("click", function() { showOrhideDescriptionPanel(2); });
+	d.gc("profile-m--3").addEventListener("click", function() { showOrhideDescriptionPanel(3); });
+	// d.gc("back-button-m").addEventListener("click", function() { showOrhideDescriptionPanel(); });
 	
 	
 	
@@ -147,20 +147,20 @@ function initMain() { // eslint-disable-line
 		moreInfoImage.offsetHeight;
 		moreInfoImage.classList.add("more-info-image--in");
 		
-		o.gc("darkener").classList.add("darkener--in2");
+		d.gc("darkener").classList.add("darkener--in2");
 		ga("send", "event", "v3", "More info", gaLabel);
 	}
 	
 	function moreInfoClose(gaLabel) {
 		moreInfoPanel.classList.remove("more-info-panel--in");
 		moreInfoImage.classList.remove("more-info-image--in");
-		o.st(function() {
+		d.st(function() {
 			moreInfoPanel.style.visibility = "hidden";
 			moreInfoImage.style.visibility = "hidden";
-			o.gc("more-info-panel__scroll").scrollTop = 0;
+			d.gc("more-info-panel__scroll").scrollTop = 0;
 		}, animDurationMoreInfo);
 		
-		o.gc("darkener").classList.remove("darkener--in2");
+		d.gc("darkener").classList.remove("darkener--in2");
 		ga("send", "event", "v3", "More info close", gaLabel);
 	}
 	
@@ -169,38 +169,38 @@ function initMain() { // eslint-disable-line
 		moreInfoClose(gaLabel);
 	}
 	
-	o.gc("footer__bg2").addEventListener("click", function() {
+	d.gc("footer__bg2").addEventListener("click", function() {
 		history.pushState({ moreInfo: true }, "More Info", "#moreInfo");
 		moreInfoEventListener("Footer button");
 	});
-	o.gc("footer-m__more-info").addEventListener("click", function() {
+	d.gc("footer-m__more-info").addEventListener("click", function() {
 		history.pushState({ moreInfo: true }, "More Info", "#moreInfo");
 		moreInfoEventListener("Footer mobile button");
 	});
-	o.gc("more-info-image").addEventListener("click", function() { moreInfoCloseEventListener("Image click"); });
-	// o.gc("more-info-image__back-button-m").addEventListener("click", function() { moreInfoCloseEventListener("Mobile back button"); });
+	d.gc("more-info-image").addEventListener("click", function() { moreInfoCloseEventListener("Image click"); });
+	// d.gc("more-info-image__back-button-m").addEventListener("click", function() { moreInfoCloseEventListener("Mobile back button"); });
 	
 	
 	
 	// Adds functionality to "Show intro again" button
 	function showIntroAgain(gaLabel) {
-		o.removeCookie("firstTime");
+		d.removeCookie("firstTime");
 		ga("send", "event", "v3", "Show intro again", gaLabel);
 		location.reload();
 	}
-	o.gc("footer__bg3").addEventListener("click", function() { showIntroAgain("Footer button"); });
-	o.gc("footer-m__show-intro-again").addEventListener("click", function() { showIntroAgain("Footer mobile button"); });
+	d.gc("footer__bg3").addEventListener("click", function() { showIntroAgain("Footer button"); });
+	d.gc("footer-m__show-intro-again").addEventListener("click", function() { showIntroAgain("Footer mobile button"); });
 	
 	
 	
-	o.ae("keydown", function(e) {
+	d.ae("keydown", function(e) {
 		if (descriptionPanel.classList.contains("description-panel--in") && e.keyCode === 27)
 			showOrhideDescriptionPanel();
 		else if (moreInfoPanel.classList.contains("more-info-panel--in") && e.keyCode === 27)
 			moreInfoCloseEventListener("Esc key");
 	});
 	
-	o.ae("popstate", function(e) {
+	d.ae("popstate", function(e) {
 		if (e.state) {
 			if (e.state.nextProfile)
 				showDescriptionPanel(e.state.nextProfile);
@@ -219,9 +219,9 @@ function initMain() { // eslint-disable-line
 	
 	// Shows or hides the scroll buttons on the description panel
 	// http://stackoverflow.com/questions/3898130/check-if-a-user-has-scrolled-to-the-bottom/34550171#34550171
-	var dPScroll = o.gc("description-panel__overflow-hide"),
-		upButton = o.gc("description-panel__scroll--up"),
-		downButton = o.gc("description-panel__scroll--down");
+	var dPScroll = d.gc("description-panel__overflow-hide"),
+		upButton = d.gc("description-panel__scroll--up"),
+		downButton = d.gc("description-panel__scroll--down");
 		
 	dPScroll.addEventListener("scroll", function(e) {
 		if (dPScroll.scrollHeight - dPScroll.scrollTop === dPScroll.clientHeight &&
@@ -312,11 +312,11 @@ function initMain() { // eslint-disable-line
 				previousTop = element.scrollTop;
 				
 				// schedule next frame for execution
-				o.st(scrollFrame, 0);
+				d.st(scrollFrame, 0);
 			};
 			
 			// boostrap the animation process
-			o.st(scrollFrame, 0);
+			d.st(scrollFrame, 0);
 		});
 	}
 	
@@ -330,7 +330,7 @@ function initMain() { // eslint-disable-line
 	
 	
 	// If at loading time the URL contains a hash the state will be updated accordingly
-	if (window.location.hash && o.getCookie("firstTime") !== null) {
+	if (window.location.hash && d.getCookie("firstTime") !== null) {
 		switch (window.location.hash) {
 			case "#profile1":
 				window.history.pushState({ nextProfile: 1 }, "Profile 1", "#profile1");
@@ -352,6 +352,6 @@ function initMain() { // eslint-disable-line
 		}
 	}
 	
-	if (window.location.hash && o.getCookie("firstTime") === null)
+	if (window.location.hash && d.getCookie("firstTime") === null)
 		window.history.replaceState(undefined, "Antonio Redondo", window.location.pathname);
 }

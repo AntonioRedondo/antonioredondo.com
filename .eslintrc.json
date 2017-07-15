@@ -18,7 +18,7 @@
 		"hideIntro": true,
 		"initIntro": true,
 		"initMain": true,
-		"o": true,
+		"d": true,
 		"pg": true,
 		"WebFont": true
 	},

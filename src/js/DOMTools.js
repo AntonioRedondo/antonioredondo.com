@@ -1,10 +1,10 @@
 /**
   * 2016-2017 (C) Antonio Redondo / antonioredondo.com
   *
-  * 'o' is a nano-library which contains a bunch of functions to deal with basic
+  * DOMTools is a nano-library which contains a bunch of functions to deal with basic
   * needs and problems faced on front-end web applications.
   *
-  * It's implemented on ES5 JavaScript as the 'o' object on the global namespace.
+  * It's implemented on ES5 JavaScript as the 'd' object on the global namespace.
   *
   * It contains the following functionality:
   * - Sorter name functions wrapping quering, events and timeouts functions.
@@ -17,38 +17,38 @@
   *
   */
 
-(function(o) {
+(function(d) {
 	"use strict";
 	
-	o.gi = function(id) {
+	d.gi = function(id) {
 		return document.getElementById(id);
 	};
 	
-	o.gc = function(className) {
+	d.gc = function(className) {
 		return document.getElementsByClassName(className)[0];
 	};
 	
-	o.gca = function(className) {
+	d.gca = function(className) {
 		return [].slice.call(document.getElementsByClassName(className));
 	};
 	
-	o.qs = function(query) {
+	d.qs = function(query) {
 		return document.querySelector(query);
 	};
 	
-	o.qsa = function(query) {
+	d.qsa = function(query) {
 		return [].slice.call(document.querySelectorAll(query));
 	};
 	
-	o.ae = function(event, callback) {
+	d.ae = function(event, callback) {
 		return window.addEventListener(event, callback);
 	};
 	
-	o.st = function(callback, time) {
+	d.st = function(callback, time) {
 		return window.setTimeout(callback, time);
 	};
 	
-	o.si = function(callback, time) {
+	d.si = function(callback, time) {
 		return window.setInterval(callback, time);
 	};
 	
@@ -62,7 +62,7 @@
 	  * @param {number} max - The higher limit of the range. It defaults to 50.
 	  * @returns {number} - The generated ramdon integer within the range.
 	  */
-	o.getRandomInt = function(min, max) {
+	d.getRandomInt = function(min, max) {
 		min = min || -50;
 		max = max || 50;
 		return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -77,9 +77,9 @@
 	  * @param {string} selectors - CSS query.
 	  * @returns {number} - The sum of all clientHeights. 0 if no elements selected.
 	  */
-	o.calcClientHeightsSum = function(selector) {
+	d.calcClientHeightsSum = function(selector) {
 		var total = 0;
-		var elements = [].slice.call(o.qsa(selector));
+		var elements = [].slice.call(d.qsa(selector));
 		
 		elements.forEach(function(item) {
 			total += item.clientHeight;
@@ -94,9 +94,9 @@
 	  * @param {string} selectors - CSS query.
 	  * @returns {Array} - An array with DOMRects. undefined if no elements selected.
 	  */
-	o.calcPositionsToViewport = function(selectors) {
+	d.calcPositionsToViewport = function(selectors) {
 		var positions = [];
-		var elements = [].slice.call(o.qsa(selectors));
+		var elements = [].slice.call(d.qsa(selectors));
 
 		if (elements.length === 0)
 			return;
@@ -118,11 +118,11 @@
 	  * @param {string|HTMLElement} childSelector - CSS selector string or HTMLElement for the child.
 	  * @returns {Object} - An Object with left, top, width and height properties.
 	*/
-	o.calcRelativePosition = function(parent, child) {
+	d.calcRelativePosition = function(parent, child) {
 		if (typeof parent === "string")
-			parent = o.qs(parent);
+			parent = d.qs(parent);
 		if (typeof child === "string")
-			parent = o.qs(child);
+			parent = d.qs(child);
 
 		if ((!parent || !child)
 				&& (!(parent instanceof HTMLElement) || !(child instanceof HTMLElement))) {
@@ -167,7 +167,7 @@
 		}
 	};
 	
-	o.notifyWhenLoaded = function(selector) {
+	d.notifyWhenLoaded = function(selector) {
 		var elementToLoad = {
 			selector: selector,
 			loaded: false,
@@ -175,13 +175,13 @@
 				this.loaded = true;
 				runCallbacks();
 			}
-			// Chrome 53 works. Firefox 49 and Edge 14 don"t
+			// Chrome 53 works. Firefox 49 and Edge 14 don't
 			//setAsLoaded: function() {
 			//	elementToLoad.loaded = true;
 			//	runCallbacks();
 			//	console.log("bbb");
 			//}
-			// Doesn"t work on browsers
+			// Doesn't work on browsers
 			//setAsLoaded: function() {
 			//	this.loaded = true;
 			//	runCallbacks();
@@ -189,7 +189,7 @@
 			//}
 		};
 		
-		var element = o.qs(selector);
+		var element = d.qs(selector);
 		if (element) {
 			elementsToLoad.push(elementToLoad);
 			
@@ -204,12 +204,12 @@
 		return element;
 	};
 	
-	o.runWhenAllLoaded = function(callback) {
+	d.runWhenAllLoaded = function(callback) {
 		callbacks.push(callback);
 		runCallbacks();
 	};
 	
-	o.resetElementsToLoad = function() {
+	d.resetElementsToLoad = function() {
 		elementsToLoad = [];
 		callbacks = [];
 	};
@@ -218,7 +218,7 @@
 	
 	
 	
-	o.checkTransformsSupported = function() {
+	d.checkTransformsSupported = function() {
 		if (document.documentElement.style.transform !== undefined)
 			return "transform";
 		else if (document.documentElement.style.webkitTransform !== undefined)
@@ -226,7 +226,7 @@
 	};
 	
 	// http://stackoverflow.com/questions/11219582/how-to-detect-my-browser-version-and-operating-system-using-javascript
-	o.getOS = function() {
+	d.getOS = function() {
 		var os;
 		var ua = window.navigator.userAgent;
 		
@@ -235,7 +235,7 @@
 		if (ua.indexOf("Linux") != -1)		os = "Linux";
 		if (ua.indexOf("Android") != -1)	os = "Android";
 		if (ua.indexOf("like Mac") != -1)	os = "iOS";
-
+		
 		return os;
 	};
 	
@@ -243,7 +243,7 @@
 	
 	
 	
-	o.getCookie = function(name) {
+	d.getCookie = function(name) {
 		var nameEQ = name + "=",
 			ca = document.cookie.split(";");
 		for (var i=0;i < ca.length;i++) {
@@ -256,7 +256,7 @@
 		return null;
 	};
 	
-	o.setCookie = function(name, value, days) {
+	d.setCookie = function(name, value, days) {
 		var expires;
 		if (days) {
 			var date = new Date();
@@ -266,8 +266,8 @@
 		document.cookie = name + "=" + value + expires + "; path=/";
 	};
 	
-	o.removeCookie = function(name) {
+	d.removeCookie = function(name) {
 		this.setCookie(name,"",-1);
 	};
 	
-}(window.o = window.o || {}));
+}(window.d = window.d || {}));

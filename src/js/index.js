@@ -4,7 +4,7 @@ WebFont.load({
 		families: ["Open Sans:300,800", "Open Sans Condensed:300", "Trirong:400"]
 	},
 	active: function() {
-		if (o.getCookie("firstTime") === null) {
+		if (d.getCookie("firstTime") === null) {
 			initIntro();
 		} else hideIntro(2);
 		
