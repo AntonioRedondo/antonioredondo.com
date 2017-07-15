@@ -8,7 +8,11 @@
 	"license": "CC-BY-NC-ND-4.0",
 	"main": "",
 	"scripts": {
-		"precommit": "gulp lint",
+		"clean": "gulp clean",
+		"lint": "gulp lint",
+		"build": "gulp build",
+		"build:watch": "gulp",
+		"build:min": "gulp min",
 		"prepush": "gulp lint"
 	},
 	"dependencies": {
@@ -27,6 +31,7 @@
 		"husky": "0.13",
 		
 		"gulp-concat": "2.6",
+		"gulp-file-include": "1.1",
 		"gulp-replace": "0.5",
 		"gulp-postcss": "6.4",
 		"precss": "1.4",

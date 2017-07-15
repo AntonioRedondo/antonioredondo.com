@@ -89,7 +89,6 @@
 		<script async src="https://www.google-analytics.com/analytics.js"></script>
 		
 		<!-- buildDev:start -->
-		<!-- Anything inside build:dev will be removed when the min task is run -->
 		<script type="text/javascript" src="//livejs.com/live.js"></script>
 		<!-- buildDev:end -->
 		
@@ -106,177 +105,31 @@
 			<canvas class="main-bg"></canvas>
 			<div class="corner-darkener"></div>
 			
-			
-			
-			
-			
-			<div class="ar">
-				
-				<div class="ar__logo-container">
-					<img src="img/arLogo.svg" class="ar__logo" alt="" />
-				</div>
-				
-				<div class="ar__text">
-					<p class="ar__paragraph">
-						I wake up every morning at 5 AM, head straight to the gym, have my organic breakfast and shoot off to work with my Brompton bike.
-					</p>
-					<p class="ar__paragraph">
-						Then I put in practice the mission I was assigned when I was conceived: to craft ultra-efficient pieces of software with beautiful slick-as-butter graphic user interfaces.
-					</p>
-					<p class="ar__paragraph">
-						A missing test or a warning log entry is reason enough to whip my back to redeem my lack of commitment in front of the Flying Spaghetti Monster.
-					</p>
-				</div>
-				
-				<p class="choose-profile-text-m">
-					Choose the profile<br />
-					best fits you
-				</p>
-				
-				<nav>
-					<a class="profile-m profile-m--1">
-						<div class="profile-m__bg"></div>
-						<h1 class="profile-m__title-text"><span>Fintech</span><br><span>Mind</span></h1>
-						<div class="profile-m__image"></div>
-						<div class="profile-m__title-bg"></div>
-					</a>
-					<a class="profile-m profile-m--2">
-						<div class="profile-m__bg"></div>
-						<h1 class="profile-m__title-text"><span>Savvy</span><br><span>Geek</span></h1>
-						<div class="profile-m__image"></div>
-						<div class="profile-m__title-bg"></div>
-					</a>
-					<a class="profile-m profile-m--3">
-						<div class="profile-m__bg"></div>
-						<h1 class="profile-m__title-text"><span>Visual</span><br><span>Coder</span></h1>
-						<div class="profile-m__image"></div>
-						<div class="profile-m__title-bg"></div>
-					</a>
-				</nav>
-				
-				<footer class="footer-m">
-					2017 © Antonio Redondo<br/>
-					<a class="footer-m__more-info">More info</a><br />
-					<a class="footer-m__show-intro-again">Show intro again</a>
-					<div class="footer__contact-icons footer__contact-icons--m">
-						<a href="mailto:hello@antonioredondo.com" target="_blank">
-							<img src="img/i-envelope-square.svg" class="footer__contact-icon email" alt="" />
-						</a>
-						<a href="https://uk.linkedin.com/in/antonio-redondo" target="_blank">
-							<img src="img/i-linkedin-square.svg" class="footer__contact-icon linkedin" alt="" />
-						</a>
-						<a href="http://github.com/antonioredondo" target="_blank">
-							<img src="img/i-github-square.svg" class="footer__contact-icon github" alt="" />
-						</a>
-					</div>
-				</footer>
-				
-			</div>
-			
-			
-			
-			
+			@@include('htm/ar.htm')
 			
 			<p class="choose-profile-text">Choose the profile best fits you</p>
 			
-			<footer class="footer">
-				<div class="footer__bgs">
-					<a class="footer__bg3"></a>
-					<a class="footer__bg2"></a>
-					<div class="footer__bg1"></div>
-					<div class="footer__contact-icons">
-						<a href="mailto:hello@antonioredondo.com" target="_blank">
-							<img src="img/i-envelope-square.svg" class="footer__contact-icon email" alt="" />
-						</a>
-						<a href="https://uk.linkedin.com/in/antonio-redondo" target="_blank">
-							<img src="img/i-linkedin-square.svg" class="footer__contact-icon linkedin" alt="" />
-						</a>
-						<a href="http://github.com/antonioredondo" target="_blank">
-							<img src="img/i-github-square.svg" class="footer__contact-icon github" alt="" />
-						</a>
-					</div>
-				</div>
-				<div class="footer__text">
-					<p class="footer__copyright">2017 © Antonio Redondo</p>
-					<p class="footer__more-info">More info</p>
-					<p class="footer__show-intro-again">Show intro again</p>
-				</div>
-			</footer>
+			@@include('htm/footer.htm')
 			
 			<div class="darkener"></div>
 			
-			<div class="more-info-image">
-				<!-- <a class="more-info-image__back-button-m"></a> -->
-				<a class="more-info-image__back-button"></a>
-			</div>
-			
-			<div class="more-info-panel">
-				<div class="more-info-panel__bg"></div>
-				
-				<div class="more-info-panel__content">
-					<div class="more-info-panel__scroll">
-						<div class="more-info-panel__image-m">
-							<div class="more-info-panel__darkener"></div>
-							<p class="more-info-panel__text more-info-panel__text-title more-info-panel__text-title--mobile">
-								<span>Always</span><br/><span>Improving</span>
-							</p>
-						</div>
-						<p class="more-info-panel__text more-info-panel__text-title">
-							<span>Always</span><br/><span>Improving</span>
-						</p>
-						<p class="more-info-panel__text">
-							I'm Antonio and am a Spanish front-end developer based in <span class="b">London</span>.
-						</p>
-						<p class="more-info-panel__text">
-							My core skills set is <span class="b">JavaScript</span>, <span class="b">HTML</span> and <span class="b">CSS</span>.
-							<br />
-							I also have a good back-end brackground in <span class="b">Node.js</span> and <span class="b">Java EE</span>.
-						</p>
-						<p class="more-info-panel__text">
-							Have a glance at the <a href="http://github.com/antonioredondo/antonioredondo.com-v3" class="more-info-panel__source-code-link">source code</a> of this website.
-						</p>
-						<p class="more-info-panel__text">
-							For more information visit my LinkedIn profile and GitHub account:
-						</p>
-						<p class="more-info-panel__text">
-							<a href="mailto:hello@antonioredondo.com" target="_blank">
-								<img src="img/i-envelope-square.svg" class="more-info-panel__contact-icon more-info-panel__contact-icon--first email" alt="" />
-							</a>
-							<a href="https://uk.linkedin.com/in/antonio-redondo" target="_blank">
-								<img src="img/i-linkedin-square.svg" class="more-info-panel__contact-icon linkedin" alt="" />
-							</a>
-							<a href="http://github.com/antonioredondo" target="_blank">
-								<img src="img/i-github-square.svg" class="more-info-panel__contact-icon github" alt="" />
-							</a>
-						</p>
-					</div>
-				</div>
-				
-			</div>
-			
-			<div class="cookies">
-				This website<br>uses cookies.<br>
-				<button class="cookies__close-button">Delicious!</button>
-			</div>
+			@@include('htm/more-info-panel.htm')
 			
 			
 			
 			
 			
 			<div class="profile-selected-bg profile-selected-bg--1"></div>
-			<div class="profile-selected-bg profile-selected-bg--2"></div>
-			<div class="profile-selected-bg profile-selected-bg--3"></div>
-			
-			
-			
-			
-			
 			<div class="profile-selected-place profile-selected-place--1">
 				<p class="profile-selected-place__title"><span>Canary Wharf</span></p>
 			</div>
+			
+			<div class="profile-selected-bg profile-selected-bg--2"></div>
 			<div class="profile-selected-place profile-selected-place--2">
 				<p class="profile-selected-place__title"><span>Holborn</span></p>
 			</div>
+			
+			<div class="profile-selected-bg profile-selected-bg--3"></div>
 			<div class="profile-selected-place profile-selected-place--3">
 				<p class="profile-selected-place__title"><span>Old Street</span></p>
 			</div>
@@ -316,219 +169,16 @@
 			
 			
 			
-			<section class="description-panel">
-				
-				<div class="description-panel__bg"></div>
-				
-				<div class="description-panel__content">
-					<div class="description-panel__overflow-hide">
-						
-						<div class="block block--first">
-							<div class="block__ornament block__ornament--1 block__ornament--flipped"></div>
-							<img src="img/cat1.svg" class="block__icon c5 desc-profile--1" alt="" />
-							<img src="img/dog1.svg" class="block__icon c5 desc-profile--2" alt="" />
-							<img src="img/monkey1.svg" class="block__icon c5 desc-profile--3" alt="" />
-							<div class="block__ornament block__ornament--1"></div>
-							
-						</div>
-						
-						<div class="desc-table desc-table--first">
-							
-							<div class="desc-table__cell">
-								<img src="img/you.svg" class="desc-table__big-text" alt="" />
-							</div>
-							
-							<div class="desc-table__cell">
-								
-								<div class="desc-profile--1">
-									<p class="desc-table__desc-text">You are a big <span class="b">bank</span>, <span class="b">financial</span> or <span class="b">enterprise</span> <span class="b">software producer</span>, <span class="b">insurance</span>, <span class="b">accounting</span> or <span class="b">consulting</span> company.</p>
-									<p class="desc-table__desc-text">You often work directly with external clients. A superb ability to understand what they want and communicate with them in terms adapted to clients thoughts but keeping a cohesive level with IT specifications is a must.</p>
-									<p class="desc-table__desc-text">The project probably will require involvement with money transactions, key aspect in order to have a very high standard of code production and testing.</p>
-								</div>
-								
-								<div class="desc-profile--2">
-									<p class="desc-table__desc-text">You are a <span class="b">publisher</span>, <span class="b">retailer</span>, <span class="b">telecommunications provider</span>, <span class="b">SaaS</span> or <span class="b">gambling company</span>.</p>
-									<p class="desc-table__desc-text">You can be a new tiny start-up backed by angel capital or a multinational public company with offices around the globe.</p>
-									<p class="desc-table__desc-text">You are looking for a smart programmer who do not care much about formalities but about the compliance, maintenance, performance and detail of every single block of code and also of the app as a whole.</p>
-								</div>
-								
-								<div class="desc-profile--3">
-									<p class="desc-table__desc-text">You are a <span class="b">creative agency</span>, <span class="b">research and development lab</span>, <span class="b">FX production</span> or <span class="b">data mining company</span>.</p>
-									<p class="desc-table__desc-text">Front-end side is as important as the business logic behind it. Indeed, visual representation of data could be the basis of your business.</p>
-									<p class="desc-table__desc-text">You may be looking for someone to develop a new library or platform which provides customised information and statistical visualisations to businesses. User interface and visual design insight are required.</p>
-								</div>
-								
-							</div>
-							
-						</div>
-						
-						<div class="desc-table desc-table--wrap-reverse">
-							
-							<div class="desc-table__cell desc-table__cell--logos">
-								<p class="logo-title logo-title--first">Front-end</p>
-								<div src="img/fe.png" class="logo-fe" alt=""></div>
-								<p class="logo-title">Back-End</p>
-								<div src="img/be.png" class="logo-be" alt=""></div>
-								<p class="logo-title">Databases</p>
-								<div class="logo-db" alt=""></div>
-							</div>
-							
-							<div class="desc-table__cell">
-								<img src="img/knowledge.svg" class="desc-table__big-text" alt="" />
-							</div>
-							
-						</div>
-						
-						<div class="desc-table">
-							
-							<div class="desc-table__cell">
-								<img src="img/get.svg" class="desc-table__big-text" alt="" />
-							</div>
-							
-							<div class="desc-table__cell">
-								<p class="desc-table__desc-text">
-									<span class="b">I enjoy mentoring and pairing</span> with other developers to share and learn knowledge.
-								</p>
-								<p class="desc-table__desc-text">
-									<span class="b">Showing a proactive and friendly approach</span> among business teams and projects is part of my way to work.
-								</p>
-								<p class="desc-table__desc-text">
-									<span class="b">I make things alive</span> by converting static wireframes and mockups into truly interactive and animated web applications.
-								</p>
-								<p class="desc-table__desc-text">
-									<span class="b">I put special attention into the smallest detail</span>: code style, performance, maintainability, visual design and final user experience.
-								</p>
-							</div>
-							
-						</div>
-						
-						<div class="block">
-							
-							<p>These companies and I have been working together</p>
-							<div class="block__companies">
-								<a href="http://www.numonyx.com" target="_blank" class="block__company-logo block__company-logo--1"></a>
-								<a href="http://www.informa.com" target="_blank" class="block__company-logo block__company-logo--2"></a>
-								<a href="http://scrip.pharmamedtechbi.com" target="_blank" class="block__company-logo block__company-logo--3"></a>
-								<a href="http://www.moveguides.com" target="_blank" class="block__company-logo block__company-logo--4"></a>
-								<a href="http://www.comparethemarket.com" target="_blank" class="block__company-logo block__company-logo--5"></a>
-								<a href="http://www.gamesyscorporate.com" target="_blank" class="block__company-logo block__company-logo--6"></a>
-							</div>
-							
-						</div>
-						
-						<div class="block">
-							
-							<div class="block__icon block__icon--testimonial block__icon--testimonial-1 desc-profile--1"></div>
-							<div class="block__icon block__icon--testimonial block__icon--testimonial-2 desc-profile--2"></div>
-							<div class="block__icon block__icon--testimonial block__icon--testimonial-3 desc-profile--3"></div>
-							<br>
-							<blockquote class="block--testimonial desc-profile--1">
-								He knew how to adapt 80's GUIs to modern webpages. That's what's great about working with devs who like editor dark themes: it matches KITT's coachwork.
-							</blockquote>
-							<blockquote class="block--testimonial desc-profile--2">
-								Antonio is an enthusiast of colourful and flat web design. His implementations are so responsive and slick that even on slow connections Patrick remains calm.
-							</blockquote>
-							<blockquote class="block--testimonial desc-profile--3">
-								His love for size and performance optimisation is only comparable to the amount of gold I wear on Mondays or the times I say 'ahaa!' on videoclips.
-							</blockquote>
-							
-						</div>
-						
-						<div class="block">
-							
-							<div class="block__ornament block__ornament--2 block__ornament--flipped"></div>
-							<img src="img/cat2.svg" class="block__icon block__icon--smaller c5 desc-profile--1" alt="" />
-							<img src="img/dog2.svg" class="block__icon block__icon--smaller c5 desc-profile--2" alt="" />
-							<img src="img/monkey2.svg" class="block__icon block__icon--smaller c5 desc-profile--3" alt="" />
-							<div class="block__ornament block__ornament--2"></div>
-							<p class="block--summary">
-								A software developer with <span class="b">strong front-end</span> skills, a <span class="b">good base in back-end skills</span> and an incredible willing to yield results for you and your business.
-							</p>
-						</div>
-						
-						<div class="block block--last">
-							<img src="img/cat3.svg" class="block__icon block__icon--smaller c5 desc-profile--1" alt="" />
-							<img src="img/dog3.svg" class="block__icon block__icon--smaller c5 desc-profile--2" alt="" />
-							<img src="img/monkey3.svg" class="block__icon block__icon--smaller c5 desc-profile--3" alt="" />
-							<br>
-							<img src="img/interested.svg" class="block__interested" alt="" />
-							<br>
-							<a href="mailto:hello@antonioredondo.com" target="_blank">
-								<img src="img/i-envelope-square.svg" class="block__contact-icon email" alt="" />
-							</a>
-							<a href="https://uk.linkedin.com/in/antonio-redondo" target="_blank">
-								<img src="img/i-linkedin-square.svg" class="block__contact-icon linkedin" alt="" />
-							</a>
-							<a href="http://github.com/antonioredondo" target="_blank">
-								<img src="img/i-github-square.svg" class="block__contact-icon github" alt="" />
-							</a>
-						</div>
-						
-					</div>
-				</div>
-				
-				<button class="description-panel__scroll description-panel__scroll--up description-panel__scroll--up-hidden" title="Scroll up"></button>
-				<button class="description-panel__scroll description-panel__scroll--down" title="Scroll down"></button>
-					
-				<!-- <a class="back-button-m">
-					<div class="back-button-m__arrow" ></div>
-				</a> -->
-				
-			</section>
+			@@include('htm/description-panel.htm')
+			
+			<div class="cookies">
+				This website<br>uses cookies.<br>
+				<button class="cookies__close-button">Delicious!</button>
+			</div>
+			
 		</main>
-	
-	
-	
-	
-	
-		<div class="intro-darkener"></div>
-
-		<section class="intro">
-			
-			<div class="bubbles">
-				<div class="bubbles__layer"><div class="bubbles__layer-bg bubbles__layer-bg--1"></div></div>
-				<div class="bubbles__layer"><div class="bubbles__layer-bg bubbles__layer-bg--2"></div></div>
-				<div class="bubbles__layer"><div class="bubbles__layer-bg bubbles__layer-bg--3"></div></div>
-				<div class="bubbles__layer"><div class="bubbles__layer-bg bubbles__layer-bg--4"></div></div>
-				<div class="bubbles__layer"><div class="bubbles__layer-bg bubbles__layer-bg--5"></div></div>
-			</div>
-			
-			<div class="phrases">
-				<p class="phrases__phrase">
-					As a hiring IT manager your requirements and expectations for a new team member are very specific and demanding.
-				</p>
-				<p class="phrases__phrase">
-					The new developer will need to fulfil all the technical and social skills for the position.
-				</p>
-				<p class="phrases__phrase">
-					The new developer will be joining a mature team in the middle of a complex project with a convoluted architecture.
-				</p>
-				<p class="phrases__phrase">
-					But you have a limited time, budget and number of interviews to take someone who matches the right profile.
-				</p>
-				<p class="phrases__phrase phrases__phrase--last">
-					Will I be the right profile for you?
-				</p>
-			</div>
-			
-			<div class="scroll-down">
-				<div class="scroll-down__inner">
-					<div class="scroll-down__inner-bg"></div>
-					<div class="scroll-down__inner-spinner"></div>
-				</div>
-			</div>
-			
-			<p class="scroll-down-hint">Scroll down or press right/left!</p>
-			<p class="swipe-up-hint">Swipe up!</p>
-			
-			<div class="enter-button">Figure it out</div>
-			<button class="skip-intro">Skip intro</button>
-			
-		</section>
 		
-		
-		
-		
+		@@include('htm/intro.htm')
 		
 		<script src="app.js"></script>
 		

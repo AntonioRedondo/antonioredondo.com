@@ -11,6 +11,7 @@ const cssLint = require("gulp-stylelint");
 
 // Build
 const concat = require("gulp-concat");
+const include = require("gulp-file-include");
 const replace = require("gulp-replace");
 const inline = require("gulp-inline");
 const postCss = require("gulp-postcss");
@@ -32,7 +33,7 @@ const DEST = "docs";
 
 gulp.task("watch", ["lint", "build"], () => {
 	gulp.watch([`${SRC}/js/*.js`, ".eslintrc.json"], ["esLint", "buildJs"]);
-	gulp.watch([`${SRC}/index.htm`, ".htmlhintrc"], ["htmlHint", "buildHtml"]);
+	gulp.watch([`${SRC}/**/*.htm`, ".htmlhintrc"], ["htmlHint", "buildHtml"]);
 	gulp.watch([`${SRC}/style/*.scss`, ".stylelintrc.json"], ["styleLint", "buildCss"]);
 	gulp.watch([`${SRC}/img/**`, `${SRC}/favicon.ico`, `${SRC}/CNAME`, "*v1/**", "*v2/**"], ["copyAssets"]);
 });
@@ -57,7 +58,7 @@ gulp.task("esLint", () => {
 
 gulp.task("htmlHint", () => {
 	return gulp.src([`${SRC}/*.htm`])
-		.pipe(htmlHint())
+		.pipe(htmlHint(".htmlhintrc"))
 		// .pipe(htmlHint.reporter())
 		.pipe(htmlHint.failReporter());
 });
@@ -94,6 +95,7 @@ gulp.task("buildJs", () => {
 
 gulp.task("buildHtml", () => {
 	return gulp.src([`${SRC}/index.htm`])
+		.pipe(include())
 		.pipe(inline({
 			disabledTypes: ["img", "js", "css"/*, "svg"*/]
 		}))
