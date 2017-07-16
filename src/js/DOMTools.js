@@ -122,7 +122,7 @@
 		if (typeof parent === "string")
 			parent = d.qs(parent);
 		if (typeof child === "string")
-			parent = d.qs(child);
+			child = d.qs(child);
 
 		if ((!parent || !child)
 				&& (!(parent instanceof HTMLElement) || !(child instanceof HTMLElement))) {
@@ -195,9 +195,7 @@
 			
 			// http://stackoverflow.com/questions/1977871/check-if-an-image-is-loaded-no-errors-in-javascript
 			if (element.complete && element.naturalHeight !== 0) {
-				/*jshint -W030 */
 				elementToLoad.setAsLoaded;
-				/*jshint +W030 */
 			} else element.addEventListener("load", elementToLoad.setAsLoaded);
 		}
 		
