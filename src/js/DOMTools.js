@@ -241,31 +241,54 @@
 	
 	
 	
+	/**
+	* Gets a cookie by name.
+	* @param {string} name - Name of the cookie.
+	* @returns {string} - The value of the cookie. null is no cookie was found with the given name.
+	*/
 	d.getCookie = function(name) {
-		var nameEQ = name + "=",
-			ca = document.cookie.split(";");
-		for (var i=0;i < ca.length;i++) {
+		var nameWithEqual = name + "=";
+		var ca = document.cookie.split(";");
+		
+		for (var i=0; i < ca.length; i++) {
 			var c = ca[i];
+			
 			while (c.charAt(0) == " ")
 				c = c.substring(1,c.length);
-			if (c.indexOf(nameEQ) === 0)
-				return c.substring(nameEQ.length,c.length);
+				
+			if (c.indexOf(nameWithEqual) === 0)
+				return c.substring(nameWithEqual.length, c.length);
 		}
 		return null;
 	};
 	
+	/**
+	* Sets a cookie by name.
+	* @param {string} name - Name of the cookie.
+	* @param {string} value - Value for the cookie.
+	* @param {string} days - Expiration time in days.
+	* @returns {undefined} - Always undefined
+	*/
 	d.setCookie = function(name, value, days) {
 		var expires;
+		
 		if (days) {
 			var date = new Date();
+			
 			date.setTime(date.getTime() + (days*24*60*60*1000));
 			expires = "; expires=" + date.toGMTString();
 		} else expires = "";
+		
 		document.cookie = name + "=" + value + expires + "; path=/";
 	};
 	
+	/**
+	* Removes a cookie by name.
+	* @param {string} name - Name of the cookie to remove.
+	* @returns {undefined} - Always undefined.
+	*/
 	d.removeCookie = function(name) {
-		this.setCookie(name,"",-1);
+		this.setCookie(name, "", -1);
 	};
 	
 }(window.d = window.d || {}));
