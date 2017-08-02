@@ -35,7 +35,7 @@ gulp.task("watch", ["lint", "build"], () => {
 	gulp.watch([`${SRC}/js/*.js`, ".eslintrc.json"], ["esLint", "buildJs"]);
 	gulp.watch([`${SRC}/**/*.htm`, ".htmlhintrc"], ["htmlHint", "buildHtml"]);
 	gulp.watch([`${SRC}/style/*.scss`, ".stylelintrc.json"], ["styleLint", "buildCss"]);
-	gulp.watch([`${SRC}/img/**`, `${SRC}/favicon.ico`, `${SRC}/CNAME`, "*v1/**", "*v2/**"], ["copyAssets"]);
+	gulp.watch([`${SRC}/img/**`, `${SRC}/favicon.ico`, `${SRC}/CNAME`, "*v1/**", "*v2/**"], ["copyAssets", "buildCss"]);
 });
 gulp.task("lint", ["esLint", "htmlHint", "styleLint"]);
 gulp.task("build", ["buildJs", "buildHtml", "buildCss", "copyAssets"]);
