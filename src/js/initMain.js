@@ -8,7 +8,7 @@ function initMain() { // eslint-disable-line
 		animDurationMoreInfo = 300,
 		descriptionPanel = d.gc("description-panel"),
 		moreInfoPanel = d.gc("more-info-panel"),
-		moreInfoImage = d.gc("more-info-image");
+		moreInfoBg = d.gc("more-info-bg");
 	
 	d.gc("main").style.display = "block";
 	
@@ -143,9 +143,9 @@ function initMain() { // eslint-disable-line
 		moreInfoPanel.offsetHeight; // This causes reflow before adding next class
 		moreInfoPanel.classList.add("more-info-panel--in");
 		
-		moreInfoImage.style.visibility = "visible";
-		moreInfoImage.offsetHeight;
-		moreInfoImage.classList.add("more-info-image--in");
+		moreInfoBg.style.visibility = "visible";
+		moreInfoBg.offsetHeight;
+		moreInfoBg.classList.add("more-info-bg--in");
 		
 		d.gc("darkener").classList.add("darkener--in2");
 		ga("send", "event", "v3", "More info", gaLabel);
@@ -153,10 +153,10 @@ function initMain() { // eslint-disable-line
 	
 	function moreInfoClose(gaLabel) {
 		moreInfoPanel.classList.remove("more-info-panel--in");
-		moreInfoImage.classList.remove("more-info-image--in");
+		moreInfoBg.classList.remove("more-info-bg--in");
 		d.st(function() {
 			moreInfoPanel.style.visibility = "hidden";
-			moreInfoImage.style.visibility = "hidden";
+			moreInfoBg.style.visibility = "hidden";
 			d.gc("more-info-panel__scroll").scrollTop = 0;
 		}, animDurationMoreInfo);
 		
@@ -177,8 +177,8 @@ function initMain() { // eslint-disable-line
 		history.pushState({ moreInfo: true }, "More Info", "#moreInfo");
 		moreInfoEventListener("Footer mobile button");
 	});
-	d.gc("more-info-image").addEventListener("click", function() { moreInfoCloseEventListener("Image click"); });
-	// d.gc("more-info-image__back-button-m").addEventListener("click", function() { moreInfoCloseEventListener("Mobile back button"); });
+	d.gc("more-info-bg").addEventListener("click", function() { moreInfoCloseEventListener("Image click"); });
+	// d.gc("more-info-bg__back-button-m").addEventListener("click", function() { moreInfoCloseEventListener("Mobile back button"); });
 	
 	
 	

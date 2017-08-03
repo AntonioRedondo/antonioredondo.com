@@ -126,7 +126,7 @@
 
 		if ((!parent || !child)
 				&& (!(parent instanceof HTMLElement) || !(child instanceof HTMLElement))) {
-			console.error("The parent or child were undefined or they weren\'t HTMLElements");// eslint-disable-line no-console
+			console.error("The parent or child were undefined or they weren't HTMLElements"); // eslint-disable-line no-console
 			return;
 		}
 

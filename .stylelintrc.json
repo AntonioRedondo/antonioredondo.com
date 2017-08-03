@@ -3,7 +3,10 @@
 	"//": "http://stylelint.io/user-guide/rules",
 	"//": "http://stackoverflow.com/questions/38462937/cannot-set-block-no-empty-to-false-in-stylelint",
 	"rules": {
-		"at-rule-empty-line-before": "never",
+		"at-rule-empty-line-before": "always",
+		"at-rule-no-unknown":  [true, {
+			"ignoreAtRules": [ "at-root" ]
+		}],
 		"comment-empty-line-before": null,
 		"declaration-empty-line-before": null,
 		"indentation": "tab",

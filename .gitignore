@@ -3,6 +3,6 @@ node_modules
 npm-debug.log
 build
 assets
-src/style.css
-src/app.js
+docs/style.css
+docs/app.js
 .idea

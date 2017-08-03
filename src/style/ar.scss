@@ -1,0 +1,146 @@
+@import "_variables.scss";
+
+.ar {
+	width: 41%;
+	height: 100%;
+	display: flex;
+	
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	
+	position: absolute;
+	
+	background: transparent;
+	
+	@media (max-width: $breakpointMobile) {
+		width: 100%;
+		display: block;
+		padding: 10vw 0;
+		overflow-y: auto;
+		overflow-x: hidden;
+	}
+	
+	&__logo {
+		width: 410px;
+		height: 430px;
+		display: block;
+	
+		position: relative;
+		
+		transform: scale(1.1);
+		
+		transition:
+			width $time2,
+			height $time2,
+			transform $time3 ease-out $time4,
+			opacity $time3 ease-out $time4;
+		
+		@media (max-width: $breakpointBig) {
+			width: 350px;
+			height: @width;
+		}
+		
+		@media (max-width: $breakpointMedium) {
+			width: 270px;
+			height: @width;
+		}
+		
+		@media (max-width: $breakpointSmall) {
+			width: 210px;
+			height: @width;
+		}
+		
+		@media (max-width: $breakpointMobile) {
+			width: 70%;
+			max-width: 400px;
+			height: 70%;
+			margin: 30px auto 60px;
+		}
+	}
+	
+	/* http://stackoverflow.com/questions/24026458/css-before-on-inline-svg */
+	&__logo-container {
+		position: relative;
+		
+		opacity: 0;
+		
+		transform: scale(1.1);
+		
+		transition:
+			transform $time3 ease-out $time4,
+			opacity $time3 ease-out $time4;
+		
+		&--in {
+			opacity: 1;
+			transform: scale(1);
+		}
+		
+		&::before {
+			content: "";
+			
+			width: 65vw;
+			height: @width;
+			
+			position: absolute;
+			top: calc(50% - @width/2);
+			left: calc(50% - @width/2);
+			
+			background: radial-gradient(circle closest-side, color(white a(25%)) 0%, color(white a(0%)) 100%);
+			
+			@media (max-width: $breakpointMobile) {
+				width: 200vw;
+				height: 200vw;
+				
+				top: calc(50% - 200vw / 2);
+				left: calc(50% - 200vw / 2);
+			}
+		}
+	}
+	
+	&__text {
+		width: 400px;
+		margin: 4.5vh 0 4vh;
+		z-index: 3;
+		
+		opacity: 0;
+		
+		font-size: 1.2em;
+		font-family: "Open Sans", sans-serif;
+		font-style: italic;
+		font-variant-caps: small-caps;
+		text-shadow: 1px 1px black, 0 0 4px black;
+		
+		transition: width $time2, opacity $time3 ease-out $time5;
+		
+		@media (max-width: $breakpointBig) {
+			width: 340px;
+			font-size: 0.9em;
+		}
+		
+		@media (max-width: $breakpointMedium) {
+			width: 270px;
+			font-size: 0.65em;
+		}
+		
+		@media (max-width: $breakpointSmall) {
+			width: 200px;
+			font-size: 0.5em;
+		}
+		
+		@media (max-width: $breakpointMobile) {
+			width: 68%;
+			max-width: 400px;
+			margin: 60px auto 80px;
+			font-size: 3.2vw;
+		}
+		
+		&--in {
+			opacity: 1;
+		}
+	}
+	
+	&__paragraph {
+		margin: 0 0 1rem;
+	}
+}
