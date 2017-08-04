@@ -16,7 +16,7 @@ This is the repository of my portfolio website currently [online](http://antonio
 1. [SPA and routing](#spa-and-routing)
 1. [Speed and size optimisation](#speed-and-size-optimisation)
 1. [Google Analytics](#google-analytics)
-1. [Installing, running and modifying the site locally](#installing-running-and-modifying-the-site-locally)
+1. [Installing, running and modifying the code locally](#installing-running-and-modifying-the-code-locally)
 1. [Hosting](#hosting)
 
 
@@ -24,7 +24,7 @@ This is the repository of my portfolio website currently [online](http://antonio
 
 Here you can check all the source code involved in the creation of the site explained step by step.
 
-The site is implemented as a [Single Page Application](https://en.wikipedia.org/wiki/Single-page_application). It's a web app focused on visual attractiveness and navigation effectiveness. It doesn't retrieve information from databases, nor it uses reusable widgets or forms. Web frameworks like Angular or React are hence not the best approach for the implementation. Instead vanilla ES5 JavaScript with no frameworks is used. jQuery isn't needed either.
+The site is implemented as a [single-page application](https://en.wikipedia.org/wiki/Single-page_application). It's a web app focused on visual attractiveness and navigation effectiveness. It doesn't retrieve information from databases, nor it uses reusable widgets or forms. Web frameworks like Angular or React are hence not the best approach for the implementation. Instead vanilla ES5 JavaScript with no frameworks is used. jQuery isn't needed either. Check [`package.json`](package.json) to see all dependencies.
 
 There are several goals I've pursued when coding the page:
 - Avoiding Flashes Of Unstyled Content ([FOUCs](https://en.wikipedia.org/wiki/Flash_of_unstyled_content)) at any cost. Modern browsers allow creation of smooth transitions while loading style, fonts and images.
@@ -39,7 +39,7 @@ See bellow the technical description of the website:
 
 HTML with inlined JS and CSS (Kb) | JS imports | CSS imports | Images | Front-end framework | Routing | Animations | Other libraries | CSS framework | Linter | Building tools | Server | Readme file | Ready out of the box
 --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---
-717 (minified), 227 (gzipped) | 1 async (Google Analytics) | 0 (plus 4 fonts [18.7 Kb] loaded with Web Font Loader) | 6 (574 Kb in total) | - (HTML attached to nodes) | [`history.pushState()`](https://developer.mozilla.org/en-US/docs/Web/API/History/pushState) | Native CSS transitions and animations | [Google Analytics](https://developers.google.com/analytics/devguides/collection/analyticsjs) | [PostCSS](https://www.npmjs.com/package/postcss) (using BEM pattern) | JavaScript: [ESLint](https://www.npmjs.com/package/eslint), CSS: [stylelint](https://www.npmjs.com/package/stylelint), HTML: [HTMLHint](https://www.npmjs.com/package/gulp-htmlhint) | npm, Gulp | Node.js | Yes, comprehensive `README.md` file | On [`docs`](docs) folder
+719 (minified), 227 (gzipped) | 1 async ([Google Analytics](https://developers.google.com/analytics/devguides/collection/analyticsjs)) | 0 (plus 4 fonts [18.7 Kb] loaded with Web Font Loader) | 6 (574 Kb in total) | - (HTML attached to nodes) | [`history.pushState()`](https://developer.mozilla.org/en-US/docs/Web/API/History/pushState) | Native CSS transitions and animations | [Web Font Loader](https://www.npmjs.com/package/webfontloader) | [PostCSS](https://www.npmjs.com/package/postcss) (using BEM pattern) | [ESLint](https://www.npmjs.com/package/eslint), [stylelint](https://www.npmjs.com/package/stylelint) and [HTMLHint](https://www.npmjs.com/package/gulp-htmlhint) | npm, Gulp | Node.js | Yes, comprehensive `README.md` file | On [`docs`](docs) folder
 
 In order to allow maximum customization and size optimisation I decided not to use any [template pack](https://startbootstrap.com/). Templates are powerful tools to create attractive and tested websites in a fast way. But at the same time this comes to the expense of [originality](http://adventurega.me/bootstrap/) and refined code. Most template packs follow the blocky design of image boxes with text on top. I decided not to follow this structure and create a more unique site flow with full viewport lateral panels.
 
@@ -160,23 +160,23 @@ The site is a SPA. What in a web 1.0 site profile descriptions would be differen
 
 ## Speed and size optimisation
 
-When deployed on production the Gulp `min` task minifies JavaScript, HTML and CSS.
+When deployed on production the `build:prod` npm script minifies JavaScript, HTML and CSS.
 
 Also, to avoid unnecessary extra HTTP calls JavaScript, CSS and SVG images which are referenced from HTML code are inlined with the [`gulp-inline`](https://www.npmjs.com/package/gulp-inline) module.
 
 There is more inlining. On SCSS files the [`postcss-assets`](https://www.npmjs.com/package/postcss-assets) module is used to inline SVG and some PNG images (small ones, see [example](https://github.com/AntonioRedondo/antonioredondo.com/blob/master/src/style/intro.scss#L69)) within CSS code. This avoid more HTTP calls made from CSS code.
 
-As you can see **inlining is a technique I find very powerful**. You must be careful with it however. On HTML code if a same image is used several times among the page the image must not be inlined on the HTML since the code will be repeated for every time the image is used. Instead the image must be inlined as a `background-image` CSS property in a `<div>` or similar element. When using inlined images on SCSS code be careful about the transpiled CSS code doesn’t duplicate any inlined content in generated classes. Inspect the generated CSS file and if duplication happens CSS selectors and nesting must be rearranged.
+As you can see **inlining is a technique I find very powerful**. You must be careful with it however. On HTML code if a same SVG image is used several times among the page the image must not be inlined on the HTML as the code will be repeated for every time the image is used. Instead the image must be inlined as a `background-image` CSS property in a `<div>` or similar element. When using inlined images on SCSS code be careful about the transpiled CSS code doesn’t duplicate any inlined content in generated classes. Inspect the generated CSS file and if duplication happens CSS selectors and nesting must be rearranged.
 
-Images have been also merged together to avoid more HTTP calls. Then they are used as `background-image` CSS properties and placed with `background-position` (see [example](https://github.com/AntonioRedondo/antonioredondo.com/blob/master/src/style/profile.scss#L72)). The final production build only makes use of [6 image files](https://github.com/AntonioRedondo/antonioredondo.com/tree/master/docs/img) (plus another one for the Facebook preview but not used on the website). Below you can see a set of images combined into one single file and used with `background-image` and `background-position` CSS properties:
+Non-SVG images have been merged together to avoid extra HTTP calls. They are used as `background-image` CSS properties and placed with `background-position` (see [example](https://github.com/AntonioRedondo/antonioredondo.com/blob/master/src/style/profile.scss#L72)). The final production build only makes use of [6 image files](https://github.com/AntonioRedondo/antonioredondo.com/tree/master/docs/img) (plus another one for the Facebook preview not used on the website). Below you can see a set of images combined into one single file and used with `background-image` and `background-position` CSS properties:
 
 <img align="center" src="https://github.com/AntonioRedondo/antonioredondo.com/raw/master/src/img/logos.png" width="600px" height="157px" />
 
-[SVG images](https://github.com/AntonioRedondo/antonioredondo.com/tree/master/src/img) are used all around the page. They take little space, scale up perfectly on high density screens and can easily be inlined and compressed. The big _“Who you are”_, _“The knowledge I can provide you”_ and _“What you get”_ texts and rest of SVGs around the page were created or edited with [Inkscape](http://www.inkscape.org). Inkscape allows exporting vector images to SVG files in a lightweight and minimal XML format.
+[SVG images](https://github.com/AntonioRedondo/antonioredondo.com/tree/master/src/img) are used all around the page. They take little space, scale up beautifully on high density screens and can easily be inlined and gzipped. The big _“Who you are”_, _“The knowledge I can provide you”_ and _“What you get”_ texts and rest of SVGs around the page were created and edited with [Inkscape](http://www.inkscape.org). Inkscape allows exporting vector images to optimised SVGs.
 
 Many of the SVG images are black silhouettes that are later coloured with the CSS `fill` property. This allows reuse of images and customisation from CSS. On this [official GitHub blog post](https://github.com/blog/2112-delivering-octicons-with-svg) this technique is better explained.
 
-Thanks to the above optimisations the whole app is composed by only one HTML file with no CSS imports, only one online async JS import (Google Analytics) and just [six images](https://github.com/AntonioRedondo/antonioredondo.com/tree/master/docs/img) downloaded from the same domain. The inlined HTML file minified weights 717 Kb (227 gzipped) and the six images together weight 574 Kb. All this together with 18.7 Kb of downloaded fonts makes a **total size of 819.7 Kb**, less than 1 Mb to load the whole page.
+Thanks to the above optimisations the whole app is composed by only one HTML file with no CSS imports, only one online async JS import (Google Analytics) and just [six images](https://github.com/AntonioRedondo/antonioredondo.com/tree/master/docs/img) downloaded from the same domain. The inlined HTML file minified weights 719 Kb (227 gzipped) and the six images together weight 574 Kb. All this together with 18.7 Kb of downloaded fonts makes a **total size of 819.7 Kb**, less than 1 Mb to load the whole page.
 
 
 ## Google Analytics
@@ -215,7 +215,7 @@ All these tracking events are made with the `ga()` function call. For example:
 You’re more than welcome to use your favourite ad/tracker blocker to avoid the collecting of these user events.
 
 
-## Installing, running and modifying the site locally
+## Installing, running and modifying the code locally
 
 The built site is already available on the `docs` folder. This folder doesn't contain any documentation, it should actually be called `dist`. But by calling the distribution folder `docs` the process of online deployment from GitHub Pages is [much easier](https://github.com/blog/2228-simpler-github-pages-publishing). Read more on [Hosting](#hosting).
 
@@ -223,26 +223,27 @@ After downloading the project:
 
     $ git clone https://github.com/AntonioRedondo/antonioredondo.com.git antonioredondo.com
 
-just open `docs/index.htm` with Firefox (a browser which supports the `file:///` standard with [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)). If you're using other browser than Firefox you need to start the Node.js server:
+just open `docs/index.htm` with Firefox (a browser which supports the `file:///` standard with [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing), at least on Windows). If you're using other browser you need to start the Node.js server:
 
     $ cd pathto/antonioredondo.com
+    $ npm i
     $ npm start
 
 and automatically the default system browser will open showing the website.
 
-To build the site after changes on the source code run:
+To build the site:
 
-    $ cd pathto/antonioredondo.com
-    $ npm i
-    $ gulp
+    $ npm run build:watch
 
-and the default Gulp task will run. This task lints, builds and deploys the app to the `docs` folder every time there is a change to a source file.
+and the `build:watch` script will run. This script lints, builds and deploys the app to the `docs` folder every time there is a change on a source file.
 
-The available Gulp tasks are:
- - `gulp`: default Gulp task. Lints, builds and deploy the app by watching source files. It just executes the `lint` and `build` below Gulp tasks.
- - `gulp lint`: lints source files.
- - `gulp build`: builds and deploys the project onto the `docs` folder.
- - `gulp min`: builds and deploys the inlined and minimised version of the project onto the `docs` folder. This is what is actually deployed on [antonioredondo.com](http://antonioredondo.com).
+The available npm scripts are:
+ - `npm run build:watch`: lints, builds and deploy the app by watching source files. It just executes the `lint` and `build` below scripts. This is the script used most of the time together with `npm start`.
+ - `npm start`: starts a simple Node.js [server](server.js) pointing to the `docs` folder and opens the default system browser at `http://localhost:3000`. Everytime there is a change on the source code it refreshes the browser automatically thanks to [`Live.js`](http://livejs.com) [1](https://github.com/AntonioRedondo/antonioredondo.com/blob/master/src/index.htm#L92). Server exclusively for development purposes. See [Hosting](#hosting) to find out how is deployed on production.
+ - `npm run lint`: lints source files.
+ - `npm run build`: builds and deploys the project onto the `docs` folder. Not ready for production though, just for development.
+ - `npm run build:prod`: builds and deploys the inlined and minimised version of the project onto the `docs` folder ready for production. This is what is actually deployed on [antonioredondo.com](http://antonioredondo.com).
+ - `npm run clean`: removes the `docs` folder.
  
  
  ## Hosting
