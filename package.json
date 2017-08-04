@@ -12,7 +12,7 @@
 		"lint": "gulp lint",
 		"build": "gulp build",
 		"build:watch": "gulp",
-		"build:min": "gulp prod",
+		"build:prod": "gulp prod",
 		"prepush": "gulp lint"
 	},
 	"dependencies": {
