@@ -12,12 +12,13 @@
 		"lint": "gulp lint",
 		"build": "gulp build",
 		"build:watch": "gulp",
-		"build:min": "gulp min",
+		"build:min": "gulp prod",
 		"prepush": "gulp lint"
 	},
 	"dependencies": {
 		"webfontloader": "1.6"
 	},
+	"//": "Grouped by concern: basics, lint, build, production, server",
 	"devDependencies": {
 		"del": "3.0",
 		"gulp": "3.9",
