@@ -239,7 +239,7 @@ and the `build:watch` script will run. This script lints, builds and deploys the
 
 The available npm scripts are:
  - `npm run build:watch`: lints, builds and deploy the app by watching source files. It just executes the `lint` and `build` below scripts. This is the script used most of the time together with `npm start`.
- - `npm start`: starts a simple Node.js [server](server.js) pointing to the `docs` folder and opens the default system browser at `http://localhost:3000`. Everytime there is a change on the source code it refreshes the browser automatically thanks to [`Live.js`](http://livejs.com) [1](https://github.com/AntonioRedondo/antonioredondo.com/blob/master/src/index.htm#L92). Server exclusively for development purposes. See [Hosting](#hosting) to find out how is deployed on production.
+ - `npm start`: starts a simple Node.js [server](server.js) pointing to the `docs` folder and opens the default system browser at [`http://localhost:3000`](http://localhost:3000). Everytime there is a change on the source code it refreshes the browser automatically thanks to [`Live.js`](http://livejs.com) [[1](https://github.com/AntonioRedondo/antonioredondo.com/blob/master/src/index.htm#L92)]. Server exclusively for development purposes. See [Hosting](#hosting) to find out how is deployed on production.
  - `npm run lint`: lints source files.
  - `npm run build`: builds and deploys the project onto the `docs` folder. Not ready for production though, just for development.
  - `npm run build:prod`: builds and deploys the inlined and minimised version of the project onto the `docs` folder ready for production. This is what is actually deployed on [antonioredondo.com](http://antonioredondo.com).
@@ -248,5 +248,5 @@ The available npm scripts are:
  
  ## Hosting
  
- The whole website is hosted on [GitHub Pages](https://pages.github.com/). GitHub Pages allows very good free hosting conditions, with a [generous storage and bandwidth limit](https://help.github.com/articles/what-is-github-pages/#usage-limits) and the possibility of [using your own DNS domain](https://help.github.com/articles/using-a-custom-domain-with-github-pages/). The [`docs`](https://github.com/AntonioRedondo/antonioredondo.com/tree/master/docs) folder is the final distributable page that is delivered when visiting [antonioredondo.com](http://antonioredondo.com).
+ The whole website is hosted on [GitHub Pages](https://pages.github.com/). GitHub Pages provide free hosting for server-less applications like this page, with a [generous storage and bandwidth limit](https://help.github.com/articles/what-is-github-pages/#usage-limits) and the possibility of [using your own DNS domain](https://help.github.com/articles/using-a-custom-domain-with-github-pages/). The [`docs`](https://github.com/AntonioRedondo/antonioredondo.com/tree/master/docs) folder is the final distributable page that is delivered when visiting [antonioredondo.com](http://antonioredondo.com).
  
