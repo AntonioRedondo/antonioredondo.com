@@ -8,7 +8,8 @@ function initMain() { // eslint-disable-line
 		animDurationMoreInfo = 300,
 		descriptionPanel = d.gc("description-panel"),
 		moreInfoPanel = d.gc("more-info-panel"),
-		moreInfoBg = d.gc("more-info-bg");
+		moreInfoBg = d.gc("more-info-bg"),
+		moreInfoBgImage = d.gc("more-info-bg__image");
 	
 	d.gc("main").style.display = "block";
 	
@@ -147,6 +148,10 @@ function initMain() { // eslint-disable-line
 		moreInfoBg.offsetHeight;
 		moreInfoBg.classList.add("more-info-bg--in");
 		
+		moreInfoBgImage.style.visibility = "visible";
+		moreInfoBgImage.offsetHeight;
+		moreInfoBgImage.classList.add("more-info-bg__image--in");
+		
 		d.gc("darkener").classList.add("darkener--in2");
 		ga("send", "event", "v3", "More info", gaLabel);
 	}
@@ -154,9 +159,11 @@ function initMain() { // eslint-disable-line
 	function moreInfoClose(gaLabel) {
 		moreInfoPanel.classList.remove("more-info-panel--in");
 		moreInfoBg.classList.remove("more-info-bg--in");
+		moreInfoBgImage.classList.remove("more-info-bg__image--in");
 		d.st(function() {
 			moreInfoPanel.style.visibility = "hidden";
 			moreInfoBg.style.visibility = "hidden";
+			moreInfoBgImage.style.visibility = "hidden";
 			d.gc("more-info-panel__scroll").scrollTop = 0;
 		}, animDurationMoreInfo);
 		
