@@ -16,7 +16,7 @@
 	transition:
 		transform $time6 ease-out,
 		box-shadow $time2 ease-out,
-		width $time2 ease-out,
+		width $time2 $ease-out,
 		background-position $time2 ease-out,
 		opacity $time3 ease-out;
 
@@ -128,7 +128,7 @@
 	&--selected {
 		width: 20%;
 		
-		transition: all 0.3s ease-out;
+		transition: $time2 $ease-out;
 		box-shadow: 0 0 40px $black040;
 		filter: grayscale(0);
 		

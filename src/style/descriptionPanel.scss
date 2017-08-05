@@ -57,7 +57,7 @@
 	top: 0;
 	left: 0;
 
-	transition: all $time2 ease-in;
+	transition: all $time1 $ease-in;
 
 	transform: translate3d(-104%, 0, 0);
 	
@@ -67,7 +67,8 @@
 	}
 	
 	&--in {
-		transition-timing-function: ease-out;
+		transition-duration: $time2;
+		transition-timing-function: $ease-out;
 		transform: translate3d(0, 0, 0);
 	}
 	

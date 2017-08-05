@@ -43,3 +43,6 @@ $time6: 1.5s; /* Duration for profiles */
 $time4: 1s; /* Delay for logo */
 $time5: 2s; /* Delay for rest of elements */
 $time6: 0.6s;
+
+$ease-in: cubic-bezier(0.75, 0, 1, 1);
+$ease-out: cubic-bezier(0, 0, 0.25, 1);
