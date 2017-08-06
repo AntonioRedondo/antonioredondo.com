@@ -56,10 +56,12 @@
 	position: absolute;
 	top: 0;
 	left: 0;
-
-	transition: all $time1 $ease-in;
-
-	transform: translate3d(-104%, 0, 0);
+	
+	visibility: hidden;
+	transition: $time1 $ease-in;
+	
+	opacity: 0;
+	transform: translate3d(-50%, 0, 0);
 	
 	@media (max-width: $breakpointMobile) {
 		width: 100%;
@@ -69,6 +71,7 @@
 	&--in {
 		transition-duration: $time2;
 		transition-timing-function: $ease-out;
+		opacity: 1;
 		transform: translate3d(0, 0, 0);
 	}
 	

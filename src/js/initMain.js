@@ -29,6 +29,9 @@ function initMain() { // eslint-disable-line
 	// Adds necessary logic to show the Description panel for a profile
 	function showDescriptionPanel(nextProfile) {
 		previousState = "descriptionPanel";
+		
+		descriptionPanel.style.visibility = "visible";
+		descriptionPanel.offsetHeight;
 		descriptionPanel.classList.add("description-panel--in", "s" + nextProfile);
 		
 		var nProfile = d.gc("profile--" + nextProfile);
@@ -103,6 +106,7 @@ function initMain() { // eslint-disable-line
 		ga("send", "event", "v3", "Profile description panel close", "Profile " + profileSelected);
 
 		var removeClasses = function() {
+			descriptionPanel.style.visibility = "hidden";
 			descriptionPanel.classList.remove("s" + profileSelected);
 			
 			d.gca("desc-profile--" + profileSelected).forEach(function(item) {

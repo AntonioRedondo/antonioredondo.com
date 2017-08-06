@@ -13,7 +13,7 @@
 		inline('img/bg.png'),
 		linear-gradient($profile2, $profile2);
 	
-	transition: all ease-in 1s;
+	transition: $ease-in $time7;
 	
 	@media (max-width: $breakpointMobile) {
 		transition-duration: 0.5s;
