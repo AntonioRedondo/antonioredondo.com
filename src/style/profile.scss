@@ -1,7 +1,3 @@
-.profile, .profile-m {
-	background: black;
-}
-
 .profile {
 	width: 15%;
 	height: 120%;
@@ -12,6 +8,8 @@
 	position: absolute;
 	
 	opacity: 0;
+	
+	background: black;
 
 	transition:
 		transform $time6 ease-out,
@@ -301,10 +299,13 @@
 	height: 26vh;
 	height: 53vw;
 	min-height: 170px;
+	
 	display: block;
 	overflow: hidden;
 	
 	position: relative;
+	
+	background: black;
 	
 	@media (min-width: $breakpointMobile) {
 		display: none;
