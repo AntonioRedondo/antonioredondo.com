@@ -126,7 +126,7 @@
 
 		if ((!parent || !child)
 				&& (!(parent instanceof HTMLElement) || !(child instanceof HTMLElement))) {
-			console.error("The parent or child were undefined or they weren't HTMLElements"); // eslint-disable-line no-console
+			console.error("The parent or child were undefined or they weren't HTMLElements");// eslint-disable-line no-console
 			return;
 		}
 
@@ -152,54 +152,42 @@
 	
 	
 	
-	var elementsToLoad = [];
+	var imagesToLoad = [];
 	var	callbacks = [];
 		
 	var runCallbacks = function() {
-		var allLoaded = elementsToLoad.every(function(i) {
-			return i.loaded;
+		var areAllLoaded = imagesToLoad.every(function(image) {
+			return image.loaded;
 		});
 		
-		if (allLoaded) {
-			callbacks.forEach(function(i) {
-				i();
+		if (areAllLoaded) {
+			callbacks.forEach(function(callback) {
+				callback();
 			});
 		}
 	};
 	
 	d.notifyWhenLoaded = function(selector) {
-		var elementToLoad = {
+		var imageToLoad = {
 			selector: selector,
 			loaded: false,
-			get setAsLoaded() {
-				this.loaded = true;
+			setAsLoaded: function() {
+				imageToLoad.loaded = true;
 				runCallbacks();
 			}
-			// Chrome 53 works. Firefox 49 and Edge 14 don't
-			//setAsLoaded: function() {
-			//	elementToLoad.loaded = true;
-			//	runCallbacks();
-			//	console.log("bbb");
-			//}
-			// Doesn't work on browsers
-			//setAsLoaded: function() {
-			//	this.loaded = true;
-			//	runCallbacks();
-			//	console.log("ccc");
-			//}
 		};
 		
-		var element = d.qs(selector);
-		if (element) {
-			elementsToLoad.push(elementToLoad);
+		var image = d.qs(selector);
+		if (image) {
+			imagesToLoad.push(imageToLoad);
 			
-			// http://stackoverflow.com/questions/1977871/check-if-an-image-is-loaded-no-errors-in-javascript
-			if (element.complete && element.naturalHeight !== 0) {
-				elementToLoad.setAsLoaded;
-			} else element.addEventListener("load", elementToLoad.setAsLoaded);
+			// http://stackoverflow.com/questions/1977871/check-if-an-element-is-loaded-no-errors-in-javascript
+			if (image.complete && image.naturalHeight) {
+				imageToLoad.setAsLoaded();
+			} else image.addEventListener("load", imageToLoad.setAsLoaded);
 		}
 		
-		return element;
+		return image;
 	};
 	
 	d.runWhenAllLoaded = function(callback) {
@@ -208,7 +196,7 @@
 	};
 	
 	d.resetElementsToLoad = function() {
-		elementsToLoad = [];
+		imagesToLoad = [];
 		callbacks = [];
 	};
 	
