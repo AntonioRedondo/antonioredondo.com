@@ -277,7 +277,6 @@
 	}
 
 	&--wrap-reverse {
-		
 		@media (max-width: $breakpointMobile) {
 			flex-wrap: wrap-reverse;
 		}
@@ -298,7 +297,6 @@
 		}
 	
 		&--logos {
-			
 			@media (min-width: calc($breakpointBig+10px)) {
 				transform: scale(0.9);
 			}

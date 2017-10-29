@@ -10,8 +10,8 @@
 	"scripts": {
 		"clean": "gulp clean",
 		"lint": "gulp lint",
-		"build": "gulp build",
-		"build:watch": "gulp",
+		"build": "gulp",
+		"build:watch": "gulp watch",
 		"build:prod": "gulp prod",
 		"prepush": "gulp lint"
 	},
@@ -27,7 +27,7 @@
 		
 		"gulp-eslint": "4.0",
 		"gulp-htmlhint": "0.3",
-		"gulp-stylelint": "4.0",
+		"gulp-stylelint": "5.0",
 		"stylelint-config-standard": "17.0",
 		"husky": "0.14",
 		
