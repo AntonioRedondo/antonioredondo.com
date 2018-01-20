@@ -513,11 +513,11 @@
 		
 		display: flex;
 		flex-wrap: wrap;
-		justify-content: space-around;
+		justify-content: center;
 	}
 		
 	&__company-logo {
-		width: 8.6vw;
+		width: 8.8vw;
 		height: 2.4vw;
 		margin: 0.4vw 1.1vw;
 		
@@ -586,6 +586,10 @@
 		
 		&--7 {
 			background: inline('img/logoZopa.svg') no-repeat center / contain;
+		}
+		
+		&--8 {
+			background: inline('img/logoBlow.svg') no-repeat center / contain;
 		}
 	}
 
