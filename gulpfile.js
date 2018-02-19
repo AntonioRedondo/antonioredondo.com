@@ -7,7 +7,7 @@ const sourcemaps = require("gulp-sourcemaps");
 // Lint
 const esLint = require("gulp-eslint");
 const htmlHint = require("gulp-htmlHint");
-const cssLint = require("gulp-stylelint");
+const stylelint = require("gulp-stylelint");
 
 // Build
 const concat = require("gulp-concat");
@@ -32,9 +32,9 @@ const DEST = "docs";
 
 
 gulp.task("watch", ["lint", "build"], () => {
-	gulp.watch([`${SRC}/js/*.js`, ".eslintrc.json"], ["esLint", "buildJs"]);
+	gulp.watch([`${SRC}/js/*.js`], ["esLint", "buildJs"]);
 	gulp.watch([`${SRC}/**/*.htm`, ".htmlhintrc"], ["htmlHint", "buildHtml"]);
-	gulp.watch([`${SRC}/style/*.scss`, ".stylelintrc.json"], ["styleLint", "buildCss"]);
+	gulp.watch([`${SRC}/style/*.scss`], ["styleLint", "buildCss"]);
 	gulp.watch([`${SRC}/img/**`, `${SRC}/favicon.ico`, `${SRC}/CNAME`, "*v1/**", "*v2/**"], ["copyAssets", "buildCss"]);
 });
 gulp.task("lint", ["esLint", "htmlHint", "styleLint"]);
@@ -64,11 +64,7 @@ gulp.task("htmlHint", () => {
 });
 
 gulp.task("styleLint", () => {
-	return gulp.src([`${SRC}/style/*.scss`])
-		.pipe(cssLint({
-			// failAfterError: false, // It defaults to true
-			reporters: [{ formatter: "string", console: true }]
-		}));
+	return gulp.src([`${SRC}/style/*.scss`]).pipe(stylelint());
 });
 
 
