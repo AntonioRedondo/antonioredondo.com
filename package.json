@@ -44,6 +44,6 @@
 		
 		"connect": "3.6",
 		"serve-static": "1.12",
-		"open": "0.0"
+		"opn": "5.2"
 	}
 }
