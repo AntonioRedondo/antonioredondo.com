@@ -545,11 +545,8 @@
 		}
 	
 		&--2 {
-			background-position: 1vw -17.75vw;
-			
-			@media (max-width: $breakpointMobile) {
-				background-position: 4vw 35vw;
-			}
+			background: inline('img/logoInforma.svg') no-repeat center / contain;
+			transform: scale(0.8);
 		}
 		
 		&--3 {
@@ -590,6 +587,10 @@
 		
 		&--8 {
 			background: inline('img/logoBlow.svg') no-repeat center / contain;
+		}
+		
+		&--9 {
+			background: inline('img/logoGfk.svg') no-repeat center / contain;
 		}
 	}
 

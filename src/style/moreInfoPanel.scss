@@ -203,7 +203,7 @@
 	
 	&__text {
 		margin: 0.7vw 0;
-		padding: 0 10%;
+		padding: 0 25% 0 10%;
 	
 		font-size: 1vw;
 		font-family: 'Trirong', sans-serif;
@@ -211,6 +211,7 @@
 			
 		@media (max-width: $breakpointMedium) {
 			margin: 1.2vw 0;
+			padding: 0 10%;
 			font-size: 1.3vw;
 			line-height: 2vw;
 		}
