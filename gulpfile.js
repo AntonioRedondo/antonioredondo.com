@@ -6,8 +6,8 @@ const sourcemaps = require("gulp-sourcemaps");
 
 // Lint
 const esLint = require("gulp-eslint");
-const htmlHint = require("gulp-htmlHint");
-const stylelint = require("gulp-stylelint");
+const htmlHint = require("gulp-htmlhint");
+const styleLint = require("gulp-stylelint");
 
 // Build
 const concat = require("gulp-concat");
@@ -24,48 +24,32 @@ const htmlMin = require("gulp-htmlmin");
 
 
 
-
 const SRC = "src";
 const DEST = "docs";
 
 
 
-
-gulp.task("watch", ["lint", "build"], () => {
-	gulp.watch([`${SRC}/js/*.js`], ["esLint", "buildJs"]);
-	gulp.watch([`${SRC}/**/*.htm`, ".htmlhintrc"], ["htmlHint", "buildHtml"]);
-	gulp.watch([`${SRC}/style/*.scss`], ["styleLint", "buildCss"]);
-	gulp.watch([`${SRC}/img/**`, `${SRC}/favicon.ico`, `${SRC}/CNAME`, "*v1/**", "*v2/**"], ["copyAssets", "buildCss"]);
-});
-gulp.task("lint", ["esLint", "htmlHint", "styleLint"]);
-gulp.task("build", ["buildJs", "buildHtml", "buildCss", "copyAssets"]);
-gulp.task("default", ["build"]);
-
-gulp.task("clean", () => del(DEST));
-
-
-
-
-
 // ---------- LINT ---------- //
 
-gulp.task("esLint", () => {
-	return gulp.src([`${SRC}/js/*.js`, "gulpfile.js"])
+const esLintTask = () => {
+	return gulp.src([`${SRC}/js/*.js`])
 		.pipe(esLint())
 		.pipe(esLint.format())
 		.pipe(esLint.failAfterError());
-});
+};
 
-gulp.task("htmlHint", () => {
-	return gulp.src([`${SRC}/*.htm`])
+const htmlHintTask = () => {
+	return gulp.src([`${SRC}/**/*.htm`])
 		.pipe(htmlHint(".htmlhintrc"))
 		// .pipe(htmlHint.reporter())
 		.pipe(htmlHint.failReporter());
-});
+};
 
-gulp.task("styleLint", () => {
-	return gulp.src([`${SRC}/style/*.scss`]).pipe(stylelint());
-});
+const stylelintTask = () => {
+	return gulp.src([`${SRC}/style/*.scss`]).pipe(styleLint({
+		reporters: [{ formatter: "string", console: true }]
+	}));
+};
 
 
 
@@ -73,7 +57,7 @@ gulp.task("styleLint", () => {
 
 // ---------- BUILD ---------- //
 
-gulp.task("buildJs", () => {
+const buildJsTask = async () => {
 	return gulp.src(
 		[
 			"node_modules/webfontloader/webfontloader.js",
@@ -87,47 +71,44 @@ gulp.task("buildJs", () => {
 		.pipe(concat("app.js"))
 		.pipe(sourcemaps.write())
 		.pipe(gulp.dest(DEST));
-});
+};
 
-gulp.task("buildHtml", () => {
+const buildHtmlTask = () => {
 	return gulp.src([`${SRC}/index.htm`])
 		.pipe(include())
 		.pipe(inline({
+			// base: SRC,
 			disabledTypes: ["img", "js", "css"/*, "svg"*/]
 		}))
 		.pipe(gulp.dest(DEST));
-});
+};
 
-gulp.task("buildCss", () => {
-	return gulp.src([`${SRC}/style/*.scss`])
+const buildCssTask = () => {
+	return gulp.src(
+		[
+			`${SRC}/style/_variables.scss`,
+			`${SRC}/style/common.scss`,
+			`${SRC}/style/*.scss`
+		])
 		.pipe(sourcemaps.init())
 		.pipe(concat("style.css"))
 		.pipe(postCss([
-			preCss({ extension: "scss" }),
+			preCss({ features: { "color-mod-function": { unresolved: "warn" } } }),
 			autoprefixer({ browsers: ["safari 9", "ie 11"] }), // https://github.com/ai/browserslist
-			assets({ loadPaths: [`${SRC}`] })
+			assets({ loadPaths: [SRC] })
 		]))
 		.pipe(sourcemaps.write())
 		.pipe(gulp.dest(DEST));
-});
+};
 
-gulp.task("copyAssets", () => {
+const copyAssetsTask = () => {
 	gulp.src([`${SRC}/favicon.ico`, `${SRC}/CNAME`, "*v1/**", "*v2/**"])
 		.pipe(newer(DEST))
 		.pipe(gulp.dest(DEST));
-	return gulp.src(
-		[
-			`${SRC}/img/bgs.jpg`,
-			`${SRC}/img/moreInfo.jpg`,
-			`${SRC}/img/preview.jpg`,
-			`${SRC}/img/testimonials.jpg`,
-			`${SRC}/img/descBg.png`,
-			`${SRC}/img/logos.png`,
-			`${SRC}/img/profiles.png`
-		])
+	return gulp.src([`${SRC}/img/*`])
 		.pipe(newer(`${DEST}/img`))
 		.pipe(gulp.dest(`${DEST}/img`));
-});
+};
 
 
 
@@ -135,10 +116,9 @@ gulp.task("copyAssets", () => {
 
 // ---------- PRODUCTION ---------- //
 
-gulp.task("prod", ["build"], () => {
+const prodTask = () => {
 	return gulp.src([`${DEST}/index.htm`])
 		.pipe(inline({
-			// base: DEST,
 			disabledTypes: ["img"/*, "svg", "js", "css"*/]
 		}))
 		.pipe(replace(/(<!-- buildDev:start -->)[\s\S]+(<!-- buildDev:end -->)/, ""))
@@ -151,4 +131,19 @@ gulp.task("prod", ["build"], () => {
 			removeRedundantAttributes: true
 		}))
 		.pipe(gulp.dest(DEST));
+};
+
+
+
+const buildTask = gulp.parallel(buildJsTask, buildHtmlTask, buildCssTask, copyAssetsTask);
+
+exports.lint = gulp.parallel(esLintTask, htmlHintTask, stylelintTask);
+exports.buildWatch = gulp.series(buildTask, function watchTask() {
+	gulp.watch([`${SRC}/js/*.js`], gulp.parallel(esLintTask, buildJsTask));
+	gulp.watch([`${SRC}/**/*.htm`], gulp.parallel(htmlHintTask, buildHtmlTask));
+	gulp.watch([`${SRC}/style/*.scss`], gulp.parallel(stylelintTask, buildCssTask));
+	gulp.watch([`${SRC}/img/**`], gulp.parallel(copyAssetsTask));
 });
+exports.buildProd = gulp.series(buildTask, prodTask);
+exports.clean = () => del(DEST);
+exports.default = exports.watch;

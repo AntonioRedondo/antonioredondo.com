@@ -16,6 +16,7 @@
 		"declaration-empty-line-before": null,
 		"indentation": "tab",
 		"max-empty-lines": 5,
+		"no-descending-specificity": null,
 		"no-eol-whitespace": [true, {
 			"ignore": [ "empty-lines" ]
 		}],

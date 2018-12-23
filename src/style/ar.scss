@@ -1,5 +1,3 @@
-@import "_variables.scss";
-
 .ar {
 	width: 41%;
 	height: 100%;
@@ -86,7 +84,7 @@
 			top: calc(50% - @width/2);
 			left: calc(50% - @width/2);
 			
-			background: radial-gradient(circle closest-side, color(white a(25%)) 0%, color(white a(0%)) 100%);
+			background: radial-gradient(circle closest-side, color-mod(white a(25%)) 0%, color-mod(white a(0%)) 100%);
 			
 			@media (max-width: $breakpointMobile) {
 				width: 200vw;

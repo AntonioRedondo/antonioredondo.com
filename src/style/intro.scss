@@ -7,9 +7,9 @@
 	bottom: 0;
 	left: -11vh;
 	
-	/* background: radial-gradient(ellipse at center, $profile1 30%, color($profile2 a(0)) 100%), url('img/bg.png'); */
+	/* background: radial-gradient(ellipse at center, $profile1 30%, color-mod($profile2 a(0)) 100%), url('img/bg.png'); */
 	background:
-		radial-gradient(ellipse at center, $profile1 30%, color($profile2 a(0)) 100%),
+		radial-gradient(ellipse at center, $profile1 30%, color-mod($profile2 a(0)) 100%),
 		inline('img/bg.png'),
 		linear-gradient($profile2, $profile2);
 	
@@ -36,12 +36,14 @@
 		z-index: 10;
 		
 		position: absolute;
-		right: calc(-@width);
+		/* stylelint-disable */
+		right: calc(- @width);
+		/* stylelint-enable */
 		
 		background: $gray2;
 		/* border-right: white solid 2px;
 		border-left: white solid 2px; */
-		box-shadow: 0 0 30px color(black a(70%));
+		box-shadow: 0 0 30px color-mod(black a(70%));
 		
 		transform-origin: right top;
 		transform: rotate(6deg);
@@ -173,29 +175,29 @@
 			from, 20%, 40%, 60%, 80%, to {
 				animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
 			}
-
+			
 			0% {
 				opacity: 0;
 				transform: scale3d(0.3, 0.3, 0.3);
 			}
-
+			
 			20% {
 				transform: scale3d(1.1, 1.1, 1.1);
 			}
-
+			
 			40% {
 				transform: scale3d(0.9, 0.9, 0.9);
 			}
-
+			
 			60% {
 				opacity: 1;
 				transform: scale3d(1.03, 1.03, 1.03);
 			}
-
+			
 			80% {
 				transform: scale3d(0.97, 0.97, 0.97);
 			}
-
+			
 			to {
 				opacity: 1;
 				transform: scale3d(1, 1, 1);
@@ -304,9 +306,9 @@
 	
 	&:active {
 		/* https://github.com/postcss/postcss-color-function */
-		background-color: color($orange1 shade(3%));
+		background-color: color-mod($orange1 shade(3%));
 		transition-duration: 0.05s;
-		box-shadow: white 0 0, #edeec9 0 0 70px, inset 3px 3px 5px color($profile1 shade(20%));
+		box-shadow: white 0 0, #edeec9 0 0 70px, inset 3px 3px 5px color-mod($profile1 shade(20%));
 		transform: translate3d(5px, 5px, 0) scale(1.1);
 		
 		@media (max-width: $breakpointMedium) {

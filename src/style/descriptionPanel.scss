@@ -10,10 +10,10 @@
 	& .c4 { fill: #8fb3c9; color: #8fb3c9; }
 	& .c5 { fill: #5c80a5; color: #5c80a5; }
 	& .b { color: #c2e3e8; }
-	& a:hover, & a svg:hover { filter: drop-shadow(0 0 0.8vw color(#ceefe7 a(70%))); }
+	& a:hover, & a svg:hover { filter: drop-shadow(0 0 0.8vw color-mod(#ceefe7 a(70%))); }
 	& .back-button-m { background-image: linear-gradient(135deg, #b6d6db -20%, #5c80a5 90%); }
-	/* & .block__icon { filter: drop-shadow(0 0 50px color(#ceefe7 a(50%))); } */
-	/* & .desc-table__big-text { filter: drop-shadow(0 0 60px color(#ceefe7 a(50%))); } */
+	/* & .block__icon { filter: drop-shadow(0 0 50px color-mod(#ceefe7 a(50%))); } */
+	/* & .desc-table__big-text { filter: drop-shadow(0 0 60px color-mod(#ceefe7 a(50%))); } */
 }
 
 /* https://coolors.co/app/edeec9-dde7c7-bfd8bd-98c9a3-77bfa3 */
@@ -24,10 +24,10 @@
 	& .c4 { fill: #98c9a3; color: #98c9a3; }
 	& .c5 { fill: #77bfa3; color: #77bfa3; }
 	& .b { color: #dde7c7; }
-	& a:hover, & a svg:hover { filter: drop-shadow(0 0 0.8vw color(#edeec9 a(70%))); }
+	& a:hover, & a svg:hover { filter: drop-shadow(0 0 0.8vw color-mod(#edeec9 a(70%))); }
 	& .back-button-m { background-image: linear-gradient(135deg, #bfd8bd -20%, #77bfa3 90%); }
-	/* & .block__icon { filter: drop-shadow(0 0 50px color(#edeec9 a(50%))); } */
-	/* & .desc-table__big-text { filter: drop-shadow(0 0 60px color(#edeec9 a(50%))); } */
+	/* & .block__icon { filter: drop-shadow(0 0 50px color-mod(#edeec9 a(50%))); } */
+	/* & .desc-table__big-text { filter: drop-shadow(0 0 60px color-mod(#edeec9 a(50%))); } */
 }
 
 /* https://coolors.co/app/ffcdb2-ffb4a2-e5989b-b5838d-6d6875 */
@@ -38,10 +38,10 @@
 	& .c4 { fill: #b59082; color: #b59082; }
 	& .c5 { fill: #736875; color: #736875; }
 	& .b { color: #ffe3a3; }
-	& a:hover, & a svg:hover { filter: drop-shadow(0 0 0.8vw color(#fff3b2 a(70%))); }
+	& a:hover, & a svg:hover { filter: drop-shadow(0 0 0.8vw color-mod(#fff3b2 a(70%))); }
 	& .back-button-m { background-image: linear-gradient(135deg, #e5bb97 -20%, #736875 90%); }
-	/* & .block__icon { filter: drop-shadow(0 0 50px color(#ffcdb2 a(50%))); } */
-	/* & .desc-table__big-text { filter: drop-shadow(0 0 60px color(#ffcdb2 a(50%))); } */
+	/* & .block__icon { filter: drop-shadow(0 0 50px color-mod(#ffcdb2 a(50%))); } */
+	/* & .desc-table__big-text { filter: drop-shadow(0 0 60px color-mod(#ffcdb2 a(50%))); } */
 }
 
 
@@ -297,7 +297,7 @@
 		}
 	
 		&--logos {
-			@media (min-width: calc($breakpointBig+10px)) {
+			@media (min-width: $breakpointBig) {
 				transform: scale(0.9);
 			}
 		}

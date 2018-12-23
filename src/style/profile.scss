@@ -71,7 +71,7 @@
 		}
 
 		& .profile__bg {
-			background-image: linear-gradient(30deg, color($profile1 a(20%)) 25%, $profile1 50%);
+			background-image: linear-gradient(30deg, color-mod($profile1 a(20%)) 25%, $profile1 50%);
 		}
 	}
 	
@@ -84,7 +84,7 @@
 		}
 
 		& .profile__bg {
-			background-image: linear-gradient(30deg, color($profile2 a(20%)) 25%, $profile2 50%);
+			background-image: linear-gradient(30deg, color-mod($profile2 a(20%)) 25%, $profile2 50%);
 		}
 	}
 	

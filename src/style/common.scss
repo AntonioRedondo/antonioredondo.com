@@ -31,13 +31,13 @@ button {
 	font-family: inherit;
 	text-align: center; /* For Safari */
 	
+	&:focus { /* Chrome adds its own blue outline on buttons when focus */
+		outline: none;
+	}
+	
 	&:active:not(.profile) {
 		transform: translate3d(0, 2px, 0);
 	}
-}
-
-button:focus { /* Chrome adds its own blue outline on buttons when focus */
-	outline: none;
 }
 
 * {
