@@ -537,35 +537,30 @@
 		}
 		
 		&--1 {
-			background-position: -36.8vw -17.65vw;
-			
-			@media (max-width: $breakpointMobile) {
-				background-position: -144.2vw -17.2vw;
-			}
+			background: inline('img/logoPollen.svg') no-repeat center / contain;
 		}
-	
+		
 		&--2 {
-			background: inline('img/logoInforma.svg') no-repeat center / contain;
-			transform: scale(0.8);
+			background: inline('img/logoGfk.svg') no-repeat center / contain;
 		}
 		
 		&--3 {
-			background-position: -7.8vw -17.65vw;
-			
-			@media (max-width: $breakpointMobile) {
-				background-position: -232vw 35vw;
-			}
+			background: inline('img/logoPreqin.svg') no-repeat center / contain;
 		}
 		
 		&--4 {
-			background-position: -68.2vw -17.75vw;
-			
-			@media (max-width: $breakpointMobile) {
-				background-position: 133vw -17.65vw;
-			}
+			background: inline('img/logoBlow.svg') no-repeat center / contain;
 		}
 		
 		&--5 {
+			background: inline('img/logoZopa.svg') no-repeat center / contain;
+		}
+		
+		&--6 {
+			background: inline('img/logoGamesys.svg') no-repeat center / contain;
+		}
+		
+		&--7 {
 			background-position: -27.6vw -17.75vw;
 			
 			@media (max-width: $breakpointMobile) {
@@ -573,24 +568,17 @@
 			}
 		}
 		
-		&--6 {
-			background-position: -13.7vw -20.5vw;
+		&--8 {
+			background-position: -68.2vw -17.75vw;
 			
 			@media (max-width: $breakpointMobile) {
-				background-position: -54.5vw -28.2vw;
+				background-position: 133vw -17.65vw;
 			}
 		}
-		
-		&--7 {
-			background: inline('img/logoZopa.svg') no-repeat center / contain;
-		}
-		
-		&--8 {
-			background: inline('img/logoBlow.svg') no-repeat center / contain;
-		}
-		
+	
 		&--9 {
-			background: inline('img/logoGfk.svg') no-repeat center / contain;
+			background: inline('img/logoInforma.svg') no-repeat center / contain;
+			transform: scale(0.8);
 		}
 	}
 
