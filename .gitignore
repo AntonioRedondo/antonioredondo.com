@@ -6,6 +6,7 @@ assets
 docs/style.css
 docs/app.js
 .idea
+.history
 docs/**/*.css
 docs/**/*.js
 docs/**/*.svg
