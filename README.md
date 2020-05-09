@@ -221,28 +221,25 @@ The built site is already available on the `docs` folder. This folder doesn't co
 
 After downloading the project:
 
-    $ git clone https://github.com/AntonioRedondo/antonioredondo.com.git antonioredondo.com
+    git clone https://github.com/AntonioRedondo/antonioredondo.com.git
 
-just open `docs/index.htm` with Firefox (a browser which supports the `file:///` standard with [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing), at least on Windows). If you're using other browser you need to start the Node.js server:
+start the `dev` server:
 
-    $ cd pathto/antonioredondo.com
-    $ npm i
-    $ npm start
+    cd antonioredondo.com
+    npm i
+    npm run dev
 
 and automatically the default system browser will open showing the website.
 
-To build the site:
+To build the site ready for production deployment:
 
-    $ npm run build:watch
-
-and the `build:watch` script will run. This script lints, builds and deploys the app to the `docs` folder every time there is a change on a source file.
+    npm run build
 
 The available npm scripts are:
- - `npm run build:watch`: lints, builds and deploy the app by watching source files. It just executes the `lint` and `build` below scripts. This is the script used most of the time together with `npm start`.
- - `npm start`: starts a simple Node.js [server](server.js) pointing to the `docs` folder and opens the default system browser at [`http://localhost:3000`](http://localhost:3000). Everytime there is a change on the source code it refreshes the browser automatically thanks to [`Live.js`](http://livejs.com) [[1](https://github.com/AntonioRedondo/antonioredondo.com/blob/master/src/index.htm#L92)]. Server exclusively for development purposes. See [Hosting](#hosting) to find out how is deployed on production.
+ - `npm run dev`: builds the app while watching source files. It also starts a simple Node.js server and opens a tab on the browser on `http://localhost:3000`. This script are just `npm start` and `npm run build` scripts running in parallel.
  - `npm run lint`: lints source files.
- - `npm run build`: builds and deploys the project onto the `docs` folder. Not ready for production though, just for development.
- - `npm run build:prod`: builds and deploys the inlined and minimised version of the project onto the `docs` folder ready for production. This is what is actually deployed on [antonioredondo.com](http://antonioredondo.com).
+ - `npm run build`: builds and deploys the inlined and minimised version of the project onto the `docs` folder ready for production. This is what is actually deployed on [antonioredondo.com](http://antonioredondo.com).
+ - `npm start`: starts a simple Node.js [server](server.js) pointing to the `docs` folder and opens the default system browser at [`http://localhost:3000`](http://localhost:3000). Everytime there is a change on the source code it refreshes the browser automatically thanks to [`Live.js`](http://livejs.com) [[1](https://github.com/AntonioRedondo/antonioredondo.com/blob/master/src/index.htm#L92)]. Server exclusively for development purposes. See [Hosting](#hosting) to find out how is deployed on production.
  - `npm run clean`: removes the `docs` folder.
  
  
