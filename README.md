@@ -160,7 +160,7 @@ The site is a SPA. What in a web 1.0 site profile descriptions would be differen
 
 ## Speed and size optimisation
 
-The website is optimised to load ultrafast respecting all the perfomance, accessibility and rest of web practices. It gets the below [Lighthouse](https://github.com/GoogleChrome/lighthouse) score. You can check it yourself! Just open the Dev Tools on Chrome, click the Audits tab and generate a new report.
+The website is optimised to load ultrafast. It follows the best performance, accessibility and rest of web practices. It gets the below [Lighthouse](https://github.com/GoogleChrome/lighthouse) score. You can check it yourself! Just open the Dev Tools on Chrome, click the Audits tab and generate a new report.
 
 <img src="https://github.com/AntonioRedondo/antonioredondo.com/raw/master/readmeImages/Lighthouse.png" width="900px" />
 
