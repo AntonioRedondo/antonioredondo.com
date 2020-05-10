@@ -160,15 +160,19 @@ The site is a SPA. What in a web 1.0 site profile descriptions would be differen
 
 ## Speed and size optimisation
 
-When deployed on production the `build:prod` npm script minifies JavaScript, HTML and CSS.
+The website is optimised to load ultrafast respecting all the perfomance, accessibility and rest of web practices. It gets the below [Lighthouse](https://github.com/GoogleChrome/lighthouse) score. You can check it yourself! Just open the Dev Tools on Chrome, click the Audits tab and generate a new report.
 
-Also, to avoid unnecessary extra HTTP calls JavaScript, CSS and SVG images which are referenced from HTML code are inlined with the [`gulp-inline`](https://www.npmjs.com/package/gulp-inline) module.
+<img src="https://github.com/AntonioRedondo/antonioredondo.com/raw/master/readmeImages/Lighthouse.png" width="900px" />
 
-There is more inlining. On SCSS files the [`postcss-assets`](https://www.npmjs.com/package/postcss-assets) module is used to inline SVG and some PNG images (small ones, see [example](https://github.com/AntonioRedondo/antonioredondo.com/blob/master/src/style/intro.scss#L69)) within CSS code. This avoid more HTTP calls made from CSS code.
+When deployed on production the `build` npm script minifies JavaScript, HTML and CSS.
+
+Also, to avoid unnecessary extra HTTP requests JavaScript, CSS and SVG images which are referenced from HTML code are inlined with the [`gulp-inline`](https://www.npmjs.com/package/gulp-inline) module.
+
+There is more inlining. On SCSS files the [`postcss-assets`](https://www.npmjs.com/package/postcss-assets) module is used to inline SVG and some PNG images (small ones, see [example](https://github.com/AntonioRedondo/antonioredondo.com/blob/master/src/style/intro.scss#L69)) within CSS code. This avoid more HTTP requests made from CSS code.
 
 As you can see **inlining is a technique I find very powerful**. You must be careful with it however. On HTML code if a same SVG image is used several times among the page the image must not be inlined on the HTML as the code will be repeated for every time the image is used. Instead the image must be inlined as a `background-image` CSS property in a `<div>` or similar element. When using inlined images on SCSS code be careful about the transpiled CSS code doesn’t duplicate any inlined content in generated classes. Inspect the generated CSS file and if duplication happens CSS selectors and nesting must be rearranged.
 
-Non-SVG images have been merged together to avoid extra HTTP calls. They are used as `background-image` CSS properties and placed with `background-position` (see [example](https://github.com/AntonioRedondo/antonioredondo.com/blob/master/src/style/profile.scss#L72)). The final production build only makes use of [6 image files](https://github.com/AntonioRedondo/antonioredondo.com/tree/master/docs/img) (plus another one for the Facebook preview not used on the website). Below you can see a set of images combined into one single file and used with `background-image` and `background-position` CSS properties:
+Non-SVG images have been merged together to avoid extra HTTP requests. They are used as `background-image` CSS properties and placed with `background-position` (see [example](https://github.com/AntonioRedondo/antonioredondo.com/blob/master/src/style/profile.scss#L72)). The final production build only makes use of [6 image files](https://github.com/AntonioRedondo/antonioredondo.com/tree/master/docs/img) (plus another one for the Facebook preview not used on the website). Below you can see a set of images combined into one single file and used with `background-image` and `background-position` CSS properties:
 
 <img align="center" src="https://github.com/AntonioRedondo/antonioredondo.com/raw/master/src/img/logos.png" width="600px" height="157px" />
 
