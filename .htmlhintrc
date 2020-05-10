@@ -1,5 +1,6 @@
 {
 	"//": "https://github.com/yaniswang/HTMLHint/wiki/Rules",
+	"alt-require": true,
 	"attr-unsafe-chars": true,
 	"doctype-first": false,
 	"doctype-html5": true,

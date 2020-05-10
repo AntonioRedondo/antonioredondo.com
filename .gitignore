@@ -10,3 +10,4 @@ docs/app.js
 docs/**/*.css
 docs/**/*.js
 docs/**/*.svg
+src/style/z_atoms.scss
