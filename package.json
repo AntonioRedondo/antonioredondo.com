@@ -10,7 +10,7 @@
 		"clean": "rimraf docs",
 		"lint": "concurrently \"eslint --fix \"src/**/*.js\" --ignore-pattern \"docs\"\" \"htmlhint src/**/*.htm\" \"stylelint --fix \"src/**/*.scss\" --ip \"z_atoms.scss\"",
 		"build": "gulp",
-		"dev": "concurrently \"npm start\" \"gulp\""
+		"dev": "concurrently \"npm start\" \"gulp dev\""
 	},
 	"dependencies": {
 		"webfontloader": "^1.6.28"
