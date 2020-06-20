@@ -155,7 +155,7 @@ I was thinking of adding *CSS modules* support to the project with [`postcss-mod
 
 ## SPA and routing
 
-The site is a SPA. What in a web 1.0 site profile descriptions would be different page loads, on this 2.0 site is just a hide `<section>` which is made visible when the user pushes the profile button. However, when the corresponding profile button is pressed the URL is updated with a hash and the profile number selected: `#profile1`, `#profile2` or `#profile3`. If the page is accessed straight from the URL and hash the page will directly show the corresponding section. Also you can navigate through the different sections going back and forth. Sections will load and unload accordingly. To implement this behaviour the [`history.pushState()`](https://developer.mozilla.org/en-US/docs/Web/API/History/pushState) API is [used](https://github.com/AntonioRedondo/antonioredondo.com/blob/master/src/js/initMain.js#L117).
+The site is a SPA. What in a web 1.0 site profile descriptions would be different page loads, on this 2.0 site is just a hide `<section>` which is made visible when the user pushes the profile button. However, when the corresponding profile button is pressed the URL is updated with a hash and the profile number selected: `#profile1`, `#profile2` or `#profile3`. If the page is accessed straight from the URL and hash the page will directly show the corresponding section. Also you can navigate through the different sections going back and forth with the browser. Sections will load and unload accordingly. To implement this behaviour the [`history.pushState()`](https://developer.mozilla.org/en-US/docs/Web/API/History/pushState) API is [used](https://github.com/AntonioRedondo/antonioredondo.com/blob/master/src/js/initMain.js#L117).
 
 
 ## Speed and size optimisation
@@ -170,7 +170,7 @@ Also, to avoid unnecessary extra HTTP requests JavaScript, CSS and SVG images wh
 
 There is more inlining. On SCSS files the [`postcss-assets`](https://www.npmjs.com/package/postcss-assets) module is used to inline SVG and some PNG images (small ones, see [example](https://github.com/AntonioRedondo/antonioredondo.com/blob/master/src/style/intro.scss#L69)) within CSS code. This avoid more HTTP requests made from CSS code.
 
-As you can see **inlining is a technique I find very powerful**. You must be careful with it however. On HTML code if a same SVG image is used several times among the page the image must not be inlined on the HTML as the code will be repeated for every time the image is used. Instead the image must be inlined as a `background-image` CSS property in a `<div>` or similar element. When using inlined images on SCSS code be careful about the transpiled CSS code doesn’t duplicate any inlined content in generated classes. Inspect the generated CSS file and if duplication happens CSS selectors and nesting must be rearranged.
+**Inlining is a technique very powerful**. You must be careful with it though. On HTML code if a same SVG image is used several times among the page the image must not be inlined as the SVG code will be repeated for every time the image is inlined. Instead the image must be inlined as a `background-image` CSS property for a `<div>` or similar element. When using inlined images on SCSS code be careful about the transpiled CSS code doesn’t duplicate any inlined content in generated classes. Inspect the generated CSS file and if duplication happens CSS selectors and nesting must be rearranged.
 
 Non-SVG images have been merged together to avoid extra HTTP requests. They are used as `background-image` CSS properties and placed with `background-position` (see [example](https://github.com/AntonioRedondo/antonioredondo.com/blob/master/src/style/profile.scss#L72)). The final production build only makes use of [6 image files](https://github.com/AntonioRedondo/antonioredondo.com/tree/master/docs/img) (plus another one for the Facebook preview not used on the website). Below you can see a set of images combined into one single file and used with `background-image` and `background-position` CSS properties:
 
@@ -221,7 +221,7 @@ You’re more than welcome to use your favourite ad/tracker blocker to avoid the
 
 ## Installing, running and modifying the code locally
 
-The built site is already available on the `docs` folder. This folder doesn't contain any documentation, it should actually be called `dist`. But by calling the distribution folder `docs` the process of online deployment from GitHub Pages is [much easier](https://github.com/blog/2228-simpler-github-pages-publishing). Read more on [Hosting](#hosting).
+The built site is available for distribution on the `docs` folder. This folder doesn't contain any documentation, it should actually be called `dist`. But by calling the distribution folder `docs` the process of online deployment from GitHub Pages is [much easier](https://github.com/blog/2228-simpler-github-pages-publishing). Read more on [Hosting](#hosting).
 
 After downloading the project:
 
@@ -249,5 +249,5 @@ The available npm scripts are:
  
  ## Hosting
  
- The whole website is hosted on [GitHub Pages](https://pages.github.com/). GitHub Pages provide free hosting for server-less applications like this page, with a [generous storage and bandwidth limit](https://help.github.com/articles/what-is-github-pages/#usage-limits) and the possibility of [using your own DNS domain](https://help.github.com/articles/using-a-custom-domain-with-github-pages/). The [`docs`](https://github.com/AntonioRedondo/antonioredondo.com/tree/master/docs) folder is the final distributable page that is delivered when visiting [antonioredondo.com](http://antonioredondo.com).
+The whole website is hosted on [GitHub Pages](https://pages.github.com/). GitHub Pages provide free hosting for server-less applications like this page, with a [generous storage and bandwidth limit](https://help.github.com/articles/what-is-github-pages/#usage-limits) and the possibility of [using your own DNS domain](https://help.github.com/articles/using-a-custom-domain-with-github-pages/). The [`docs`](https://github.com/AntonioRedondo/antonioredondo.com/tree/master/docs) folder is the final distributable page that is delivered when visiting [antonioredondo.com](http://antonioredondo.com).
  
