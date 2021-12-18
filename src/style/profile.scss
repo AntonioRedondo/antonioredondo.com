@@ -1,3 +1,4 @@
+/* stylelint-disable selector-class-pattern */
 .profile {
 	width: 15%;
 	height: 120%;
@@ -193,7 +194,7 @@
 		bottom: 4%;
 		left: -10%;
 		
-		background: url('img/profiles.png') no-repeat scroll center / 84.5vh;
+		background: url("img/profiles.png") no-repeat scroll center / 84.5vh;
 	
 		transition: all 0.2s;
 	
@@ -208,7 +209,7 @@
 		position: absolute;
 		top: 50%;
 		
-		background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 100));
+		background-image: linear-gradient(rgb(0 0 0 / 0%), rgb(0 0 0 / 10000%));
 	
 		transition: all 0.2s;
 		opacity: 0;
@@ -253,8 +254,8 @@
 		display: block;
 		
 		position: absolute;
-		left: calc(50% - @width/2);
-		bottom: calc(30% - @width/2);
+		left: calc(50% - @width / 2);
+		bottom: calc(30% - @width / 2);
 		
 		opacity: 0;
 		border-radius: 100%;
@@ -284,7 +285,7 @@
 			
 			border-radius: 100%;
 			/* background: url('img/arrow.png') no-repeat center / cover; */
-			background: url('img/logos.png') no-repeat $gray1 0 -128px / 950px auto;
+			background: url("img/logos.png") no-repeat $gray1 0 -128px / 950px auto;
 			transform: rotate(90deg);
 		}
 	}
@@ -359,7 +360,7 @@
 		top: 15px;
 		right: 0;
 		
-		background: url('img/profiles.png') no-repeat scroll center / 50vw;
+		background: url("img/profiles.png") no-repeat scroll center / 50vw;
 	}
 	
 	&__title-text {
@@ -399,7 +400,7 @@
 	position: absolute;
 	left: 75%;
 	
-	background: url('img/bgs.jpg') no-repeat scroll 0% center / cover;
+	background: url("img/bgs.jpg") no-repeat scroll 0% center / cover;
 
 	transition: opacity 0.3s ease-in, transform 100s ease-in;
 	opacity: 0;

@@ -1,10 +1,10 @@
 $pink1: #e41a4a;
 $pink2: #ff406e;
 $purple1: #6d2358;
-$purple2: rgb(36, 0, 69);
+$purple2: rgb(36 0 69);
 $purple3: #140026;
-$blue1: rgba(0, 50, 58, 0.6);
-$turquoise1: rgb(0, 200, 190);
+$blue1: rgb(0 50 58 / 60%);
+$turquoise1: rgb(0 200 190);
 $green2: #009688;
 $golden1: #bf9b30;
 $orange1: #f79188;
@@ -13,26 +13,22 @@ $gray1: #111;
 $gray2: #222;
 $gray3: #333;
 $gray5: #555;
-$black020: rgba(0, 0, 0, 0.2);
-$black040: rgba(0, 0, 0, 0.4);
+$black020: rgb(0 0 0 / 20%);
+$black040: rgb(0 0 0 / 40%);
 $whiteA: #aaa;
 $whiteD: #ddd;
 $whiteE: #eee;
-
 $profile1: #f66;
 $profile2: #ff81ae;
 $profile3: #61aec2;
-
 $profile1: #f86d72;
 $profile2: #b74b66;
 $profile3: #6d2358;
-
 
 $breakpointBig: 2000px;
 $breakpointMedium: 1470px;
 $breakpointSmall: 1100px;
 $breakpointMobile: 810px;
-
 
 $time1: 0.15s;
 $time2: 0.3s;

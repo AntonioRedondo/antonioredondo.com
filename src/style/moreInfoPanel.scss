@@ -1,3 +1,4 @@
+/* stylelint-disable selector-class-pattern */
 .more-info-bg {
 	width: 100%;
 	height: 100%;
@@ -6,7 +7,7 @@
 	position: absolute;
 	z-index: 4;
 	
-	background: url('img/moreInfo.jpg') $gray1 14% center / cover;
+	background: url("img/moreInfo.jpg") $gray1 14% center / cover;
 	background:
 		radial-gradient(
 			circle farthest-corner at 20% 50%,
@@ -75,8 +76,8 @@
 		display: block;
 		
 		position: absolute;
-		left: calc(20% - @width/2);
-		bottom: calc(18% - @width/2);
+		left: calc(20% - @width / 2);
+		bottom: calc(18% - @width / 2);
 		
 		background-color: $gray3;
 		opacity: 0.8;
@@ -104,7 +105,7 @@
 			left: 0;
 			
 			border-radius: 100%;
-			background: url('img/logos.png') no-repeat 0 -128px / 950px auto;
+			background: url("img/logos.png") no-repeat 0 -128px / 950px auto;
 			transform: rotate(90deg);
 		}
 	}
@@ -159,7 +160,7 @@
 		
 		position: absolute;
 		
-		background: url('img/descBg.png') $gray1;
+		background: url("img/descBg.png") $gray1;
 		box-shadow: 0 0 40px $black040;
 		
 		transform-origin: left 10%;
@@ -206,7 +207,7 @@
 		padding: 0 25% 0 10%;
 	
 		font-size: 1vw;
-		font-family: 'Trirong', sans-serif;
+		font-family: Trirong, sans-serif;
 		line-height: 1.5vw;
 			
 		@media (max-width: $breakpointMedium) {
@@ -236,7 +237,7 @@
 		margin-bottom: 2vw;
 		
 		font-size: 5vw;
-		font-family: 'Open Sans', sans-serif;
+		font-family: "Open Sans", sans-serif;
 		font-weight: 800;
 		text-transform: uppercase;
 		line-height: 0.7em;
@@ -293,7 +294,7 @@
 		
 		position: relative;
 		
-		background: url('img/moreInfoM.jpg') $gray1 center 25% / cover;
+		background: url("img/moreInfoM.jpg") $gray1 center 25% / cover;
 		
 		@media (min-width: $breakpointMobile) {
 			display: none;

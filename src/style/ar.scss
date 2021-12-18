@@ -81,8 +81,8 @@
 			height: @width;
 			
 			position: absolute;
-			top: calc(50% - @width/2);
-			left: calc(50% - @width/2);
+			top: calc(50% - @width / 2);
+			left: calc(50% - @width / 2);
 			
 			background: radial-gradient(circle closest-side, color-mod(white a(25%)) 0%, color-mod(white a(0%)) 100%);
 			

@@ -7,10 +7,10 @@
 	bottom: 0;
 	left: -11vh;
 	
-	/* background: radial-gradient(ellipse at center, $profile1 30%, color-mod($profile2 a(0)) 100%), url('img/bg.png'); */
+	/* background: radial-gradient(ellipse at center, $profile1 30%, color-mod($profile2 a(0)) 100%), url("img/bg.png"); */
 	background:
 		radial-gradient(ellipse at center, $profile1 30%, color-mod($profile2 a(0)) 100%),
-		inline('img/bg.png'),
+		inline("img/bg.png"),
 		linear-gradient($profile2, $profile2);
 	
 	transition: $ease-in $time7;
@@ -37,7 +37,7 @@
 		
 		position: absolute;
 		/* stylelint-disable */
-		right: calc(- @width);
+		right: calc(-11vh);
 		/* stylelint-enable */
 		
 		background: $gray2;
@@ -60,13 +60,13 @@
 	margin: auto;
 	
 	position: absolute;
-	bottom: calc(50% - @height/2);
+	bottom: calc(50% - @height / 2);
 	left: 0;
 	right: 0;
 	
 	transition: all ease-out 0.3s;
 	
-	background: inline('img/scrollDown.gif') no-repeat center / 100%;
+	background: inline("img/scrollDown.gif") no-repeat center / 100%;
 	
 	/* http://stackoverflow.com/questions/21142923/ie-10-11-css-transitions-with-calc-do-not-work */
 	&--bottom {
@@ -351,7 +351,7 @@
 	position: absolute;
 	
 	font-size: 2vw;
-	font-family: 'Open Sans Condensed', sans-serif;
+	font-family: "Open Sans Condensed", sans-serif;
 		
 	cursor: default;
 
@@ -536,34 +536,34 @@
 		transition: all ease-in-out 3s;
 		
 		&--1, &--5 {
-			background-image: inline('img/b1.svg');
+			background-image: inline("img/b1.svg");
 			
 			@media (max-width: $breakpointMobile) {
-				background-image: inline('img/b1m.svg');
+				background-image: inline("img/b1m.svg");
 			}
 		}
 		
 		&--2 {
-			background-image: inline('img/b2.svg');
+			background-image: inline("img/b2.svg");
 			
 			@media (max-width: $breakpointMobile) {
-				background-image: inline('img/b2m.svg');
+				background-image: inline("img/b2m.svg");
 			}
 		}
 		
 		&--3 {
-			background-image: inline('img/b3.svg');
+			background-image: inline("img/b3.svg");
 			
 			@media (max-width: $breakpointMobile) {
-				background-image: inline('img/b3m.svg');
+				background-image: inline("img/b3m.svg");
 			}
 		}
 		
 		&--4 {
-			background-image: inline('img/b4.svg');
+			background-image: inline("img/b4.svg");
 			
 			@media (max-width: $breakpointMobile) {
-				background-image: inline('img/b4m.svg');
+				background-image: inline("img/b4m.svg");
 			}
 		}
 	}

@@ -83,7 +83,7 @@
 		top: 0;
 		left: 0;
 		
-		background: url('img/descBg.png') $gray1;
+		background: url("img/descBg.png") $gray1;
 		box-shadow: 0 0 40px $black040;
 	
 		transform-origin: top right;
@@ -115,9 +115,8 @@
 		position: absolute;
 		top: 0;
 		left: 0;
-	
-		font-family: 'Open Sans', sans-serif;
-		font-family: 'Trirong', serif;
+		
+		font-family: Trirong, serif;
 		font-size: 0.8vw;
 		
 		@media (max-width: $breakpointMobile) {
@@ -144,7 +143,7 @@
 		z-index: 12;
 		
 		position: absolute;
-		left: calc(46% - @width/2);
+		left: calc(46% - @width / 2);
 		
 		background: transparent;
 		border-radius: 100%;
@@ -185,7 +184,7 @@
 				left: 0;
 				
 				/* background: url('img/arrow.png') no-repeat center / cover; */
-				background: url('img/logos.png') no-repeat $gray1 0 -64px / 478px;
+				background: url("img/logos.png") no-repeat $gray1 0 -64px / 478px;
 				border-radius: 100%;
 				transform: rotate(180deg);
 			}
@@ -209,7 +208,7 @@
 				top: 0;
 				left: 0;
 				
-				background: url('img/logos.png') $gray1 no-repeat 0 -64px / 478px;
+				background: url("img/logos.png") $gray1 no-repeat 0 -64px / 478px;
 				border-radius: 100%;
 			}
 		}
@@ -225,7 +224,7 @@
 
 
 
-*[class*='desc-profile--'] {
+*[class*="desc-profile--"] {
 	display: none;
 }
 
@@ -340,7 +339,7 @@
 	
 	font-size: 0.8em;
 	font-weight: 800;
-	font-family: 'Open Sans', sans-serif;
+	font-family: "Open Sans", sans-serif;
 	text-align: center;
 	text-transform: uppercase;
 	letter-spacing: 1em;
@@ -359,7 +358,7 @@
 	height: 4.6vw;
 	margin: 0 auto;
 	
-	background: url('img/logos.png') no-repeat 0 top / 55vw auto;
+	background: url("img/logos.png") no-repeat 0 top / 55vw auto;
 		
 	@media (max-width: $breakpointMobile) {
 		width: 100%;
@@ -524,7 +523,7 @@
 		display: block;
 		flex: 0 1 auto;
 		
-		background-image: url('img/logos.png');
+		background-image: url("img/logos.png");
 		background-size: 51vw auto;
 		
 		transition: filter $time1;
@@ -537,46 +536,42 @@
 		}
 		
 		&--1 {
-			background: inline('img/logoInfinityWorks.svg') no-repeat center / contain;
+			background: inline("img/logoETXCapital.svg") no-repeat center / contain;
 		}
 		
 		&--2 {
-			background: inline('img/logoPollen.svg') no-repeat center / contain;
+			background: inline("img/logoInfinityWorks.svg") no-repeat center / contain;
 		}
 		
 		&--3 {
-			background: inline('img/logoGfk.svg') no-repeat center / contain;
+			background: inline("img/logoPollen.svg") no-repeat center / contain;
 		}
 		
 		&--4 {
-			background: inline('img/logoPreqin.svg') no-repeat center / contain;
+			background: inline("img/logoGfk.svg") no-repeat center / contain;
 		}
 		
 		&--5 {
-			background: inline('img/logoBlow.svg') no-repeat center / contain;
+			background: inline("img/logoPreqin.svg") no-repeat center / contain;
 		}
 		
 		&--6 {
-			background: inline('img/logoZopa.svg') no-repeat center / contain;
+			background: inline("img/logoBlow.svg") no-repeat center / contain;
 		}
 		
 		&--7 {
-			background: inline('img/logoGamesys.svg') no-repeat center / contain;
+			background: inline("img/logoZopa.svg") no-repeat center / contain;
 		}
 		
 		&--8 {
+			background: inline("img/logoGamesys.svg") no-repeat center / contain;
+		}
+		
+		&--9 {
 			background-position: -27.6vw -17.75vw;
 			
 			@media (max-width: $breakpointMobile) {
 				background-position: -108vw -17.4vw;
-			}
-		}
-		
-		&--9 {
-			background-position: -68.2vw -17.75vw;
-			
-			@media (max-width: $breakpointMobile) {
-				background-position: 133vw -17.65vw;
 			}
 		}
 	}
@@ -588,11 +583,11 @@
 		display: inline-block;
 		
 		&--1 {
-			background: inline('img/ornament.svg') no-repeat center / contain;
+			background: inline("img/ornament.svg") no-repeat center / contain;
 		}
 		
 		&--2 {
-			background: inline('img/ornament2.svg') no-repeat center / contain;
+			background: inline("img/ornament2.svg") no-repeat center / contain;
 		}
 		
 		&--flipped {

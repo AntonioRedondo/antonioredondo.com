@@ -10,7 +10,6 @@ const replace = require("gulp-replace");
 const inline = require("gulp-inline");
 const postCss = require("gulp-postcss");
 const preCss = require("precss");
-const autoprefixer = require("autoprefixer");
 const atomizer = require("gulp-atomizer");
 const atomCssConfig = require("./atomCssConfig.js");
 const assets = require("postcss-assets");
@@ -40,12 +39,12 @@ const buildJsTask = () =>
 		.pipe(gulp.dest(DEST));
 
 const buildHtmlTask = () =>
-	gulp.src([`${SRC}/htm/index.htm`])
+	gulp.src([`${SRC}/html/index.html`])
 		.pipe(include())
 		.pipe(gulp.dest(DEST));
 
 const buildCssAtomsTask = () =>
-	gulp.src([`${SRC}/**/*.htm`])
+	gulp.src([`${SRC}/**/*.html`])
 		.pipe(atomizer(atomCssConfig))
 		.pipe(gulp.dest(`${SRC}/style`));
 
@@ -60,7 +59,6 @@ const buildCssTask = () =>
 		.pipe(concat("style.css"))
 		.pipe(postCss([
 			preCss({ features: { "color-mod-function": { unresolved: "warn" } } }),
-			autoprefixer(), // https://github.com/ai/browserslist
 			assets({ loadPaths: [SRC] })
 		]))
 		.pipe(sourcemaps.write())
@@ -79,7 +77,7 @@ const copyAssetsTask = () => {
 // ---------- PRODUCTION ---------- //
 
 const prodTask = () =>
-	gulp.src([`${DEST}/index.htm`])
+	gulp.src([`${DEST}/index.html`])
 		.pipe(inline({
 			// base: DEST,
 			disabledTypes: ["img"/*, "svg", "js", "css"*/]
@@ -100,8 +98,8 @@ const buildTask = gulp.parallel(buildJsTask, buildHtmlTask, gulp.series(buildCss
 
 exports.dev = gulp.series(buildTask, function watchTask() {
 	gulp.watch([`${SRC}/js/*.js`], buildJsTask);
-	gulp.watch([`${SRC}/**/*.htm`], buildHtmlTask);
-	gulp.watch([`${SRC}/style/*.scss`, `!${SRC}/style/z_atoms.scss`, `${SRC}/**/*.htm`], gulp.series(buildCssAtomsTask, buildCssTask));
+	gulp.watch([`${SRC}/**/*.html`], buildHtmlTask);
+	gulp.watch([`${SRC}/style/*.scss`, `!${SRC}/style/z_atoms.scss`, `${SRC}/**/*.html`], gulp.series(buildCssAtomsTask, buildCssTask));
 	gulp.watch([`${SRC}/img/**`], gulp.parallel(copyAssetsTask));
 });
 exports.build = gulp.series(buildTask, prodTask);
