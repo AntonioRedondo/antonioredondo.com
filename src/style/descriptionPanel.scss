@@ -368,9 +368,11 @@
 }
 
 .logo-be {
+	height: 2vw;
 	background-position: -21vw top;
 		
 	@media (max-width: $breakpointMobile) {
+		height: 8vw;
 		background-position: -84.2vw top;
 	}
 }
