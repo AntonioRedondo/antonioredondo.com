@@ -10,7 +10,7 @@
 	& .c4 { fill: #8fb3c9; color: #8fb3c9; }
 	& .c5 { fill: #5c80a5; color: #5c80a5; }
 	& .b { color: #c2e3e8; }
-	& a:hover, & a svg:hover { filter: drop-shadow(0 0 0.8vw color-mod(#ceefe7 a(70%))); }
+	& a:hover, & a svg:hover { filter: grayscale(1) drop-shadow(0 0 0.8vw color-mod(#ceefe7 a(70%))); }
 	& .back-button-m { background-image: linear-gradient(135deg, #b6d6db -20%, #5c80a5 90%); }
 	/* & .block__icon { filter: drop-shadow(0 0 50px color-mod(#ceefe7 a(50%))); } */
 	/* & .desc-table__big-text { filter: drop-shadow(0 0 60px color-mod(#ceefe7 a(50%))); } */
@@ -24,7 +24,7 @@
 	& .c4 { fill: #98c9a3; color: #98c9a3; }
 	& .c5 { fill: #77bfa3; color: #77bfa3; }
 	& .b { color: #dde7c7; }
-	& a:hover, & a svg:hover { filter: drop-shadow(0 0 0.8vw color-mod(#edeec9 a(70%))); }
+	& a:hover, & a svg:hover { filter: grayscale(1) drop-shadow(0 0 0.8vw color-mod(#edeec9 a(70%))); }
 	& .back-button-m { background-image: linear-gradient(135deg, #bfd8bd -20%, #77bfa3 90%); }
 	/* & .block__icon { filter: drop-shadow(0 0 50px color-mod(#edeec9 a(50%))); } */
 	/* & .desc-table__big-text { filter: drop-shadow(0 0 60px color-mod(#edeec9 a(50%))); } */
@@ -38,7 +38,7 @@
 	& .c4 { fill: #b59082; color: #b59082; }
 	& .c5 { fill: #736875; color: #736875; }
 	& .b { color: #ffe3a3; }
-	& a:hover, & a svg:hover { filter: drop-shadow(0 0 0.8vw color-mod(#fff3b2 a(70%))); }
+	& a:hover, & a svg:hover { filter: grayscale(1) drop-shadow(0 0 0.8vw color-mod(#fff3b2 a(70%))); }
 	& .back-button-m { background-image: linear-gradient(135deg, #e5bb97 -20%, #736875 90%); }
 	/* & .block__icon { filter: drop-shadow(0 0 50px color-mod(#ffcdb2 a(50%))); } */
 	/* & .desc-table__big-text { filter: drop-shadow(0 0 60px color-mod(#ffcdb2 a(50%))); } */
@@ -527,6 +527,7 @@
 		
 		background-image: url("img/logos.png");
 		background-size: 51vw auto;
+		filter: grayscale(1) drop-shadow(0 0 0 black);
 		
 		transition: filter $time1;
 		
@@ -538,7 +539,7 @@
 		}
 		
 		&--1 {
-			background: inline("img/logoETXCapital.svg") no-repeat center / contain;
+			background: inline("img/logoOvalX.svg") no-repeat center / contain;
 		}
 		
 		&--2 {
@@ -570,11 +571,7 @@
 		}
 		
 		&--9 {
-			background-position: -27.6vw -17.75vw;
-			
-			@media (max-width: $breakpointMobile) {
-				background-position: -108vw -17.4vw;
-			}
+			background: inline("img/logoCTM.svg") no-repeat center / contain;
 		}
 	}
 
