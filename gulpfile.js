@@ -15,7 +15,7 @@ const atomCssConfig = require("./atomCssConfig.js");
 const assets = require("postcss-assets");
 
 // Production
-const htmlMin = require("gulp-htmlmin");
+const htmlMin = require("gulp-html-minifier-terser");
 
 
 const SRC = "src";
@@ -26,7 +26,6 @@ const DEST = "docs";
 
 const buildJsTask = () =>
 	gulp.src([
-		"node_modules/webfontloader/webfontloader.js",
 		`${SRC}/js/plygrnd.js`,
 		`${SRC}/js/DOMTools.js`,
 		`${SRC}/js/initIntro.js`,
@@ -65,7 +64,16 @@ const buildCssTask = () =>
 		.pipe(gulp.dest(DEST));
 
 const copyAssetsTask = () => {
-	gulp.src([`${SRC}/favicon.ico`, `${SRC}/CNAME`, "*v1/**", "*v2/**"])
+	gulp.src([
+		`${SRC}/CNAME`,
+		`${SRC}/site.webmanifest`,
+		`${SRC}/favicon.ico`,
+		`${SRC}/favicon-32x32.png`,
+		`${SRC}/favicon-android-chrome-192x192.png`,
+		`${SRC}/favicon-android-chrome-512x512.png`,
+		`${SRC}/favicon-apple-touch-icon.png`,
+		"*v1/**", "*v2/**"
+	])
 		.pipe(newer(DEST))
 		.pipe(gulp.dest(DEST));
 	return gulp.src([`${SRC}/img/*`])

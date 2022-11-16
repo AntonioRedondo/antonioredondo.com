@@ -7,36 +7,33 @@
 	"license": "CC-BY-NC-ND-4.0",
 	"main": "",
 	"scripts": {
-		"lint": "concurrently \"eslint --fix \"src/**/*.js\" --ignore-pattern \"docs\"\" \"htmlhint src/**/*.html\" \"stylelint --fix \"src/**/*.scss\" --ip \"z_atoms.scss\"",
+		"lint": "concurrently \"eslint --fix \"src/**/*.js\" --ignore-pattern \"docs\"\" \"htmlhint src/**/*.html\" \"stylelint --fix \"src/**/*.scss\" --ip \"z_atoms.scss\"\"",
 		"start": "http-server docs -s",
 		"dev": "concurrently \"npm start\" \"gulp dev\"",
 		"build": "gulp",
 		"prepare": "husky install"
 	},
-	"dependencies": {
-		"webfontloader": "^1.6.28"
-	},
 	"devDependencies": {
-		"concurrently": "^6.5.0",
-		"eslint": "^8.5.0",
+		"concurrently": "^7.5.0",
+		"eslint": "^8.27.0",
 		"gulp": "^4.0.2",
 		"gulp-atomizer": "^3.0.7",
 		"gulp-concat": "^2.6.1",
 		"gulp-file-include": "^2.3.0",
-		"gulp-htmlmin": "^5.0.1",
+		"gulp-html-minifier-terser": "^7.0.0-beta.0",
 		"gulp-inline": "^0.1.3",
 		"gulp-newer": "^1.4.0",
 		"gulp-postcss": "^9.0.1",
 		"gulp-replace": "^1.1.3",
 		"gulp-sourcemaps": "^3.0.0",
-		"htmlhint": "^1.0.0",
-		"http-server": "^14.0.0",
-		"husky": "^7.0.4",
-		"lint-staged": "^12.1.2",
+		"htmlhint": "^1.1.4",
+		"http-server": "^14.1.1",
+		"husky": "^8.0.2",
+		"lint-staged": "^13.0.3",
 		"postcss-assets": "^6.0.0",
 		"precss": "^4.0.0",
-		"stylelint": "^14.1.0",
-		"stylelint-config-standard-scss": "^3.0.0"
+		"stylelint": "^14.15.0",
+		"stylelint-config-standard-scss": "^6.1.0"
 	},
 	"lint-staged": {
 		"*.js": "eslint --fix",

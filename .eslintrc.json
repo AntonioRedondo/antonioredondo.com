@@ -5,7 +5,7 @@
 	"plugins": [
 	],
 	"parserOptions": {
-		"ecmaVersion": 2015,
+		"ecmaVersion": 2020,
 		"sourceType": "module"
 	},
 	"env": {
@@ -19,8 +19,7 @@
 		"initIntro": true,
 		"initMain": true,
 		"d": true,
-		"pg": true,
-		"WebFont": true
+		"pg": true
 	},
 	"rules": {
 		"comma-dangle": [2, "only-multiline"],
