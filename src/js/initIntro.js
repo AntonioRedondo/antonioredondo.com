@@ -1,10 +1,9 @@
-
 function showCookieMessage() {
 	d.gc("cookies").classList.add("cookies--in");
 	d.gc("cookies__close-button").addEventListener("click", function() {
 		d.gc("cookies").classList.remove("cookies--in");
 		d.setCookie("cookieMessage", false, 365);
-		ga("send", "event", "v3", "Cookies close");
+		gtag("send", "event", "v3", "Cookies close");
 	});
 }
 
@@ -210,7 +209,7 @@ function initIntro() { // eslint-disable-line
 		
 		d.setCookie("firstTime", false, 365);
 			
-		ga("send", "event", "v3", "Skip Intro", gaLabel);
+		gtag("send", "event", "v3", "Skip Intro", gaLabel);
 	}
 	
 	d.gc("enter-button").addEventListener("click", function() { skipIntro("Enter button"); });

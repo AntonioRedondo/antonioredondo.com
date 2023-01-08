@@ -16,13 +16,13 @@ function initMain() { // eslint-disable-line
 	
 	
 	// https://developers.google.com/analytics/devguides/collection/analyticsjs/sending-hits
-	d.qs(".block__contact-icon.email").addEventListener("click", function() { ga("send", "event", "v3", "Contact icon", "Email"); });
-	d.qs(".block__contact-icon.linkedin").addEventListener("click", function() { ga("send", "event", "v3", "Contact icon", "LinkedIn"); });
-	d.qs(".block__contact-icon.github").addEventListener("click", function() { ga("send", "event", "v3", "Contact icon", "GitHub"); });
-	d.qs(".more-info-panel__contact-icon.email").addEventListener("click", function() { ga("send", "event", "v3", "Contact icon", "Email MI"); });
-	d.qs(".more-info-panel__contact-icon.linkedin").addEventListener("click", function() { ga("send", "event", "v3", "Contact icon", "LinkedIn MI"); });
-	d.qs(".more-info-panel__contact-icon.github").addEventListener("click", function() { ga("send", "event", "v3", "Contact icon", "GitHub MI"); });
-	d.gc("more-info-panel__source-code-link").addEventListener("click", function() { ga("send", "event", "v3", "Contact icon", "Source code link"); });
+	d.qs(".block__contact-icon.email").addEventListener("click", function() { gtag("send", "event", "v3", "Contact icon", "Email"); });
+	d.qs(".block__contact-icon.linkedin").addEventListener("click", function() { gtag("send", "event", "v3", "Contact icon", "LinkedIn"); });
+	d.qs(".block__contact-icon.github").addEventListener("click", function() { gtag("send", "event", "v3", "Contact icon", "GitHub"); });
+	d.qs(".more-info-panel__contact-icon.email").addEventListener("click", function() { gtag("send", "event", "v3", "Contact icon", "Email MI"); });
+	d.qs(".more-info-panel__contact-icon.linkedin").addEventListener("click", function() { gtag("send", "event", "v3", "Contact icon", "LinkedIn MI"); });
+	d.qs(".more-info-panel__contact-icon.github").addEventListener("click", function() { gtag("send", "event", "v3", "Contact icon", "GitHub MI"); });
+	d.gc("more-info-panel__source-code-link").addEventListener("click", function() { gtag("send", "event", "v3", "Contact icon", "Source code link"); });
 	
 	
 	
@@ -72,7 +72,7 @@ function initMain() { // eslint-disable-line
 		d.gc("description-panel__overflow-hide").scrollTop = 0;
 		profileSelected = nextProfile;
 		
-		ga("send", "event", "v3", "Profile description panel open", "Profile " + nextProfile);
+		gtag("send", "event", "v3", "Profile description panel open", "Profile " + nextProfile);
 	}
 	
 	function hideDescriptionPanel() {
@@ -103,7 +103,7 @@ function initMain() { // eslint-disable-line
 		d.gc("profile-selected-bg--" + profileSelected).classList.remove("profile-selected-bg--in");
 		d.qs(".profile-selected-place--" + profileSelected + " .profile-selected-place__title").classList.remove("profile-selected-place__title--in");
 		
-		ga("send", "event", "v3", "Profile description panel close", "Profile " + profileSelected);
+		gtag("send", "event", "v3", "Profile description panel close", "Profile " + profileSelected);
 
 		var removeClasses = function() {
 			descriptionPanel.style.visibility = "hidden";
@@ -157,7 +157,7 @@ function initMain() { // eslint-disable-line
 		moreInfoBgImage.classList.add("more-info-bg__image--in");
 		
 		d.gc("darkener").classList.add("darkener--in2");
-		ga("send", "event", "v3", "More info", gaLabel);
+		gtag("send", "event", "v3", "More info", gaLabel);
 	}
 	
 	function moreInfoClose(gaLabel) {
@@ -172,7 +172,7 @@ function initMain() { // eslint-disable-line
 		}, animDurationMoreInfo);
 		
 		d.gc("darkener").classList.remove("darkener--in2");
-		ga("send", "event", "v3", "More info close", gaLabel);
+		gtag("send", "event", "v3", "More info close", gaLabel);
 	}
 	
 	function moreInfoCloseEventListener(gaLabel) {
@@ -196,7 +196,7 @@ function initMain() { // eslint-disable-line
 	// Adds functionality to "Show intro again" button
 	function showIntroAgain(gaLabel) {
 		d.removeCookie("firstTime");
-		ga("send", "event", "v3", "Show intro again", gaLabel);
+		gtag("send", "event", "v3", "Show intro again", gaLabel);
 		location.reload();
 	}
 	d.gc("footer__bg3").addEventListener("click", function() { showIntroAgain("Footer button"); });
@@ -242,11 +242,11 @@ function initMain() { // eslint-disable-line
 			
 			var element = e.target.parentNode.parentNode;
 			if (element.classList.contains("s1")) {
-				ga("send", "event", "v3", "Description panel bottom reached", "Profile 1");
+				gtag("send", "event", "v3", "Description panel bottom reached", "Profile 1");
 			} else if(element.classList.contains("s2")) {
-				ga("send", "event", "v3", "Description panel bottom reached", "Profile 2");
+				gtag("send", "event", "v3", "Description panel bottom reached", "Profile 2");
 			} else if(element.classList.contains("s3")) {
-				ga("send", "event", "v3", "Description panel bottom reached", "Profile 3");
+				gtag("send", "event", "v3", "Description panel bottom reached", "Profile 3");
 			}
 			
 		} else downButton.classList.remove("description-panel__scroll--down-hidden");

@@ -212,9 +212,9 @@ I also tracks when the user has scrolled to the end of the profile description p
 - Profile 3 bottom reached
 
 
-All these tracking events are made with the `ga()` function call. For example:
+All these tracking events are made with the `gtag()` function call. For example:
 
-    ga("send", "event", "v3", "Description panel bottom reached", "Profile 1");
+    gtag("send", "event", "v3", "Description panel bottom reached", "Profile 1");
 
 You’re more than welcome to use your favourite ad/tracker blocker to avoid the collecting of these user events.
 
