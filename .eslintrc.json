@@ -14,7 +14,7 @@
 		"node": true
 	},
 	"globals": {
-		"ga": true,
+		"gtag": true,
 		"hideIntro": true,
 		"initIntro": true,
 		"initMain": true,

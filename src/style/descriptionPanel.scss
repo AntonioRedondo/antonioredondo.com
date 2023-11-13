@@ -539,11 +539,12 @@
 		}
 		
 		&--1 {
-			background: inline("img/logoFramestore.svg") no-repeat center / contain;
+			background: url("img/logos.png") no-repeat 0 top / 55vw auto;
+			background-position: -9vw -5.4vw;
 		}
 		
 		&--2 {
-			background: inline("img/logoOvalX.svg") no-repeat center / contain;
+			background: inline("img/logoFramestore.svg") no-repeat center / contain;
 		}
 		
 		&--3 {

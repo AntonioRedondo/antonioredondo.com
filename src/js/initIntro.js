@@ -69,7 +69,6 @@ function initIntro() { // eslint-disable-line
 		visibleBubbles = [],
 		yStart,
 		yEnd,
-		transform = d.checkTransformsSupported(),
 		mouseMoveListener,
 		mouseWheelListener,
 		touchStartListener,
@@ -90,12 +89,12 @@ function initIntro() { // eslint-disable-line
 			//console.log("clientX: " + e.clientX);
 			//console.log("clientY: " + e.clientY);
 			//console.log("rotateX(" + -(0.02*e.clientY-10) +"deg)");
-			phrasesContainer.style[transform] = "rotateX(" + -(0.02*e.clientY-10) + "deg) rotateY(" + (0.02*e.clientX-25) + "deg) translate3d(" + (-0.05*e.clientX+100) + "px, 0, 0)";
+			phrasesContainer.style.transform = "rotateX(" + -(0.02*e.clientY-10) + "deg) rotateY(" + (0.02*e.clientX-25) + "deg) translate3d(" + (-0.05*e.clientX+100) + "px, 0, 0)";
 			
 			// Due to a weird behaviour the below line spoils the bubbles zoom effect of Chrome.
 			// With this conditional if we avoid execution on Chrome
 			if (!(window.chrome && window.chrome.webstore))
-				bubblesContainer.style[transform] = phrasesContainer.style[transform];
+				bubblesContainer.style.transform = phrasesContainer.style.transform;
 		});
 	}
 	
@@ -187,8 +186,8 @@ function initIntro() { // eslint-disable-line
 	(function controlledRandomMovement() {
 		for (var n=0; n<visibleBubbles.length; ++n) {
 			//var zTrans = /\.*translateZ\((.*)px\)/i.exec(document.getElementById("dv").getAttribute("style"))[1];
-			visibleBubbles[n].firstChild.style[transform] = "translate3d(" + d.getRandomInt() + "px, " + d.getRandomInt() + "px, 0)";
-			visibleBubbles[n].firstChild.style[transform] = "translate3d(" + d.getRandomInt() + "px, " + d.getRandomInt() + "px, 0)";
+			visibleBubbles[n].firstChild.style.transform = "translate3d(" + d.getRandomInt() + "px, " + d.getRandomInt() + "px, 0)";
+			visibleBubbles[n].firstChild.style.transform = "translate3d(" + d.getRandomInt() + "px, " + d.getRandomInt() + "px, 0)";
 		}
 		toControlledRandomMovement = d.st(controlledRandomMovement, 3000);
 	})();

@@ -47,7 +47,7 @@ function initMain() { // eslint-disable-line
 		nProfile.children[3].firstElementChild.classList.remove("profile__title-text--in");
 		
 		d.gc("darkener").classList.add("darkener--in");
-
+		
 		for (var n=1; n<=3; ++n)
 			if (nextProfile !== n) {
 				d.gc("profile--" + n).classList.add("profile--not-selected");
@@ -61,7 +61,7 @@ function initMain() { // eslint-disable-line
 		d.gca("desc-profile--" + nextProfile).forEach(function(item) {
 			item.style.display = "inline-block";
 		});
-				
+		
 		clearTimeout(toRemoveClasses);
 		d.st(function() {
 			nProfile.children[4].classList.add("profile__back-button--in");
@@ -99,12 +99,12 @@ function initMain() { // eslint-disable-line
 					case 3: d.gc("profile--" + n2).classList.remove("profile--selected-right");
 				}
 			}
-
+		
 		d.gc("profile-selected-bg--" + profileSelected).classList.remove("profile-selected-bg--in");
 		d.qs(".profile-selected-place--" + profileSelected + " .profile-selected-place__title").classList.remove("profile-selected-place__title--in");
 		
 		gtag("send", "event", "v3", "Profile description panel close", "Profile " + profileSelected);
-
+		
 		var removeClasses = function() {
 			descriptionPanel.style.visibility = "hidden";
 			descriptionPanel.classList.remove("s" + profileSelected);
@@ -290,8 +290,7 @@ function initMain() { // eslint-disable-line
 		};
 		
 		return new Promise(function(resolve, reject) {
-			// This is to keep track of where the element"s scrollTop is
-			// supposed to be, based on what we"re doing
+			// Keeps track of where the element's scrollTop is supposed to be
 			var previousTop = element.scrollTop;
 			
 			// This is like a think function from a game loop

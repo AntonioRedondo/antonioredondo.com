@@ -10,7 +10,6 @@
   * - Sorter name functions wrapping quering, events and timeouts functions.
   * - Generation of random integers.
   * - Adding, retrieving and removing cookies.
-  * - Checking of CSS transforms support.
   * - Checking of OS.
   * - Calculation of element heights and positions.
   * - Loading of images and executing a callback once they're loaded.
@@ -203,13 +202,6 @@
 	
 	
 	
-	
-	d.checkTransformsSupported = function() {
-		if (document.documentElement.style.transform !== undefined)
-			return "transform";
-		else if (document.documentElement.style.webkitTransform !== undefined)
-			return "webkitTransform";
-	};
 	
 	// http://stackoverflow.com/questions/11219582/how-to-detect-my-browser-version-and-operating-system-using-javascript
 	d.getOS = function() {
