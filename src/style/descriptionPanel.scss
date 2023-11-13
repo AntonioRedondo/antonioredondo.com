@@ -541,6 +541,11 @@
 		&--1 {
 			background: url("img/logos.png") no-repeat 0 top / 55vw auto;
 			background-position: -9vw -5.4vw;
+			
+			@media (max-width: $breakpointMobile) {
+				background-size: 210vw auto;
+				background-position: -34vw -20.2vw;
+			}
 		}
 		
 		&--2 {
@@ -548,19 +553,23 @@
 		}
 		
 		&--3 {
-			background: inline("img/logoInfinityWorks.svg") no-repeat center / contain;
+			background: inline("img/logoOvalX.svg") no-repeat center / contain;
+			
+			@media (max-width: $breakpointMobile) {
+				display: none;
+			}
 		}
 		
 		&--4 {
-			background: inline("img/logoGfk.svg") no-repeat center / contain;
+			background: inline("img/logoInfinityWorks.svg") no-repeat center / contain;
 		}
 		
 		&--5 {
-			background: inline("img/logoPreqin.svg") no-repeat center / contain;
+			background: inline("img/logoGfk.svg") no-repeat center / contain;
 		}
 		
 		&--6 {
-			background: inline("img/logoBlow.svg") no-repeat center / contain;
+			background: inline("img/logoPreqin.svg") no-repeat center / contain;
 		}
 		
 		&--7 {
