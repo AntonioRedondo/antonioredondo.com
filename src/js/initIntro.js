@@ -13,7 +13,7 @@ function hideIntro(type) {
 	var modifier = "out",
 		time = 4000;
 	switch (type) {
-		case 2: modifier = "out2"; time = 1000; // eslint-disable-line
+		case 2: modifier = "out2"; time = 1000;
 	}
 	
 	if (d.getCookie("cookieMessage") === null)

@@ -5,31 +5,32 @@
 	"description": "Antonio Redondo's window to the world",
 	"repository": "antonioredondo/antonioredondo.com",
 	"license": "CC-BY-NC-ND-4.0",
+	"type": "module",
 	"main": "",
 	"scripts": {
-		"lint": "concurrently \"eslint --fix \"src/**/*.js\" --ignore-pattern \"docs\"\" \"htmlhint src/**/*.html\" \"stylelint --fix \"src/**/*.scss\" --ip \"z_atoms.scss\"\"",
+		"lint": "concurrently \"eslint --ignore-pattern \"{docs,v2}\"\" \"htmlhint src/**/*.html\" \"stylelint \"src/**/*.scss\" --ip \"z_atoms.scss\"\"",
 		"start": "http-server docs -s",
 		"dev": "concurrently \"npm start\" \"gulp dev\"",
 		"build": "gulp"
 	},
 	"devDependencies": {
 		"concurrently": "^8.2.2",
-		"eslint": "^8.53.0",
-		"gulp": "^4.0.2",
-		"gulp-atomizer": "^3.0.7",
+		"eslint": "^9.4.0",
+		"globals": "^15.3.0",
+		"gulp": "^5.0.0",
 		"gulp-concat": "^2.6.1",
 		"gulp-file-include": "^2.3.0",
 		"gulp-html-minifier-terser": "^7.1.0",
 		"gulp-inline": "^0.1.3",
 		"gulp-newer": "^1.4.0",
-		"gulp-postcss": "^9.0.1",
+		"gulp-postcss": "^10.0.0",
 		"gulp-replace": "^1.1.4",
 		"gulp-sourcemaps": "^3.0.0",
 		"htmlhint": "^1.1.4",
 		"http-server": "^14.1.1",
 		"postcss-assets": "^6.0.0",
 		"precss": "^4.0.0",
-		"stylelint": "^15.11.0",
-		"stylelint-config-standard-scss": "^11.1.0"
+		"stylelint": "^16.6.1",
+		"stylelint-config-standard-scss": "^13.1.0"
 	}
 }

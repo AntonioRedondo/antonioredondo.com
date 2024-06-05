@@ -14,15 +14,8 @@
 		}],
 		"comment-empty-line-before": null,
 		"declaration-empty-line-before": null,
-		"indentation": "tab",
-		"max-empty-lines": 5,
-		"max-line-length": null,
 		"no-descending-specificity": null,
-		"no-eol-whitespace": [true, {
-			"ignore": [ "empty-lines" ]
-		}],
 		"rule-empty-line-before": null,
-		"selector-list-comma-newline-after": "always-multi-line",
 		"scss/dollar-variable-empty-line-before": null,
 		"scss/dollar-variable-pattern": null
 	}

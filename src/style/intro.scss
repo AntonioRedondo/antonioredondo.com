@@ -404,7 +404,7 @@
 			width: 50%;
 		}
 		
-		@media (min-resolution: 180dpi) {
+		@media (resolution >= 180dpi) {
 			filter: none !important;
 		}
 		
@@ -420,7 +420,7 @@
 			transform: translate3d(0, 0, 0);
 			backface-visibility: hidden;
 			
-			@media (min-resolution: 180dpi) {
+			@media (resolution >= 180dpi) {
 				text-shadow: 0 0 10px $black040;
 			}
 		}
@@ -431,7 +431,7 @@
 			transform: translate3d(50px, -100px, -200px);
 			backface-visibility: hidden;
 			
-			@media (min-resolution: 180dpi) {
+			@media (resolution >= 180dpi) {
 				opacity: 0.5;
 			}
 		}
@@ -442,7 +442,7 @@
 			transform: translate3d(100px, -200px, -400px);
 			backface-visibility: hidden;
 			
-			@media (min-resolution: 180dpi) {
+			@media (resolution >= 180dpi) {
 				opacity: 0.4;
 			}
 		}
@@ -453,7 +453,7 @@
 			transform: translate3d(150px, -300px, -600px);
 			backface-visibility: hidden;
 			
-			@media (min-resolution: 180dpi) {
+			@media (resolution >= 180dpi) {
 				opacity: 0.3;
 			}
 		}
@@ -462,7 +462,7 @@
 			transform: translate3d(200px, -400px, -800px);
 			backface-visibility: hidden;
 			
-			@media (min-resolution: 180dpi) {
+			@media (resolution >= 180dpi) {
 				opacity: 0.2;
 			}
 		}
