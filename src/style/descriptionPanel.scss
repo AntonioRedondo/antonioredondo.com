@@ -539,13 +539,7 @@
 		}
 		
 		&--1 {
-			background: url("img/logos.png") no-repeat 0 top / 55vw auto;
-			background-position: -9vw -5.4vw;
-			
-			@media (max-width: $breakpointMobile) {
-				background-size: 210vw auto;
-				background-position: -34vw -20.2vw;
-			}
+			background: inline("img/logoEvora.svg") no-repeat center / contain;
 		}
 		
 		&--2 {
@@ -574,6 +568,8 @@
 		
 		&--7 {
 			background: inline("img/logoZopa.svg") no-repeat center / contain;
+			scale: 0.8;
+			translate: 0 0.2vw;
 		}
 		
 		&--8 {
