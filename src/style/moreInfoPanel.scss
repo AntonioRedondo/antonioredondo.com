@@ -47,13 +47,13 @@
 	}
 	
 	&__image {
-		width: 75vh;
+		width: 78vh;
 		
 		visibility: hidden;
 		display: block;
 		
 		position: absolute;
-		left: calc(21% - 75vh / 2);
+		left: calc(23% - 78vh / 2);
 		bottom: 0;
 		
 		opacity: 0;
@@ -289,12 +289,12 @@
 
 	&__image-m {
 		width: 100%;
-		height: 80vh;
+		height: 70vh;
 		margin: 0 0 10vw;
 		
 		position: relative;
 		
-		background: url("img/moreInfoM.jpg") $gray1 center 25% / cover;
+		background: url("img/moreInfoM.jpg") $gray1 15% 25% / cover;
 		
 		@media (min-width: $breakpointMobile) {
 			display: none;
@@ -308,6 +308,6 @@
 		position: absolute;
 		bottom: 0;
 		
-		background: linear-gradient(0deg, color-mod(black a(80%)), transparent);
+		background: linear-gradient(0deg, color-mod(black a(50%)), transparent);
 	}
 }
