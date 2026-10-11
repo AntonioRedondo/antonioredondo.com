@@ -604,8 +604,7 @@
 	@media (max-width: $breakpointMobile) {
 		right: calc(4vw + 22vh / 2);
 		font-size: 4vw;
-		bottom: auto;
-		top: 2.5vh;
+		bottom: 2.5vh;
 	}
 	
 	&:hover {
